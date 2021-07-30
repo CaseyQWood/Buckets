@@ -19,6 +19,7 @@ As a user I should have a profile that displays past budgets / Username / Email 
 As a user I should have a clickable 3D coin that takes me to my profile.
 Stretch:
 As a user when I visit my profile page, I should see my active budget.
+As a user I can choose the currency type
 
 ### Path /profile/new
 ### Path /profile/:id
@@ -40,7 +41,7 @@ As a user I should receive text alerts that I am close/far from my monthly budge
 As a user my budget should be displayed graphically.
 As a user I should be able to see how much I should be spending on a category based on locaton.
 As a user I should be able to add my spouse and seperate expenses. 
-
+As a user I should be able to integrate my Amazon purchases
 ### Path /budgets
 ### Path /budgets/:id
 ### Path /budgets/create
@@ -83,6 +84,7 @@ As a user I should be able to create/edit/delete categories.
 As a user I should be able to total costs of categories.
 As a user I should be able to select from assorted premade categories.
 As a user I should be able to see all expenses by categories.
+As a user my expenses should be inteligently diveded based on category priority
 
 ### Path /categories
 ### Path /categories/:id
@@ -92,4 +94,12 @@ As a user I should be able to see all expenses by categories.
 ### Path /categories/:id/expenses
 
 
+## ABOUT US:
+As a user I should able to see the app's unique identity, the opportunity to build trust, the story of developers.
 
+### Path /aboutUs
+
+## CONTACT:
+As a user I should able to see the contact information of developers.
+
+### Path /contact
