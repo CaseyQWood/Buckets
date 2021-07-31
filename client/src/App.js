@@ -1,14 +1,20 @@
 import './App.css';
-import React, { Suspense, useRef } from 'react'
+import React, { Suspense, useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import {Canvas} from '@react-three/fiber'
 import Coin from './SuperMarioCoinglb'
 import {OrbitControls} from "@react-three/drei"
+import axios from "axios";
 
 // currently the commented out section was just for testing base 3d object dependancies ahead of time please disregard
 
 
 function App() {
+  useEffect(() => {axios.post('/api/categories', {
+    testName: "t",
+    budget_id: 5,
+    spending_limit: 1000
+  })}) 
   return (
     <div>
       <p>THIS IS A TEST</p>
@@ -19,7 +25,8 @@ function App() {
         <Suspense>
           <Coin roughness={0.2}/>
         </Suspense>
-      </Canvas> */}
+      </Canvas> */
+      }
     
     </div>
   );
