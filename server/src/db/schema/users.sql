@@ -7,5 +7,5 @@ CREATE TABLE users (
   email VARCHAR(255) NOT NULL,
   profile_image_url VARCHAR(255),
   password VARCHAR(255) NOT NULL,
-  individual_income INT NOT NULL
+  individual_income MONEY NOT NULL
 );
