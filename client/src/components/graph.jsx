@@ -1,5 +1,6 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
+import { Button } from '@material-ui/core'
 
 //This data will need to be replaced with previous budget data.
 
@@ -46,6 +47,7 @@ export default function BudgetActualExpected(props) {
         </div>
       </div>
       <Bar data={data} options={options} />
+      <Button color="primary">Hello World</Button>
     </>
   )
 };
