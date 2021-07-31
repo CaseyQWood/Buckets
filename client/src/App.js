@@ -1,12 +1,8 @@
 import './App.css';
-import React, { Suspense, useEffect, useRef } from 'react'
-import * as THREE from 'three'
-import {Canvas} from '@react-three/fiber'
-import Coin from './SuperMarioCoinglb'
-import {OrbitControls} from "@react-three/drei"
+import React, { useEffect } from 'react'
 import axios from "axios";
 import React from 'react'
-import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import Login from './pages/login'
 import Register from './pages/register'
 import Profile from './pages/profile';
