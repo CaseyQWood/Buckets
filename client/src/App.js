@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useEffect } from 'react'
 import axios from "axios";
-import React from 'react'
+
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import Login from './pages/login'
 import Register from './pages/register'
@@ -12,7 +12,8 @@ import Budget from './pages/budget';
 
 
 function App() {
-  useEffect(() => {axios.post('/api/categories', {
+  useEffect(() => {
+    axios.post('/api/categories', {
     name: "test",
     budget_id: 5,
     spending_limit: 1000
