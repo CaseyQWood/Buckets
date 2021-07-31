@@ -1,5 +1,6 @@
 const router = require("express").Router();
 
+// -------------get budgets
 const budgetsRoutes = (db) => {
   router.get("/", (req, res) => {
     db.query(
@@ -11,40 +12,86 @@ const budgetsRoutes = (db) => {
         res.json(response.rows);
       })
       .catch((error) => {
-        console.log(error.message);
+        res.json(error.message);
       });
   });
 
+  // -------------get budget by id
   router.get("/:id", (req, res) => {
     const budgetId = req.params.id;
+
     db.query(
       `
       SELECT * from budgets where budgets.id = $1;
-      `
-    ,[budgetId])
+      `,
+      [budgetId]
+    )
       .then((response) => {
-        res.json(response.rows);
+        res.json(response.rows[0]);
       })
       .catch((error) => {
-        console.log(error.message);
+        res.json(error.message);
       });
   });
-  
-  //-------------update budgets
-  //-------------delete budgets
-  router.delete("/:id", (req, res) => {
-    const budgetId = req.params.id;
-    
+
+  //-------------add new budget
+  router.post("/", (req, res) => {
+    const userId = req.body.user_id;
+    const budegtName = req.body.name;
+    const startDate = req.body.start_date;
+    const endDate = req.body.end_date;
+
     db.query(
       `
-      DELETE FROM budgets WHERE budgets.id = $1;
+      INSERT INTO budgets(user_id, name, start_date, end_date)
+      VALUES($1, $2, $3, $4)
+      RETURNING *;
       `
-    ,[budgetId])
+    ,[userId, budegtName, startDate, endDate])
       .then((response) => {
-        res.json(response.rows);
+      res.json(response.rows[0]);
+    })
+    .catch((error) => {
+      res.json(error.message);
+    });
+  });
+
+  //-------------update budget by id
+  router.put("/:id", (req, res) => {
+    const budgetId = req.params.id;
+    const budegtName = req.body.name;
+    const startDate = req.body.start_date;
+    const endDate = req.body.end_date;
+
+    db.query(
+      `
+      UPDATE budgets SET name = $2, start_date =$3, end_date=$4 WHERE id = $1 RETURNING *;
+      `
+    ,[budgetId, budegtName, startDate, endDate])
+      .then((response) => {
+        res.json(response.rows[0]);
       })
       .catch((error) => {
-        console.log(error.message);
+        res.json(error.message);
+      });
+  });
+
+  //-------------delete budget by id
+  router.delete("/:id", (req, res) => {
+    const budgetId = req.params.id;
+
+    db.query(
+      `
+      DELETE FROM budgets WHERE budgets.id = $1
+      RETURNING *;
+      `,
+      [budgetId]
+    )
+      .then((response) => {
+        res.json(response.rows[0]);
+      })
+      .catch((error) => {
+        res.json(error.message);
       });
   });
   return router;
