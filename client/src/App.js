@@ -11,7 +11,7 @@ import axios from "axios";
 
 function App() {
   useEffect(() => {axios.post('/api/categories', {
-    testName: "t",
+    name: "test",
     budget_id: 5,
     spending_limit: 1000
   })}) 
