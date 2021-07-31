@@ -1,12 +1,14 @@
 import React from 'react'
+import BudgetActualExpected from '../components/graph'
 
 export default function Profile() {
 
   // logic goes here
+  //const 
 
   return (
-    <div>
-      <p>this is the profile page</p>
+    <div class="graph">
+      <BudgetActualExpected />
     </div>
   )
 }
