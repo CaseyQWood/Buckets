@@ -1,5 +1,6 @@
 const router = require("express").Router();
 
+// -------------get categories
 const categoriesRoutes = (db) => {
   router.get("/", (req, res) => {
     db.query(
@@ -11,10 +12,10 @@ const categoriesRoutes = (db) => {
         res.json(response.rows);
       })
       .catch((error) => {
-        console.log(error.message);
+        res.json(error.message);
       });
   });
-
+  // -------------get category by id
   router.get("/:id", (req, res) => {
     const reqParams = req.params.id;
     db.query(
@@ -23,19 +24,18 @@ const categoriesRoutes = (db) => {
       `
     ,[reqParams])
       .then((response) => {
-        res.json(response.rows);
+        res.json(response.rows[0]);
       })
       .catch((error) => {
-        console.log(error.message);
+        res.json(error.message);
       });
   });
-  // -------------add categories --not working properyly
+  // -------------add new category
   router.post("/", (req, res) => {
     const categoriesName = req.body.name;
     const budgetId = req.body.budget_id;
     const spendingLimit = req.body.spending_limit;
-    console.log("categoriesName-----", categoriesName);
-    console.log("req.body----",req.body);
+ 
     db.query(
       `
       INSERT INTO categories(name, budget_id, spending_limit)
@@ -44,46 +44,47 @@ const categoriesRoutes = (db) => {
       `
     ,[categoriesName, budgetId, spendingLimit])
       .then((response) => {
-        res.json(response.rows);
+        res.json(response.rows[0]);
       })
       .catch((error) => {
-        console.log(error.message);
+        res.json(error.message);
       });
   });
 
-  //-------------update categories --not working properyly
+  //-------------update category by id
   router.put("/:id", (req, res) => {
     const reqParams = req.params.id;
-    const updatedName = req.session.name;
-    const updatedLimit = req.session.spending_limit;
+    const updatedName = req.body.name;
+    const updatedLimit = req.body.spending_limit;
 
     db.query(
       `
-      UPDATE categories SET name = $2, spending_limit =$3 WHERE id = $1;
+      UPDATE categories SET name = $2, spending_limit =$3 WHERE id = $1 RETURNING *;
       `
     ,[reqParams, updatedName, updatedLimit])
       .then((response) => {
-        res.json(response.rows);
+        res.json(response.rows[0]);
       })
       .catch((error) => {
-        console.log(error.message);
+        res.json(error.message);
       });
   });
 
-  //-------------delete categories
+  //-------------delete category by id
   router.delete("/:id", (req, res) => {
     const reqParams = req.params.id;
 
     db.query(
       `
-      DELETE FROM categories WHERE categories.id = $1;
+      DELETE FROM categories WHERE categories.id = $1 
+      RETURNING *;
       `
     ,[reqParams])
       .then((response) => {
-        res.json(response.rows);
+        res.json(response.rows[0]);
       })
       .catch((error) => {
-        console.log(error.message);
+        res.json(error.message);
       });
   });
   return router;
