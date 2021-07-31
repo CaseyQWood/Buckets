@@ -1,3 +1,1 @@
-INSERT INTO categories(name, budget_id, spending_limit)
-
-VALUES("Living expenses", 1, 500)
+INSERT INTO categories(name, budget_id, spending_limit) VALUES ('Living expenses', 2, 500)
