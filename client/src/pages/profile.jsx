@@ -11,7 +11,7 @@ export default function Profile() {
   return (
     <div class="graph">
       <BudgetActualExpected />
-      <div class="progress-container">
+      <div class="progress-bars">
         <ProgressBar currentValue={80}/> <br></br>
         <ProgressBar currentValue={35}/> <br></br>
         <ProgressBar currentValue={70}/> <br></br>
