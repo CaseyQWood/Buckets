@@ -14,7 +14,7 @@ export default function Profile() {
     <div class="graph">
       <BudgetActualExpected />
       <div class="category-bars">
-        <CategoriesProgressBar currentValue={80} />
+        <ProgressBar currentValue={80} name={"Living Expenses"} spendLimit={'$1200.00'}/>
       </div>
 
       <OnlineChat />
