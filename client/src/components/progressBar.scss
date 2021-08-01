@@ -1,5 +1,5 @@
 .progress-container {
-  height: 20;
+  height: 4vw;
   width: '100%';
   background-color: lightgray;
   border-radius: 20vw;
@@ -11,4 +11,10 @@
   padding: 5;
   color: white;
   font-weight: bold;
+  font-size: 3vw;
+}
+
+.category-progress-bar {
+  text-align: center;
+  font-size: 2vw;
 }
