@@ -11,8 +11,6 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
-    "http-proxy-middleware": "^0.19.1",
-    "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-chartjs-2": "^3.0.4",
     "react-dom": "^17.0.2",
@@ -45,5 +43,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5432"
+  "proxy": "http://localhost:3002"
 }

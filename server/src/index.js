@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const cors = require('cors')
 const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require('morgan')
@@ -17,6 +18,7 @@ app.use(cookieSession({
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'))
 app.use(express.json());
+app.use(cors())
 
 const { Pool } = require('pg');
 const dbParams = require('./lib/db.js');

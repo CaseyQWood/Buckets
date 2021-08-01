@@ -44,6 +44,7 @@ const categoriesRoutes = (db) => {
       `
     ,[categoriesName, budgetId, spendingLimit])
       .then((response) => {
+        console.log(response.rows)
         res.json(response.rows[0]);
       })
       .catch((error) => {
