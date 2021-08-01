@@ -1,10 +1,11 @@
 import React from 'react';
 import './progressBar.scss';
+import useCategoryData from '../hooks/useCategoryData';
 
-export default function ProgressBar(props) {
+export default function CategoriesProgressBar(props) {
   const { currentValue } = props;
-
-
+  const { state } = useCategoryData();
+  console.log('********', state)
   let backgroundColor;
 
   if (currentValue < 75) {

@@ -11,13 +11,13 @@ import Budget from './pages/budget';
 
 
 function App() {
-  useEffect(() => {
-    console.log("sdfsfsfsf");
-    axios.post('http://localhost:3002/api/categories', {
-    name: "test",
-    budget_id: 5,
-    spending_limit: 1000
-  })}) 
+  //useEffect(() => {
+  //  console.log("sdfsfsfsf");
+  //  axios.post('http://localhost:3002/api/categories', {
+  //  name: "test",
+  //  budget_id: 5,
+  //  spending_limit: 1000
+  //})}) 
   return (
     <Router>
       <Route exact={true} path='/login' component={Login}/>

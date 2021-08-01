@@ -1,6 +1,7 @@
 import React from 'react'
 import BudgetActualExpected from '../components/graph'
 import ProgressBar from '../components/progressBar'
+import CategoriesProgressBar from '../components/categoriesProgressBar'
 
 export default function Profile() {
 
@@ -11,10 +12,8 @@ export default function Profile() {
   return (
     <div class="graph">
       <BudgetActualExpected />
-      <div class="progress-bars">
-        <ProgressBar currentValue={80}/> <br></br>
-        <ProgressBar currentValue={35}/> <br></br>
-        <ProgressBar currentValue={70}/> <br></br>
+      <div class="category-bars">
+        <CategoriesProgressBar currentValue={80} />
       </div>
     </div>
   )
