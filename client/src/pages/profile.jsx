@@ -2,6 +2,7 @@ import React from 'react'
 import BudgetActualExpected from '../components/graph'
 import ProgressBar from '../components/progressBar'
 import CategoriesProgressBar from '../components/categoriesProgressBar'
+import OnlineChat from '../components/onlineChat'
 
 export default function Profile() {
 
@@ -15,6 +16,8 @@ export default function Profile() {
       <div class="category-bars">
         <CategoriesProgressBar currentValue={80} />
       </div>
+
+      <OnlineChat />
     </div>
   )
 }
