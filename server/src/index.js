@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const morgan = require('morgan')
 
 const app = express();
-const port = process.env.PGPORT || 3001;
+const port = process.env.PORT || 3001;
 
 
 const cookieSession = require("cookie-session");

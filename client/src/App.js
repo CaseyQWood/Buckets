@@ -12,7 +12,8 @@ import Budget from './pages/budget';
 
 function App() {
   useEffect(() => {
-    axios.post('/api/categories', {
+    console.log("sdfsfsfsf");
+    axios.post('api/categories', {
     name: "test",
     budget_id: 5,
     spending_limit: 1000
