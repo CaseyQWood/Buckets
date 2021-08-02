@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function useCategoryData(initial) {
-  const [state, setState] = useState({
+  const [categoryState, setCategoryState] = useState({
     values: [],
   });
 
@@ -16,9 +16,9 @@ export default function useCategoryData(initial) {
         }
         return ele;
       })
-      setState(prev => ({...prev, values: temp}))
+      setCategoryState(prev => ({...prev, values: temp}))
     });
   }, []);
 
-  return { state }
+  return { categoryState }
 }
