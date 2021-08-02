@@ -15,7 +15,7 @@ const ENDPOINT = 'http://localhost:3002';
 let socket;
 
 const Chat = ({ location }) => {
-  console.log("location", location);
+  
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
   const [users, setUsers] = useState("");
@@ -27,8 +27,8 @@ const Chat = ({ location }) => {
     // pass endpoint to server localhost:3002
     socket = io(ENDPOINT, { transports: ["websocket"]});
 
-    console.log("room ----", room);
-    console.log("name ----", name);
+    // console.log("room ----", room);
+    // console.log("name ----", name);
 
     setRoom(room);
     setName(name);
@@ -60,7 +60,9 @@ const Chat = ({ location }) => {
       socket.emit('sendMessage', message, () => setMessage(''));
     }
   }
-  console.log(message, messages);
+
+  // Testing messages record and message
+  // console.log(message, messages);
 
   return (
     <div className="outerContainer">
