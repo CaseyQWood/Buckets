@@ -5,5 +5,6 @@ CREATE TABLE budgets (
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   name VARCHAR(255) NOT NULL,
   start_date DATE NOT NULL,
-  end_date DATE
+  end_date DATE,
+  active BOOLEAN NOT NULL DEFAULT false
 );
