@@ -76,6 +76,8 @@ const budgetsRoutes = (db) => {
       });
   });
 
+  //SELECT * FROM budgets JOIN categories ON categories.budget_id = budgets.id JOIN expenses ON expenses.category_id = categories.id; 
+
   //-------------delete budget by id
   router.delete("/:id", (req, res) => {
     const budgetId = req.params.id;
