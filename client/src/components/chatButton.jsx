@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./chatButton.scss"
+import "../styles/chatButton.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee } from '@fortawesome/fontawesome-free-solid'
 

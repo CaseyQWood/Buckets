@@ -3,7 +3,7 @@ import ScrollToBottom from "react-scroll-to-bottom";
 
 import Message from "./Message";
 
-import "./Messages.scss";
+import "../styles/Messages.scss";
 
 // display messages and user name from props
 const Messages = ({ messages, name }) => (
