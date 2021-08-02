@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // link to /chat path
 import { Link } from "react-router-dom";
-import "./Join.scss";
+import "../styles/Join.scss";
 
 const Join = () => {
   const [name, setName] = useState("");

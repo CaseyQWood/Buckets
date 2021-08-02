@@ -7,7 +7,7 @@ import Messages from './Messages';
 import InfoBar from "./InfoBar";
 import Input from "./Input";
 
-import "./Chat.scss";
+import "../styles/Chat.scss";
 
 const ENDPOINT = 'http://localhost:3002';
 

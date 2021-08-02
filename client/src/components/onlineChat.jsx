@@ -1,5 +1,5 @@
 import React from  'react';
-import './onlineChat.scss';
+import '../styles/onlineChat.scss';
 
 export default function OnlineChat() {
   
