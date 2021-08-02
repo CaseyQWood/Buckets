@@ -42,7 +42,7 @@ export default function Profile() {
     )
   })
 
-  
+
   const [state, setState] = useState('noChat');
 
   const openChat = () => {
@@ -83,15 +83,14 @@ export default function Profile() {
         </div>
         </Grid>
       </Grid>
-      <OnlineChat />
-    </Box>
-
-    <div>
+      <div>
         {state === 'noChat' && (
         <ChatButton openChat={openChat} />
         )}
         {state === 'openChat' && <OnlineChat />}
       </div>
+    </Box>
+
     </>
   )
 }
