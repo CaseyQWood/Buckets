@@ -1,0 +1,18 @@
+.chatButton:hover {
+  background-color:white;
+}
+
+.chatButton {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px!important;
+  transition-duration: 0.6s;
+  border-radius: 10px;
+  background-color: #e7e7e7;
+  color: black;
+  border: 2px solid #e7e7e7;
+  padding: 15px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}

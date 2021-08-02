@@ -4,6 +4,9 @@ import '../styles/profile.scss'
 import BudgetActualExpected from '../components/graph'
 import ProgressBar from '../components/progressBar'
 import OnlineChat from '../components/onlineChat'
+import ChatButton from '../components/chatButton'
+
+import { useState } from 'react'
 import { Grid, Box, Button } from '@material-ui/core';
 import UserInfo from '../components/userInfo'
 
@@ -11,7 +14,9 @@ import useCategoryData from '../hooks/useCategoryData'
 import useGoalData from '../hooks/useGoalsData'
 import useUserData from '../hooks/useUserData'
 
+  
 export default function Profile() {
+
   // Handles category data for the progress bar component
   const {categoryState} = useCategoryData();
   // Generates a progress bar for each category
@@ -37,7 +42,15 @@ export default function Profile() {
     )
   })
 
+
+  const [state, setState] = useState('noChat');
+
+  const openChat = () => {
+    setState('openChat');
+  }
+
   return (
+    <>
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={3}>
         <Grid item xs>
@@ -70,7 +83,14 @@ export default function Profile() {
         </div>
         </Grid>
       </Grid>
-      <OnlineChat />
+      <div>
+        {state === 'noChat' && (
+        <ChatButton openChat={openChat} />
+        )}
+        {state === 'openChat' && <OnlineChat />}
+      </div>
     </Box>
+
+    </>
   )
 }
