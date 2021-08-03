@@ -2,12 +2,15 @@ import React, { useState } from "react";
 // link to /chat path
 import { Link } from "react-router-dom";
 import "../styles/Join.scss";
+import NewChat from "./NewChat";
 
 const Join = () => {
-  const [name, setName] = useState("");
-  const [room, setRoom] = useState("");
-
+  const [name, setName] = useState("test");
+  const [room, setRoom] = useState("question");
+  
+  console.log("name-----", name);
   return (
+    <>
     <div className="joinOuterContainer">
       <div className="joinInnerContainer">
         <h1 className="heading">Join</h1>
@@ -37,6 +40,12 @@ const Join = () => {
         </Link>
       </div>
     </div>
+
+    {/* Refactor testing */}
+    <div className="mt-20" >
+    <NewChat userName={name} question={room}/>
+    </div>
+    </>
   );
 };
 
