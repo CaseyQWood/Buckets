@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState} from "react";
 import BudgetCategory from '../components/budgetCategory';
 import BudgetExpense from '../components/budgetExpense';
@@ -48,7 +48,7 @@ const newObj = [{
 }]
 
 export default function Budget() {
-  const { getBudgetData } = useBudget();
+  const { budgetState } = useBudget();
   const [flip, setFlip] = useState(false)
 
   const getExpensesByCategory = (data, cat_id) => {
@@ -82,14 +82,23 @@ export default function Budget() {
     })
     return container
   }
-  const bool = false
-  // getBudgetData(1).then((x) => console.log('then',x)).catch(err => console.log(err))
 
-  const categories = categoryFilter(newObj).map((oneExpenseData, index) => {
+  const percentCalculator = (val1, val2) => {
+    const number1 = Number(val1.replace(/[^0-9.-]+/g,"")); 
+    const number2 = Number(val2.replace(/[^0-9.-]+/g,""));   
+
+    return number1/number2 * 100
+  }
+ const test= 'test'
+  // console.log(percentCalculator('$350.00', "$1,000.00"))
+ 
+  
+
+  const categories = categoryFilter(budgetState).map((oneExpenseData, index) => {
     return (
       <div key={index} id="category-container">
         <div className="category" style={{background:'lightgrey'}}>
-          <BudgetCategory name={oneExpenseData.categoryName} currentValue={oneExpenseData.amountPaid} maxValue={oneExpenseData.spendingLimit} setFlip={setFlip} flip={flip}/>
+          <BudgetCategory name={oneExpenseData.categoryName} currentValue={percentCalculator(oneExpenseData.amountPaid, oneExpenseData.spendingLimit)} maxValue={oneExpenseData.spendingLimit} setFlip={setFlip} flip={flip}/>
         </div>
         <div className="expenses-container">
 
