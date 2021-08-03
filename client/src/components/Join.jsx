@@ -21,7 +21,7 @@ const Join = () => {
         </div>
         <div>
           <input
-            placeholder="Room"
+            placeholder="Your Question"
             className="joinInput mt-20"
             type="text"
             onChange={(event) => setRoom(event.target.value)}
