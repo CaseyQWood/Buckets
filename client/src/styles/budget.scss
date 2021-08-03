@@ -1,0 +1,13 @@
+.budget-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.budget-expense {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background: lightgray;
+  width: 90%;
+}

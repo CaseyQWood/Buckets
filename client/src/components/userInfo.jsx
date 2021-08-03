@@ -5,7 +5,7 @@ export default function userInfo(props) {
   const {income} = props;
 
   return (
-    <div class="user-info">
+    <div className="user-info">
       <h2>Monthly Income:</h2>
       <h2>{income}</h2>
       <h2>Total Monthly Expenses:</h2>
