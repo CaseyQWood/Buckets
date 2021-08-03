@@ -3,7 +3,7 @@ import '../styles/profile.scss'
 
 import BudgetActualExpected from '../components/graph'
 import ProgressBar from '../components/progressBar'
-import ChatButton from '../components/chatButton'
+import ChatButton from '../components/ChatButton'
 
 import { useState } from 'react'
 import { Grid, Box, Button } from '@material-ui/core';
