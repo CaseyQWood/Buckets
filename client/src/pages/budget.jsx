@@ -38,25 +38,26 @@ export default function Budget() {
     data.forEach(x => {
       if(x.category_id === cat_id) {
         container.push({
-          name: x.name,
+          name: x.expense_name,
           spendingLimit: x.spending_limit,
           amountPaid: x.amount_paid,
-          payee: x.payee
+          payee: x.payee,
+          cost: x.cost
         })
       }
     })
     return container
   }
   
-  //const container = []
-  //budgetData.forEach(exp => {
+  // const container = []
+  // budgetData.forEach(exp => {
   //  if(!Object.keys(container).includes(exp.category_name) {
   //    container.push({'values in here'})
   //  }
-  //})}
+  // })}
 
   const newObj = [{
-    "category_name": "Eating Out",
+    "category_name": "Eating Out2",
     "budget_name": "August-Budget",
     "expense_name": "Dinner at Henris Restaurant",
     "category_id": 3,
@@ -92,19 +93,33 @@ export default function Budget() {
     "expense_cat_id": 4
   }]
 
-  
+  const categoryFilter = (data) => {
+    const container = []
 
-  const categories = newObj.map((oneExpenseData, index) => {
+    data.forEach(exp => {
+      if(!Object.keys(container).includes(exp.categories_name)) {
+        container.push({
+          categoryId: exp.category_id,
+          categoryName: exp.category_name,
+          spendingLimit: exp.spending_limit,
+          amountPaid: exp.amount_paid
+        })
+      }
+    })
+    return container
+  }
+
+
+  const categories = categoryFilter(newObj).map((oneExpenseData, index) => {
     return (
       <div key={index} id="category-container">
         <div className="category" style={{background:'lightgrey'}}>
-          <BudgetCategory name={oneExpenseData.category_name} currentValue={75} maxValue={oneExpenseData.spending_limit}/>
+          <BudgetCategory name={oneExpenseData.categoryName} currentValue={oneExpenseData.amountPaid} maxValue={oneExpenseData.spendingLimit}/>
         </div>
         <div className="expenses-container">
           <div className="expenses">
             <h2>Current Expenses</h2>
-            {getExpensesByCategory(newObj, oneExpenseData.category_id).map(x => <BudgetExpense name={x.name} cost={x.cost} />)} 
-            <BudgetExpense name={'Starbucks'} cost={'$100.00'} />
+            {getExpensesByCategory(newObj, oneExpenseData.categoryId).map(x => <BudgetExpense name={x.name} cost={x.cost} />)} 
             <Fab color="primary" aria-label="add">
               <AddIcon />
             </Fab>
@@ -152,7 +167,7 @@ export default function Budget() {
 
   return (
     <Grid>
-      <div className="budget-container" style={{background:'orange'}}>
+      <div className="budget-container" style={{background:'orange'}} >
         <div className="budget-name">
           <h2>New Budget</h2>
         </div>
