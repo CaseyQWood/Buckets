@@ -4,9 +4,9 @@ import "../styles/ChatButton.scss";
 export default function ChatButton(props) {
   return (
     <>
-      <div class="wrapper screen innerdiv">
-        <div class="icon facebook">
-          <div class="tooltip">Help?</div>
+      <div className="wrapper screen innerdiv">
+        <div className="icon facebook">
+          <div className="tooltip">Help?</div>
           <span>
           <img
             src="https://img1.wsimg.com/dc-assets/live-engage/images/chat-baloon.svg"
