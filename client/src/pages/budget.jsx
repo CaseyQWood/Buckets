@@ -62,7 +62,8 @@ export default function Budget() {
     "spending_limit": "$600.00",
     "cost": "$75.00",
     "payee": "Henris",
-    "amount_paid": "$75.00"
+    "amount_paid": "$75.00",
+    "expense_cat_id": 3
   },
   {
     "category_name": "Eating Out",
@@ -73,7 +74,8 @@ export default function Budget() {
     "spending_limit": "$600.00",
     "cost": "$50.00",
     "payee": "Moxies",
-    "amount_paid": "$50.00"
+    "amount_paid": "$50.00",
+    "expense_cat_id": 3
   },
   {
     "category_name": "Investments",
@@ -84,7 +86,8 @@ export default function Budget() {
     "spending_limit": "$1,000.00",
     "cost": "$350.00",
     "payee": "Binance",
-    "amount_paid": "$350.00"
+    "amount_paid": "$350.00",
+    "expense_cat_id": 4
   }]
 
   
@@ -92,11 +95,11 @@ export default function Budget() {
   const categories = newObj.map((oneExpenseData, index) => {
     return (
       <div key={index} id="category-container">
-        <div class="category" style={{background:'lightgrey'}}>
+        <div className="category" style={{background:'lightgrey'}}>
           <BudgetCategory name={oneExpenseData.category_name} currentValue={75} maxValue={oneExpenseData.spending_limit}/>
         </div>
-        <div class="expenses-container">
-          <div class="expenses">
+        <div className="expenses-container">
+          <div className="expenses">
             <h2>Current Expenses</h2>
             {getExpensesByCategory(newObj, oneExpenseData.category_id).map(x => <BudgetExpense name={x.name} cost={x.cost} />)} 
             <BudgetExpense name={'Starbucks'} cost={'$100.00'} />
@@ -131,11 +134,11 @@ export default function Budget() {
 
   // logic goes here
   //<div id="category-container">
-  //   <div class="category" style={{background:'lightgrey'}}>
+  //   <div className="category" style={{background:'lightgrey'}}>
   //     <BudgetCategory name={'Living Expenses'} currentValue={75} maxValue={'$1200.00'}/>
   //   </div>
-  //   <div class="expenses-container">
-  //     <div class="expenses">
+  //   <div className="expenses-container">
+  //     <div className="expenses">
   //       <h2>Current Expenses</h2>
   //       <BudgetExpense name={'Starbucks'} cost={'$100.00'} />
   //       <Fab color="primary" aria-label="add">
@@ -147,8 +150,8 @@ export default function Budget() {
 
   return (
     <Grid>
-      <div class="budget-container" style={{background:'orange'}}>
-        <div class="budget-name">
+      <div className="budget-container" style={{background:'orange'}}>
+        <div className="budget-name">
           <h2>New Budget</h2>
         </div>
         <div id="category-container">
