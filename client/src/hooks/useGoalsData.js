@@ -6,12 +6,14 @@ export default function useGoalData(initial) {
     values: [],
   });
 
+  const userId = parseInt(sessionStorage.token);
+
   useEffect(() => {
     axios.get('http://localhost:3002/api/goals').then(res => {
       const goals = res.data;
       const temp = [];
       goals.map(ele => {
-        if(ele.user_id === 1) {
+        if(ele.user_id === userId) {
           temp.push([ele.name, ele.amount_to_goal])
         }
         return ele;

@@ -22,11 +22,11 @@ export default function ProgressBar(props) {
   }
   // Progress bar structure
   return (
-    <div class="category-progress-bar">
-      <h3 class="category-margin">{name}</h3>
-      <div class="progress-container">
-        <div class="progress-filler" style={fillerStyles}>
-          <span class="progress-label">{`${currentValue}%`}</span>
+    <div className="category-progress-bar">
+      <h3 className="category-margin">{name}</h3>
+      <div className="progress-container">
+        <div className="progress-filler" style={fillerStyles}>
+          <span className="progress-label">{`${currentValue}%`}</span>
         </div>
       </div>
       <h3>{spendLimit}</h3>

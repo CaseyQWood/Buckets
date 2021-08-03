@@ -57,26 +57,26 @@ export default function Profile() {
           <div>
             {userInfo}
           </div>
-          <div class="threeJS">
+          <div className="threeJS">
             <h3>ThreeJS HERE</h3>
           </div>
         </Grid>
         <Grid item xs={6}>
-          <div class="center-col-profile">
-            <div class="previous-budget-graph">
+          <div className="center-col-profile">
+            <div className="previous-budget-graph">
             <BudgetActualExpected />
             </div>
-            <div class="category-bars" style={{margin:1 + 'em'}}>
+            <div className="category-bars" style={{margin:1 + 'em'}}>
               {categoryProgress}
             </div>
           </div>
         </Grid>
         <Grid item xs>
-        <div class="right-col-profile">
-          <div class="goals-bars">  
+        <div className="right-col-profile">
+          <div className="goals-bars">  
             {goalProgress}
           </div>
-          <div class="buttonComponent">
+          <div className="buttonComponent">
             <span><Button variant="contained" size="large">Create a New Budget</Button></span>
             <span><Button variant="contained" size="large">Create a New Goal</Button></span>
           </div>

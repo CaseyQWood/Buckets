@@ -1,7 +1,7 @@
 .progress-container {
   height: 4vw;
   width: '100%';
-  background-color: lightgray;
+  background-color: white;
   border-radius: 20vw;
   margin: 50; 
 }
@@ -17,4 +17,9 @@
 .category-progress-bar {
   text-align: center;
   font-size: 2vw;
+}
+
+.progress-bar-budget {
+  width: 60%;
+  margin: 1vw;
 }

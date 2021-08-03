@@ -6,8 +6,11 @@ export default function useCategoryData(initial) {
     values: [],
   });
 
+  const userId = sessionStorage.token;
+
   useEffect(() => {
-    axios.get('http://localhost:3002/api/categories').then(res => {
+    axios.get('http://localhost:3002/api/categories')
+    .then(res => {
       const categories = res.data;
       const temp = [];
       categories.map(ele => {
