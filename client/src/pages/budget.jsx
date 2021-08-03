@@ -13,8 +13,10 @@ import AddIcon from '@material-ui/icons/Add';
 import '../styles/budget.scss'
 
 export default function Budget() {
-  // const { budgetData } = useBudget();
-  //console.log('THIS IS BUDGET DATA: ', budgetData)
+  const { budgetState } = useBudget();
+
+  console.log("BUDGET STATE: ", budgetState);
+
 
   //const container = {}
   //budgetData.forEach(exp => {
