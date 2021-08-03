@@ -7,18 +7,18 @@ import Messages from './Messages';
 import InfoBar from "./InfoBar";
 import Input from "./Input";
 
-import "../styles/NewChat.scss";
+import "../styles/Chat.scss";
 
 const ENDPOINT = 'http://localhost:3002';
 
 // pass data into socket
 let socket;
 
-const Chat = (props) => {
+const NewChat = (props) => {
   const { userName, question } = props;
 
-  const [name, setName] = useState(userName);
-  const [room, setRoom] = useState(question);
+  const [name, setName] = useState("test");
+  const [room, setRoom] = useState("Test question");
   const [users, setUsers] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
@@ -68,7 +68,7 @@ const Chat = (props) => {
 
   return (
     <div className="outerContainer">
-      <div className="container">
+      <div className="chat-container">
         <InfoBar room={room} />
         <Messages messages={messages} name={name} />
         <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
@@ -77,4 +77,4 @@ const Chat = (props) => {
   );
 };
 
-export default Chat;
+export default NewChat;
