@@ -19,6 +19,10 @@ const io = socketio(server);
 // import helper functions
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./users.js')
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(cors());
 
 // server listen
 server.listen(port, () => console.log(`Server has started on port ${port}`));
