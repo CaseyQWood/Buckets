@@ -20,13 +20,15 @@ export default function useBudget(initial) {
   //}
 //
   //return { budgetData, useBudgetData, setBudgetData }
-
-  useEffect(() => {
-    axios.get(`http://localhost:3002/api/budgets/all/${userId}`).then(res => {
+  const getBudgetData = (userId) => {
+    return axios.get(`http://localhost:3002/api/budgets/all/1`).then(res => {
       const budget = res.data;
+      console.log('inside',budget)
       setBudgetState(prev => ({...prev, budgetData: budget}))
     });
-  }, []);
+  }
 
-  return { budgetState }
+
+
+  return { getBudgetData }
 };
