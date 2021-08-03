@@ -7,25 +7,25 @@ import Messages from './Messages';
 import InfoBar from "./InfoBar";
 import Input from "./Input";
 
-import "../styles/Chat.scss";
+import "../styles/NewChat.scss";
 
 const ENDPOINT = 'http://localhost:3002';
 
 // pass data into socket
 let socket;
 
-const Chat = ({location}) => {
-  // const { username, question } = props;
+const Chat = (props) => {
+  const { userName, question } = props;
 
-  const [name, setName] = useState("");
-  const [room, setRoom] = useState("");
+  const [name, setName] = useState(userName);
+  const [room, setRoom] = useState(question);
   const [users, setUsers] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     
-    const { name, room } = queryString.parse(location.search);
+    // const { name, room } = queryString.parse(location.search);
     // pass endpoint to server localhost:3002
     socket = io(ENDPOINT, { transports: ["websocket"]});
 
@@ -38,10 +38,10 @@ const Chat = ({location}) => {
     // emit from client side socket with join even
     socket.emit('join', { name, room }, (error) => {
       if(error) {
-        alert(error);
+        // alert(error);
       }
     });
-  }, [location.search]);
+  }, [userName, question]);
 
   useEffect(() => {
     // wait message event from backend

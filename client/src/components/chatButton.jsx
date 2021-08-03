@@ -3,7 +3,6 @@ import "../styles/ChatButton.scss";
 
 export default function ChatButton(props) {
   return (
-    <>
       <div className="wrapper screen innerdiv">
         <div className="icon facebook">
           <div className="tooltip">Help?</div>
@@ -14,7 +13,6 @@ export default function ChatButton(props) {
           ></img>
           </span>
         </div>
-      </div>
-    </>
+      </div>  
   );
 }
