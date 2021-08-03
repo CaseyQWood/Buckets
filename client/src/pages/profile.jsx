@@ -1,86 +1,106 @@
-import React from 'react'
-import '../styles/profile.scss'
+import React from "react";
+import "../styles/profile.scss";
 
-import BudgetActualExpected from '../components/graph'
-import ProgressBar from '../components/progressBar'
-import ChatButton from '../components/ChatButton'
+import BudgetActualExpected from "../components/graph";
+import ProgressBar from "../components/progressBar";
+import ChatButton from "../components/ChatButton";
+import NewChat from "../components/NewChat";
 
-import { useState } from 'react'
-import { Grid, Box, Button } from '@material-ui/core';
+import { useState } from "react";
+import { Grid, Box, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import UserInfo from '../components/userInfo'
-import Join from '../components/userInfo'
+import UserInfo from "../components/userInfo";
+import Join from "../components/Join";
 
-import useCategoryData from '../hooks/useCategoryData'
-import useGoalData from '../hooks/useGoalsData'
-import useUserData from '../hooks/useUserData'
+import useCategoryData from "../hooks/useCategoryData";
+import useGoalData from "../hooks/useGoalsData";
+import useUserData from "../hooks/useUserData";
+import useVisiblity from "../hooks/useVisiblity";
 
-  
 export default function Profile() {
+  //Handles visibility of Chat component
+  const [ChatComponent, toggleVisibility] = useVisiblity(<NewChat />, false);
 
   // Handles category data for the progress bar component
-  const {categoryState} = useCategoryData();
+  const { categoryState } = useCategoryData();
   // Generates a progress bar for each category
   const categoryProgress = categoryState.values.map((values, index) => {
     return (
-      <ProgressBar key={index} currentValue={50} name={values[0]} spendLimit={values[1]} />
-    )
-  })
+      <ProgressBar
+        key={index}
+        currentValue={50}
+        name={values[0]}
+        spendLimit={values[1]}
+      />
+    );
+  });
   //Handles goal data for the progress bar component
-  const {goalState} = useGoalData();
+  const { goalState } = useGoalData();
   // Generate a progress bar for each goal
   const goalProgress = goalState.values.map((values, index) => {
     return (
-      <ProgressBar key={index} currentValue={80} name={values[0]} spendLimit={values[1]} />
-    )
-  })
+      <ProgressBar
+        key={index}
+        currentValue={80}
+        name={values[0]}
+        spendLimit={values[1]}
+      />
+    );
+  });
   //Handles user data for the Profile Page
-  const {userState} = useUserData();
+  const { userState } = useUserData();
   // Generates user info section
   const userInfo = userState.values.map((values, index) => {
-    return (
-      <UserInfo income={values[1]} key={index}/>
-    )
-  })
+    return <UserInfo income={values[1]} key={index} />;
+  });
+
+  const [showResults, setShowResults] = React.useState(false);
+  const onClick = () => setShowResults(true);
 
   return (
     <>
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={3}>
-        <Grid item xs>
-          <div>
-            {userInfo}
-          </div>
-          <div className="threeJS">
-            <h3>ThreeJS HERE</h3>
-          </div>
-        </Grid>
-        <Grid item xs={6}>
-          <div className="center-col-profile">
-            <div className="previous-budget-graph">
-            <BudgetActualExpected />
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={3}>
+          <Grid item xs>
+            <div>{userInfo}</div>
+            <div className="threeJS">
+              <h3>ThreeJS HERE</h3>
             </div>
-            <div className="category-bars" style={{margin:1 + 'em'}}>
-              {categoryProgress}
+          </Grid>
+          <Grid item xs={6}>
+            <div className="center-col-profile">
+              <div className="previous-budget-graph">
+                <BudgetActualExpected />
+              </div>
+              <div className="category-bars" style={{ margin: 1 + "em" }}>
+                {categoryProgress}
+              </div>
             </div>
-          </div>
+          </Grid>
+          <Grid item xs>
+            <div className="right-col-profile">
+              <div className="goals-bars">{goalProgress}</div>
+              <div className="buttonComponent">
+                <span>
+                  <Button variant="contained" size="large">
+                    Create a New Budget
+                  </Button>
+                </span>
+                <span>
+                  <Button variant="contained" size="large">
+                    Create a New Goal
+                  </Button>
+                </span>
+              </div>
+            </div>
+          </Grid>
         </Grid>
-        <Grid item xs>
-        <div className="right-col-profile">
-          <div className="goals-bars">  
-            {goalProgress}
-          </div>
-          <div className="buttonComponent">
-            <span><Button variant="contained" size="large">Create a New Budget</Button></span>
-            <span><Button variant="contained" size="large">Create a New Goal</Button></span>
-          </div>
-        </div>
-        </Grid>
-      </Grid>
-    </Box>  
-        <Link 
-          to={`/`}><ChatButton />
-        </Link>    
+      </Box>
+
+      <div>
+      <ChatButton onClick={toggleVisibility} />
+      {ChatComponent}
+      </div>
     </>
-  )
+  );
 }
