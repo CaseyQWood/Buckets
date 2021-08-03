@@ -2,24 +2,31 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function useBudget(initial) {
-  const [budgetData, setBudgetData] = useState({
+  const [budgetState, setBudgetState] = useState({
     budgetData: []
   });
 
   const userId = parseInt(sessionStorage.token);
   console.log('this is ID', userId)
 
-  useEffect(() => {
-    return new Promise ((resolve, reject) => {
-      axios.get(`http://localhost:3002/api/budgets/all/${userId}`)
-      .then(res => {
-        const budget = res.data;
-        console.log('inner test', budget)
-        setBudgetData(prev => ({...prev, budgetData: budget}))
-      })
-      .catch((err) => {console.error(err)});
-      }, [])
-    });
+  //const useBudgetData = (userId) => {
+  //  useEffect(() => {
+  //    return axios.get(`http://localhost:3002/api/budgets/all/${userId}`)
+  //      .then(res => {
+  //      const newBudgetData = res.data;
+  //      setBudgetData(prev => ({...prev, budgetData: newBudgetData}))
+  //    })
+  //  }, [budgetData])
+  //}
+//
+  //return { budgetData, useBudgetData, setBudgetData }
 
-  return { budgetData }
-}
+  useEffect(() => {
+    axios.get(`http://localhost:3002/api/budgets/all/${userId}`).then(res => {
+      const budget = res.data;
+      setBudgetState(prev => ({...prev, budgetData: budget}))
+    });
+  }, []);
+
+  return { budgetState }
+};

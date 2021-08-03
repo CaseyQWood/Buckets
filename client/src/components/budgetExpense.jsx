@@ -6,10 +6,10 @@ export default function BudgetExpense(props) {
   const {name, cost} = props;
 
   return(
-    <div class="budget-expense">
+    <div className="budget-expense">
       <h2>{props.name}</h2>
       <h2>{props.cost}</h2>
-      <div class="budget-icons">
+      <div className="budget-icons">
         <EditIcon />
         <DeleteIcon />
       </div>
