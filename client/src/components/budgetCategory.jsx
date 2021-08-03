@@ -28,7 +28,7 @@ export default function BudgetCategory(props) {
   }
   
   return(
-    <div className="budget-div">
+    <div className="budget-div" onClick={() => console.log('test')}>
       <h2>{name}</h2>
       <div className="progress-bar-budget">
         <div className="category-progress-bar">

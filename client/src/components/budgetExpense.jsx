@@ -7,8 +7,8 @@ export default function BudgetExpense(props) {
 
   return(
     <div class="budget-expense">
-      <h2>{props.name}</h2>
-      <h2>{props.cost}</h2>
+      <h2>{name}</h2>
+      <h2>{cost}</h2>
       <div class="budget-icons">
         <EditIcon />
         <DeleteIcon />
