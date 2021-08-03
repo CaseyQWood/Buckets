@@ -3,12 +3,13 @@ import '../styles/profile.scss'
 
 import BudgetActualExpected from '../components/graph'
 import ProgressBar from '../components/progressBar'
-import OnlineChat from '../components/onlineChat'
-import ChatButton from '../components/chatButton'
+import ChatButton from '../components/ChatButton'
 
 import { useState } from 'react'
 import { Grid, Box, Button } from '@material-ui/core';
+import { Link } from "react-router-dom";
 import UserInfo from '../components/userInfo'
+import Join from '../components/userInfo'
 
 import useCategoryData from '../hooks/useCategoryData'
 import useGoalData from '../hooks/useGoalsData'
@@ -41,13 +42,6 @@ export default function Profile() {
       <UserInfo income={values[1]} key={index}/>
     )
   })
-
-
-  const [state, setState] = useState('noChat');
-
-  const openChat = () => {
-    setState('openChat');
-  }
 
   return (
     <>
@@ -83,14 +77,10 @@ export default function Profile() {
         </div>
         </Grid>
       </Grid>
-      <div>
-        {state === 'noChat' && (
-        <ChatButton openChat={openChat} />
-        )}
-        {state === 'openChat' && <OnlineChat />}
-      </div>
-    </Box>
-
+    </Box>  
+        <Link 
+          to={`/`}><ChatButton />
+        </Link>    
     </>
   )
 }
