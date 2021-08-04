@@ -3,7 +3,7 @@ import "../styles/ChatButton.scss";
 
 export default function ChatButton(props) {
   return (
-      <div className="wrapper screen innerdiv">
+      <div className="wrapper screen innerdiv" onClick={props.onClick}>
         <div className="icon facebook">
           <div className="tooltip">Help?</div>
           <span>

@@ -42,9 +42,9 @@ const Join = () => {
     </div>
 
     {/* Refactor testing */}
-    <div className="mt-20" >
+    {/* <div className="mt-20" >
     <NewChat userName={name} question={room}/>
-    </div>
+    </div> */}
     </>
   );
 };

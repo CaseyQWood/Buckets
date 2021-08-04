@@ -1,14 +1,14 @@
 .form {
   display: flex;
-  border-top: 2px solid #D3D3D3;
+  
 }
 
 .input {
-  border: none;
+  border: 1px solid gold;
   border-radius: 0;
   padding: 5%;
   width: 80%;
-  font-size: 1.2em;
+  font-size: 0.7em;
 }
 
 input:focus, textarea:focus, select:focus{
@@ -16,11 +16,10 @@ input:focus, textarea:focus, select:focus{
 }
 
 .sendButton {
+  font-size: 1.7vh;
   color: #fff !important;
-  text-transform: uppercase;
-  text-decoration: none;
   background: gold;
-  padding: 20px;
+  padding: 10px;
   display: inline-block;
   border: none;
   width: 20%;
