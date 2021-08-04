@@ -6,6 +6,7 @@ import Menu from "@material-ui/icons/Menu";
 
 export default function Navbar(props) {
   return (
+    <>
     <AppBar>
       <Toolbar>
         <Menu>
@@ -15,5 +16,6 @@ export default function Navbar(props) {
         <Button>BucketUp</Button>
       </Toolbar>
     </AppBar>
+    </>
   );
 }
