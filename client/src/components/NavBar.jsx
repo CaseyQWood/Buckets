@@ -4,7 +4,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/icons/Menu";
 
-export default function Navbar(props) {
+export default function NavBar(props) {
   return (
     <>
     <AppBar>
