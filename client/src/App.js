@@ -20,10 +20,9 @@ function App() {
     <>
     <Router>
       <NavBar/>
-   
+  
       <Route exact={true} path='/login' component={Login}/>
       <Route exact={true} path='/register' component={Register}/>
-      <Navbar/>
       <Route exact={true} path='/profile' component={Profile}/>
       <Route exact={true} path='/budget' component={Budget}/>
       <Route exact={true} path='/expertjoin' component={Join}/>
