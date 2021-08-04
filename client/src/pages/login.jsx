@@ -25,8 +25,11 @@ const login = (inputEmail, inputPassword) => {
     res.data.forEach(x => {if (x.email === inputEmail && x.password === inputPassword){
       setMass(10)
       sessionStorage.setItem('token', x.id)
+      sessionStorage.setItem('firstName', x.first_name)
+      sessionStorage.setItem('lastName', x.last_name)
       setTimeout(() => {history.push('/profile')}, 750)
       console.log(x)
+      console.log("sessionStorage-----",sessionStorage)
     }})
   })
 }

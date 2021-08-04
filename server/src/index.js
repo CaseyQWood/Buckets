@@ -38,7 +38,7 @@ io.on('connection', (socket) => {
     if(error) return callback(error);
 
     // backend send message
-    socket.emit('message', { user: 'BucketUp', text: `Hi, ${user.name}!\n Please wait the expert to answer your question "${user.room}"`});
+    socket.emit('message', { user: 'BucketUp', text: `Hi, ${user.name}! Please wait the expert to answer your question`});
 
     // broadcast to all users that new user joined for frontend
     socket.broadcast.to(user.room).emit('message', { user: 'BucketUp', text: `${user.name} has joined!` });
