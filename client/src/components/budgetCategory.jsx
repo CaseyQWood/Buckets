@@ -9,7 +9,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import '../styles/progressBar.scss'
 
 export default function BudgetCategory(props) {
-  const {name, currentValue, maxValue } = props;
+  const {name, currentValue, maxValue, setFlip, flip } = props;
   
   let backgroundColor;
 
@@ -28,7 +28,7 @@ export default function BudgetCategory(props) {
   }
   
   return(
-    <div className="budget-div" onClick={() => console.log('test')}>
+    <div className="budget-div" onClick={() => setFlip(!flip)}>
       <h2>{name}</h2>
       <div className="progress-bar-budget">
         <div className="category-progress-bar">
