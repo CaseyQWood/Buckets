@@ -36,7 +36,7 @@ const login = (inputEmail, inputPassword) => {
 
   return (
     <div className='general'>
-      <div className='test'>
+      <div className='falling-coins'>
         <Canvas height={window.innerHeight} width={window.innerWidth}>
           <ambientLight/>
           <pointLight position={[10, 10, 10]} intensity={2} />
@@ -52,7 +52,7 @@ const login = (inputEmail, inputPassword) => {
 
       <p>BucketUp!</p>
 
-      <div className='modal'> 
+      <div className='user-login'> 
         <div className='login'>
           <h3>login</h3>
           <form><input placeholder='please enter email' type='text' value={email} onChange={event => setEmail(event.target.value)}/></form>
