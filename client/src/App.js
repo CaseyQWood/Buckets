@@ -9,7 +9,7 @@ import Budget from './pages/budget';
 
 import Join from './components/Join.jsx';
 import Chat from './components/Chat.jsx';
-import Navbar from './components/Navbar.jsx';
+import Navbar from './components/NavBar.jsx';
 
 // currently the commented out section was just for testing base 3d object dependancies ahead of time please disregard
 
@@ -18,10 +18,11 @@ function App() {
   return (
     <>
     <Router>
-      <Navbar/>
+      
    
       <Route exact={true} path='/login' component={Login}/>
       <Route exact={true} path='/register' component={Register}/>
+      <Navbar/>
       <Route exact={true} path='/profile' component={Profile}/>
       <Route exact={true} path='/budget' component={Budget}/>
       
