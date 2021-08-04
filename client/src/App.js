@@ -24,8 +24,6 @@ function App() {
       <Route exact={true} path='/register' component={Register}/>
       <Route exact={true} path='/profile' component={Profile}/>
       <Route exact={true} path='/budget' component={Budget}/>
-      
-
       <Route exact={true} path='/expertjoin' component={Join}/>
       <Route exact={true} path='/chat' component={Chat}/>
     </Router>
