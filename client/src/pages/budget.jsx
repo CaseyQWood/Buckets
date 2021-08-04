@@ -12,7 +12,7 @@ import "../styles/budget.scss";
 export default function Budget() {
   const { budgetState } = useBudget();
   const [flip, setFlip] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState([]);
 
   const getExpensesByCategory = (data, cat_id) => {
     const container = [];
@@ -37,6 +37,7 @@ export default function Budget() {
 
 
   */
+ 
   const categoryFilter = (data) => {
     let returnObject = {};
 
@@ -87,9 +88,23 @@ export default function Budget() {
   console.log("%%%%%", categoryFilter(budgetState));
 
   const categoryFilterKeys = Object.keys(categoryFilter(budgetState));
+
+  console.log('BUDGET STATE: ', budgetState);
   const categories = categoryFilterKeys.map((category) => {
+    const onClick = () => {
+      const index = budgetState.findIndex((item) => {
+        return item.category_name === category
+      });
+      setSelectedCategory(prev => {
+        console.log("PREV", prev);
+        return prev  
+        //[...prev, prev[index + 1] = category]
+      })
+      console.log('CATEGORY: ', index);
+    };
+    
     return (
-      <div key={category} onClick={() => setSelectedCategory(category)}>
+      <div key={category} onClick={onClick}>
         {category}
       </div>
     );
@@ -124,12 +139,14 @@ export default function Budget() {
         </div>
         <div id="category-container">
           {categories}
+          <div id="expenses-container">
           <ul>
-            {selectedCategory &&
+            {selectedCategory?.length &&
               categoryFilter(budgetState)[selectedCategory].map((expense) => {
                 return <li key={expense.expense_name}>{expense.expense_name}</li>;
               })}
           </ul>
+          </div>
           </div>
       </div>
     </Grid>
