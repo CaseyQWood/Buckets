@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import NewCategory from '../components/NewCategory'
 
 export default function Register() {
 
@@ -7,6 +8,8 @@ export default function Register() {
   return (
     <div>
       <p>this is the register page</p>
+      <NewCategory budget_id={1}/>
     </div>
+
   )
 }
