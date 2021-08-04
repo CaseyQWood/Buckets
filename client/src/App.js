@@ -9,6 +9,7 @@ import Budget from './pages/budget';
 
 import Join from './components/Join.jsx';
 import Chat from './components/Chat.jsx';
+import Budget1 from './pages/budget1';
 
 // currently the commented out section was just for testing base 3d object dependancies ahead of time please disregard
 
@@ -19,7 +20,7 @@ function App() {
       <Route exact={true} path='/login' component={Login}/>
       <Route exact={true} path='/register' component={Register}/>
       <Route exact={true} path='/profile' component={Profile}/>
-      <Route exact={true} path='/budget' component={Budget}/>
+      <Route exact={true} path='/budget' component={Budget1}/>
       
       
       <Route exact={true} path='/' component={Join}/>
