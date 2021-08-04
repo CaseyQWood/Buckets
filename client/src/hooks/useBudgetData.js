@@ -9,7 +9,6 @@ export default function useBudget(initial) {
       axios.get(`http://localhost:3002/api/budgets/all/${userId}`)
       .then(res => {
       const budget = res.data;
-      console.log('inside',budget)
       setBudgetState(prev => (budget))
     });
     }, [])
