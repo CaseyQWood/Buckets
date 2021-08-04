@@ -16,8 +16,11 @@ let socket;
 
 const NewChat = (props) => {
   const { userName, question } = props;
-
-  const [name, setName] = useState("test");
+  // retrive user firstName and lastName from sessionStorage
+  const firstName = sessionStorage.firstName;
+  const lastName = sessionStorage.lastName;
+  
+  const [name, setName] = useState(`${firstName}, ${lastName}`);
   const [room, setRoom] = useState("Test question");
   const [users, setUsers] = useState("");
   const [message, setMessage] = useState("");
