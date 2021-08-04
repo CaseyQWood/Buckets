@@ -22,7 +22,7 @@ function App() {
       <Route exact={true} path='/budget' component={Budget}/>
       
       
-      <Route exact={true} path='/' component={Join}/>
+      <Route exact={true} path='/expertjoin' component={Join}/>
       <Route exact={true} path='/chat' component={Chat}/>
       <Route />
     </Router>
