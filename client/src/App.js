@@ -20,7 +20,7 @@ function App() {
     <>
     <Router>
       <NavBar/>
-   
+  
       <Route exact={true} path='/login' component={Login}/>
       <Route exact={true} path='/register' component={Register}/>
       <Route exact={true} path='/profile' component={Profile}/>
