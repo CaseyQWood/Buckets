@@ -1,5 +1,5 @@
 import React from 'react';
-import NewCategory from '../components/NewCategory'
+import NewCategory from '../components/NewCategory';
 
 export default function Register() {
 

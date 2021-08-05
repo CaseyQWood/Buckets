@@ -5,20 +5,38 @@ import { Fab } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import axios from 'axios';
 
-export default function NewCategory(props) {
+export default function NewExpense(props) {
   const name = React.useRef(null);
-  const budget_id = React.useRef(null);
-  const spending_limit = React.useRef(null);
+  const cost = React.useRef(null);
+  const payee = React.useRef(null);
+  const amount_paid = React.useRef(null);
+
+  const getCurrentDay = () => {
+    const dateObj = new Date();
+    const month = dateObj.getUTCMonth() + 1;
+    const day = dateObj.getUTCDate();
+    const year = dateObj.getUTCFullYear();
+
+    const dateString = `${year}-${month}-${day}`;
+    return dateString;
+  }
+    
+  
 
   const handleSubmit = (ele) => {
     ele.preventDefault();
 
-    const category = {
+    const expense = {
       name: name.current.value,
-      budget_id: props.budget_id,
-      spending_limit: parseInt(spending_limit.current.value)
+      cost: cost.current.value,
+      category_id: props.category_id,
+      start_date: getCurrentDay(),
+      end_date: getCurrentDay(),
+      payee: payee.current.value,
+      amount_paid: amount_paid.current.value, 
+      priority: 2
     }
-    axios.post('http://localhost:3002/api/categories/', category)
+    axios.post('http://localhost:3002/api/expenses/', expense)
       .then(res => {
         console.log(res);
         window.location.reload();
@@ -28,7 +46,6 @@ export default function NewCategory(props) {
       });
   }
   
-  console.log("NAME: ", name, "budget_id", budget_id, "spending_limit: ", spending_limit)
   return(
   <Popup
     trigger={<button className="button">
@@ -44,16 +61,20 @@ export default function NewCategory(props) {
         <button className="close" onClick={close}>
           &times;
         </button>
-        <div className="header"> Create a New Category: </div>
+        <div className="header"> Create a New Expense: </div>
         <div className="category-form-container">
           {' '}
           <form class="new-category-form" onSubmit={handleSubmit}>
             <label>Name:</label>
             <input type="text" ref={name}></input>
-            <label>Spending Limit:</label>
-            <input type="text" ref={spending_limit}></input>
+            <label>Cost:</label>
+            <input type="text" ref={cost}></input>
+            <label>Payee:</label>
+            <input type="text" ref={payee}></input>
+            <label>Amount paid so far:</label>
+            <input type="text" ref={amount_paid}></input>
             <br></br>
-            <button type="submit" className="new-category-button">Submit</button>
+            <button className="new-category-button" type="submit">Submit</button>
           </form>
         </div>
       </div>
