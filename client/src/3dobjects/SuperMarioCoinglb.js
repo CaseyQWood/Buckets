@@ -10,17 +10,21 @@ import {useCylinder} from '@react-three/cannon'
 
 export default function Model(props) {
   const [position, setPosition] = useState(props.position)
+  const [rotation, setRotation] = useState([0,0,0])
   
   const { nodes, materials } = useGLTF('/superMarioCoinglb.glb')
-  const [ref, api] = useCylinder(() => ({mass: 1, position: position, args: [0.5, 0.5, 0.1, 5]}))
+  const [ref, api] = useCylinder(() => ({mass: 1, position: position, rotation: rotation, args: [0.5, 0.5, 0.1, 5]}))
   const group = useRef(ref)
+  // let test = 0.01
   // useFrame((state, delta) => (
-  //   group.current.rotation.x += 0.01
+  //   setRotation([0, test =+ 0.1, 0 ]) 
   // ))
+
+  // console.log(rotation)
   
   // console.log('this is ref', ref.position)
   // if(ref) {console.log(ref.position)}
-  console.log('tester',position)
+  // console.log('tester',position)
   useEffect(() => {setPosition(ref.position)},[ref])
   // console.log('this is group',group)  
 

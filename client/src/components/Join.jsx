@@ -24,7 +24,7 @@ const Join = () => {
         </div>
         <div>
           <input
-            placeholder="Your Question"
+            placeholder="BucketUp"
             className="joinInput mt-20"
             type="text"
             onChange={(event) => setRoom(event.target.value)}
@@ -40,11 +40,6 @@ const Join = () => {
         </Link>
       </div>
     </div>
-
-    {/* Refactor testing */}
-    {/* <div className="mt-20" >
-    <NewChat userName={name} question={room}/>
-    </div> */}
     </>
   );
 };

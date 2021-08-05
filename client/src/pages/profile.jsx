@@ -1,10 +1,18 @@
-import React from "react";
+import React, {Suspense } from "react";
 import "../styles/profile.scss";
 
 import BudgetActualExpected from "../components/graph";
 import ProgressBar from "../components/progressBar";
 import ChatButton from "../components/ChatButton";
 import NewChat from "../components/NewChat";
+import FaceRec from "../components/FaceRec";
+
+import { Physics, Debug, usePlane} from '@react-three/cannon'
+import { OrbitControls } from '@react-three/drei'
+import { Canvas } from '@react-three/fiber'
+import Bucket from '../3dobjects/PolyBucket'
+import Coin from '../3dobjects/BucketCoin'
+import Wall from '../3dobjects/PhysicsWalls'
 
 import { useState } from "react";
 import { Grid, Box, Button } from "@material-ui/core";
@@ -57,6 +65,24 @@ export default function Profile() {
   const [showResults, setShowResults] = React.useState(false);
   const onClick = () => setShowResults(true);
 
+  // this is the floor of the R3F
+  function Plane() {
+    const [ref] = usePlane(() => ({mass: 0, rotation: [-Math.PI / 2, 0, 0], position: [0, -2, 0]}))
+    return (
+      <mesh ref={ref}/>
+    )
+  } 
+
+  // controls how many coins drop 
+  function Coins(props) {
+    const container = []
+    for (let i = 0; i < props.numOfCoins; i ++) {
+      container.push(<Coin scale={10} position={[0, 4, 0]} rotation={[0, Math.random() * 100, 0]}/>)
+    }
+    return container
+  }
+
+ // currently have OrbitControls and Debug commented out as they are used to TS but not for production 
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -65,6 +91,22 @@ export default function Profile() {
             <div>{userInfo}</div>
             <div className="threeJS">
               <h3>ThreeJS HERE</h3>
+              <div className='canvas-tupperware'>
+                <Canvas camera={{position: [0, 0.5, 6],far: 500, fov: 60}}>
+                  {/* <OrbitControls/> */}
+                  <pointLight position={[10, 10, 10]} intensity={2} />
+                  <Physics>
+                    {/* <Debug> */}
+                      <Suspense>
+                        <Wall/>
+                        <Plane position={[0, 5, 0]}/>
+                        <Coins numOfCoins={10}/>
+                        <Bucket scale={7} position={[0, -2, 0]} rotation={[0, Math.random() * 5, 0]}/>
+                      </Suspense>
+                    {/* </Debug> */}
+                  </Physics>
+                </Canvas>
+              </div>
             </div>
           </Grid>
           <Grid item xs={6}>
@@ -101,6 +143,9 @@ export default function Profile() {
       <ChatButton onClick={toggleVisibility} />
       {ChatComponent}
       </div>
+
+      <FaceRec/>
     </>
   );
 }
+
