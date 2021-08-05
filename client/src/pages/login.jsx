@@ -41,11 +41,11 @@ const login = (inputEmail, inputPassword) => {
           <ambientLight/>
           <pointLight position={[10, 10, 10]} intensity={2} />
           <Physics gravity={[0, -mass, 0]}>
-            <Debug>
+            {/* <Debug> */}
               <Suspense>
                 {positionArray.map((pos, index) => (<Coin key={index} position={pos} />))}
                 </Suspense>
-              </Debug>
+              {/* </Debug> */}
             </Physics> 
         </Canvas>
       </div>

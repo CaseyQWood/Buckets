@@ -1,0 +1,23 @@
+.inbox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: teal;
+  width: 25%;
+  border-radius: 15px;
+  z-index: 1;
+}
+
+.inbox--tupperware{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 150px;
+}
+
+.capitan {
+  margin-top: 120px;
+  display: flex;
+  justify-content: center;
+}

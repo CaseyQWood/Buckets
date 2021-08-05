@@ -94,6 +94,7 @@ const usersRoutes = require("./routes/users");
 const expensesRoutes = require("./routes/expenses");
 const goalsRoutes = require("./routes/goals");
 const budgetsRoutes = require("./routes/budgets");
+const messagesRoutes = require("./routes/messages");
 const { Socket } = require('dgram');
 
 app.use("/api/categories", categoriesRoutes(db));
@@ -101,6 +102,8 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/expenses", expensesRoutes(db));
 app.use("/api/goals", goalsRoutes(db));
 app.use("/api/budgets", budgetsRoutes(db));
+app.use("/api/messages", messagesRoutes(db));
+
 
 // app.listen(port, () => {
 //   console.log(`Example app listening at http://localhost:${port}`);
