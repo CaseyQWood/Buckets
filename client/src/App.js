@@ -6,7 +6,7 @@ import Login from './pages/login';
 import Register from './pages/register';
 import Profile from './pages/profile';
 import Budget from './pages/budget';
-
+import Messages from './pages/messages';
 import Join from './components/Join.jsx';
 import Chat from './components/Chat.jsx';
 import Budget1 from './pages/budget1';
@@ -29,6 +29,7 @@ function App() {
       <Route exact={true} path='/budget' component={Budget1}/>
       <Route exact={true} path='/expertjoin' component={Join}/>
       <Route exact={true} path='/chat' component={Chat}/>
+      <Route exact={true} path='/messages' component={Messages}/>
     </Router>
     </>
   );
