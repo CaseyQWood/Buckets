@@ -10,7 +10,7 @@ import NewExpense from '../components/NewExpense';
 //Create a React page that renders categories, and expenses by category
 export default function Budget1() {
   //Collect Categories, and expenses using a PromiseAll hook
-  const {state} = useActiveData();
+  const {state, deleteExpense, deleteCategory, createNewCategory, createNewExpense } = useActiveData();
   const[activeCategory, setActiveCategory] = useState(null);
   console.log("ACTIVE CATEGORY: ", activeCategory)
 
@@ -34,12 +34,12 @@ export default function Budget1() {
     for (const expense of expenseArray) {
       //console.log("EXPENSE OUTSIDE:", expense.category_id, "CATEGORYID:", categoryId);
       if (expense.category_id === categoryId && expense.category_id === activeCategory) {
-        expensesArray.push(<BudgetExpense key={expense.expense_id} payee={expense.payee} name={expense.expense_name} amount_paid={expense.amount_paid} cost={expense.cost}/>);
+        expensesArray.push(<BudgetExpense key={expense.expense_id} payee={expense.payee} name={expense.expense_name} amount_paid={expense.amount_paid} cost={expense.cost} onDelete={() => deleteExpense(expense.expense_id)}/>);
       }
     }
     //Push a new category Component here
     if (categoryId === activeCategory) {
-      expensesArray.push(<NewExpense />)
+      expensesArray.push(<NewExpense category_id={categoryId} onSave={createNewExpense}/>)
     };
     
     return expensesArray;
@@ -56,7 +56,7 @@ export default function Budget1() {
         }
       }
         }>
-        <BudgetCategory spend_limit={category.spend_limit} name={category.category_name} currentValue={checkSpend(state.totalSpendCategories, category)}/>
+        <BudgetCategory onDelete={() => {deleteCategory(category.category_id)}} spend_limit={category.spend_limit} name={category.category_name} currentValue={checkSpend(state.totalSpendCategories, category)}/>
         <div className="expense-container" >
           {getExpensesByCategory(state.expenses, category.category_id)}
         </div>
@@ -67,7 +67,7 @@ export default function Budget1() {
   return (
     <div className="budget-container">
       {newBudget}
-      <NewCategory budget_id={1} />
+      <NewCategory budget_id={1} onSave={createNewCategory}/>
       <button>SHARE</button>
     </div>
     
