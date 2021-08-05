@@ -3,6 +3,31 @@
   display: flex;
   flex-direction: column;
 }
+
+.new-category-form {
+  margin: 2vw;
+}
+.new-category-button {
+	color: #fff !important;
+	text-transform: uppercase;
+	text-decoration: none;
+	background: gold;
+	padding: 20px;
+	border-radius: 5px;
+	display: inline-block;
+	border: none;
+	transition: all 0.4s ease 0s;
+}
+
+.new-category-button:hover {
+	background: #434343;
+	letter-spacing: 1px;
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.4s ease 0s;
+}
+
 .modal > .header {
   display: flex;
   justify-content: center;
@@ -82,4 +107,5 @@
 }
 .popup-content {
   -webkit-animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+  border-radius: 20px;
 }

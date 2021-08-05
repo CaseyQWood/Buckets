@@ -4,7 +4,8 @@ import useActiveData from '../hooks/useActiveData';
 
 import BudgetCategory from '../components/budgetCategory';
 import BudgetExpense from '../components/budgetExpense';
-import NewCategory from '../components/NewCategory'
+import NewCategory from '../components/NewCategory';
+import NewExpense from '../components/NewExpense';
 
 //Create a React page that renders categories, and expenses by category
 export default function Budget1() {
@@ -36,7 +37,11 @@ export default function Budget1() {
         expensesArray.push(<BudgetExpense key={expense.expense_id} payee={expense.payee} name={expense.expense_name} amount_paid={expense.amount_paid} cost={expense.cost}/>);
       }
     }
-
+    //Push a new category Component here
+    if (categoryId === activeCategory) {
+      expensesArray.push(<NewExpense />)
+    };
+    
     return expensesArray;
   }
 
