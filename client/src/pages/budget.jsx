@@ -111,25 +111,23 @@ export default function Budget() {
   });
 
   //const categories = categoryFilter(budgetState).map((oneExpenseData, index) => {
-  // return (
-  //   <div key={index} id="category-container">
-  //     <div className="category" style={{background:'lightgrey'}}>
-  //       <BudgetCategory name={oneExpenseData.categoryName} currentValue={percentCalculator(oneExpenseData.amountPaid, oneExpenseData.spendingLimit)} maxValue={oneExpenseData.spendingLimit} setFlip={setFlip} flip={flip}/>
-  //     </div>
-  //     <div className="expenses-container">
-
-  //       {flip ? <div className="expenses">
-  //         <h2>Current Expenses</h2>
-  //         {getExpensesByCategory(budgetState, oneExpenseData.categoryId).map(x => <BudgetExpense name={x.name} cost={x.cost} />)}
-  //       </div> : <div></div>}
-
-  //       <Fab color="primary" aria-label="add">
-  //           <AddIcon />
-  //         </Fab>
-  //     </div>
-  //   </div>
-  // )
-  // })
+  //return (
+  //  <div key={index} id="category-container">
+  //    <div className="category" style={{background:'lightgrey'}}>
+  //      <BudgetCategory name={oneExpenseData.categoryName} currentValue={percentCalculator(oneExpenseData.amountPaid, oneExpenseData.spendingLimit)} maxValue={oneExpenseData.spendingLimit} setFlip={setFlip} flip={flip}/>
+  //    </div>
+  //    <div className="expenses-container
+  //      {flip ? <div className="expenses">
+  //        <h2>Current Expenses</h2>
+  //        {getExpensesByCategory(budgetState, oneExpenseData.categoryId).map(x => <BudgetExpense name={x.name} cost={x.cost} />)}
+  //      </div> : <div></div
+  //      <Fab color="primary" aria-label="add">
+  //          <AddIcon />
+  //        </Fab>
+  //    </div>
+  //  </div>
+  //)
+  //})
   console.log("this is here", categoryFilter(budgetState)[selectedCategory]);
   return (
     <Grid>
