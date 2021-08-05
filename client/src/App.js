@@ -10,6 +10,7 @@ import Budget from './pages/budget';
 import Join from './components/Join.jsx';
 import Chat from './components/Chat.jsx';
 import NavBar from './components/NavBar.jsx';
+import FaceRec from './components/FaceRec';
 
 
 // currently the commented out section was just for testing base 3d object dependancies ahead of time please disregard
@@ -27,6 +28,7 @@ function App() {
       <Route exact={true} path='/budget' component={Budget}/>
       <Route exact={true} path='/expertjoin' component={Join}/>
       <Route exact={true} path='/chat' component={Chat}/>
+     
     </Router>
     </>
   );
