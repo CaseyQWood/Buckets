@@ -143,8 +143,6 @@ export default function Profile() {
       <ChatButton onClick={toggleVisibility} />
       {ChatComponent}
       </div>
-
-      <FaceRec/>
     </>
   );
 }
