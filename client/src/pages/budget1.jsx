@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 import useActiveData from '../hooks/useActiveData';
-
+import ShareBudget from '../components/ShareBudgetsModal'
 import BudgetCategory from '../components/budgetCategory';
 import BudgetExpense from '../components/budgetExpense';
 import NewCategory from '../components/NewCategory';
@@ -68,7 +68,7 @@ export default function Budget1() {
     <div className="budget-container">
       {newBudget}
       <NewCategory budget_id={1} onSave={createNewCategory}/>
-      <button>SHARE</button>
+      <ShareBudget budgetId={state.budget_id}/>
     </div>
     
   )
