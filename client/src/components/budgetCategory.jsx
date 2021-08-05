@@ -9,7 +9,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import '../styles/progressBar.scss'
 
 export default function BudgetCategory(props) {
-  const {name, currentValue, spend_limit} = props;
+  const {name, currentValue, spend_limit, onDelete} = props;
   
   let backgroundColor;
 
@@ -44,7 +44,7 @@ export default function BudgetCategory(props) {
       </div>
       <div className="category-icons">
         <EditIcon />
-        <DeleteIcon />
+        <DeleteIcon onClick={onDelete}/>
       </div>
     </div>
   )

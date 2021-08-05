@@ -18,14 +18,8 @@ export default function NewCategory(props) {
       budget_id: props.budget_id,
       spending_limit: parseInt(spending_limit.current.value)
     }
-    axios.post('http://localhost:3002/api/categories/', category)
-      .then(res => {
-        console.log(res);
-        window.location.reload();
-      })
-      .catch(error => {
-        console.log(error.message)
-      });
+
+    props.onSave(category);
   }
   
   console.log("NAME: ", name, "budget_id", budget_id, "spending_limit: ", spending_limit)
@@ -44,7 +38,7 @@ export default function NewCategory(props) {
         <button className="close" onClick={close}>
           &times;
         </button>
-        <div className="header"> Create a New Category: </div>
+        <div className="header"> Create New Categories: </div>
         <div className="category-form-container">
           {' '}
           <form class="new-category-form" onSubmit={handleSubmit}>
@@ -53,7 +47,7 @@ export default function NewCategory(props) {
             <label>Spending Limit:</label>
             <input type="text" ref={spending_limit}></input>
             <br></br>
-            <button type="submit" className="new-category-button">Submit</button>
+            <button type="submit" className="new-category-button" >Submit</button>
           </form>
         </div>
       </div>
