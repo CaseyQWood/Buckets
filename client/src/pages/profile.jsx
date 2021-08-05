@@ -5,6 +5,7 @@ import BudgetActualExpected from "../components/graph";
 import ProgressBar from "../components/progressBar";
 import ChatButton from "../components/ChatButton";
 import NewChat from "../components/NewChat";
+import FaceRec from "../components/FaceRec";
 
 import { Physics, Debug, usePlane} from '@react-three/cannon'
 import { OrbitControls } from '@react-three/drei'
@@ -142,6 +143,8 @@ export default function Profile() {
       <ChatButton onClick={toggleVisibility} />
       {ChatComponent}
       </div>
+
+      <FaceRec/>
     </>
   );
 }
