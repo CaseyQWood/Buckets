@@ -64,24 +64,25 @@ export default function FaceRec() {
             left: 0,
             right: 0,
             textAlign: "center",
-            zindex: 9,
-            width: 640,
-            height: 480,
+            zindex: -9,
+            width: 320,
+            height: 240,
           }}
         />
 
         <canvas
           ref={canvasRef}
           style={{
+            background: "white",
             position: "absolute",
             marginLeft: "auto",
             marginRight: "auto",
             left: 0,
             right: 0,
             textAlign: "center",
-            zindex: 9,
-            width: 640,
-            height: 480,
+            zindex: -9,
+            width: 320,
+            height: 240,
           }}
         />
       </header>
