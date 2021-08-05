@@ -34,7 +34,7 @@ const budgetsRoutes = (db) => {
       });
   });
 
-  // ------------get budget with categories and expenses
+  // ------------get budget with categories and expenses EVIL DATASTRUCTURE USE WITH EXTREME
   router.get("/all/:id", (req, res) => {
     const ownerId = req.params.id;
     
@@ -81,12 +81,12 @@ const budgetsRoutes = (db) => {
     const ownerId = req.params.id;
 
     db.query(`
-    SELECT categories.name, categories.id, SUM(cost)
+    SELECT categories.name, categories.id, SUM(cost), budgets.id as budget_id
     FROM expenses
     JOIN categories ON expenses.category_id = categories.id
     JOIN budgets ON categories.budget_id = budgets.id
     WHERE budgets.active = true AND budgets.user_id = $1
-    GROUP BY categories.id;
+    GROUP BY categories.id, budgets.id;
      `, [ownerId])
       .then(response => {
         res.json(response.rows)
@@ -97,7 +97,7 @@ const budgetsRoutes = (db) => {
   });
 
   // Grab all expenses for the current budget
-  router.get('/all/expenses/id', (req, res) => {
+  router.get('/all/expenses/:id', (req, res) => {
     const ownerId = req.params.id;
 
     db.query(`
@@ -111,6 +111,12 @@ const budgetsRoutes = (db) => {
     JOIN budgets ON budgets.id = categories.budget_id
     WHERE budgets.active = true AND budgets.user_id = 1;
     `)
+      .then(respones => {
+        res.json(respones.rows)
+      })
+      .catch(error => {
+        res.json(error.message)
+      })
   })
 
   //-------------add new budget
