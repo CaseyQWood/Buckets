@@ -31,6 +31,7 @@ export default function Profile() {
 
   // Handles category data for the progress bar component
   const { state } = useActiveData();
+  console.log("STATE: ", state);
   const percentCalculator = (num, den) => {
     const number1 = num ? Number(num.replace(/[^0-9.-]+/g, "")) : 0.0;
     const number2 = den ? Number(den.replace(/[^0-9.-]+/g, "")) : 0.0;
