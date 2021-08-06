@@ -5,20 +5,15 @@ import BudgetActualExpected from "../components/graph";
 import ProgressBar from "../components/progressBar";
 import ChatButton from "../components/ChatButton";
 import NewChat from "../components/NewChat";
-import FaceRec from "../components/FaceRec";
 
-import { Physics, Debug, usePlane} from '@react-three/cannon'
-import { OrbitControls } from '@react-three/drei'
+import { Physics, usePlane} from '@react-three/cannon'
 import { Canvas } from '@react-three/fiber'
 import Bucket from '../3dobjects/PolyBucket'
 import Coin from '../3dobjects/BucketCoin'
 import Wall from '../3dobjects/PhysicsWalls'
 
-import { useState } from "react";
 import { Grid, Box, Button } from "@material-ui/core";
-import { Link } from "react-router-dom";
 import UserInfo from "../components/userInfo";
-import Join from "../components/Join";
 
 import useCategoryData from "../hooks/useCategoryData";
 import useGoalData from "../hooks/useGoalsData";
