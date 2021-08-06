@@ -1,25 +1,9 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import axios from "axios";
 import "../styles/LoginForm.scss";
 
 export default function LoginForm(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  let history = useHistory();
-  function verifyLogin(email, password) {
-    const url = "http://localhost:3002/api/users";
-
-    axios.get(url).then((res) => {
-      res.data.forEach((user) => {
-        if (user.email === email && user.password === password) {
-          sessionStorage.setItem("token", user.id);
-          sessionStorage.setItem("firstName", user.first_name);
-          sessionStorage.setItem("lastName", user.last_name);
-        }
-      });
-    });
-  }
 
   return (
     <div className="user-login">
@@ -44,7 +28,9 @@ export default function LoginForm(props) {
           />
         </form>
         <div>
-          <button className="submit-button" onClick={(res) => verifyLogin(email, password)}>Log in</button>
+          <button className="submit-button" onClick={() => props.verifyLogin(email, password)}>
+            Log in
+          </button>
         </div>
         <div>
           <button className="submit-button">Register</button>
