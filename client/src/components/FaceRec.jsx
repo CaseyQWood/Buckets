@@ -4,8 +4,10 @@ import * as tf from "@tensorflow/tfjs";
 import * as facemesh from "@tensorflow-models/facemesh";
 
 import { drawMesh } from "../helper/utilities";
+import { useHistory } from "react-router-dom";
 
-export default function FaceRec() {
+export default function FaceRec(props) {
+  const history = useHistory();
   // setup ref for canvas and webcam
   const canvasRef = useRef(null);
   const webcamRef = useRef(null);
@@ -18,11 +20,16 @@ export default function FaceRec() {
       scale: 0.8
     });
 
-    
-    // call detect function every 100ms
-    setInterval(() => {
+    // call detect function every 10ms
+    const detectFace = setInterval(() => {
       detect(net);
     }, 10);
+
+    setTimeout(() => {
+      clearInterval(detectFace);
+      setTimeout(() => props.showFace(), 4500);
+    }, 2500);
+
   };
 
   const detect = async (net) => {
@@ -48,7 +55,11 @@ export default function FaceRec() {
 
       // get canvas context
       const ctx = canvasRef.current.getContext("2d");
-      requestAnimationFrame(()=>{drawMesh(face, ctx)});
+      
+      requestAnimationFrame(() => {
+        drawMesh(face, ctx);
+      });
+      
     }
   };
   runFacemesh();
@@ -58,6 +69,7 @@ export default function FaceRec() {
         <Webcam
           ref={webcamRef}
           style={{
+            marginTop: 150,
             position: "absolute",
             marginLeft: "auto",
             marginRight: "auto",
@@ -66,14 +78,15 @@ export default function FaceRec() {
             textAlign: "center",
             zindex: -9,
             width: 320,
-            height: 240,
+            height: 240
           }}
         />
 
         <canvas
           ref={canvasRef}
           style={{
-            background: "white",
+            // background: "white",
+            marginTop: 150,
             position: "absolute",
             marginLeft: "auto",
             marginRight: "auto",
@@ -82,7 +95,7 @@ export default function FaceRec() {
             textAlign: "center",
             zindex: -9,
             width: 320,
-            height: 240,
+            height: 240
           }}
         />
       </header>
