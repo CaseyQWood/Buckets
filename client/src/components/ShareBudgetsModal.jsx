@@ -18,9 +18,6 @@ export default function ShareBudget(props) {
     .put(url, {userId, budgetId: currentBudget, message: inputMessage, recieverMail: inputEmail})
     .then(() => console.log("test front end"));
     }
-    console.log('this is props', props)
-    console.log('this is message', message)
-    console.log('this is email', email)
   
   return(
   <Popup

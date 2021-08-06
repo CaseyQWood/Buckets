@@ -16,24 +16,24 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "gold",
-    color: "white"
+    color: "black"
   },
   button: {
     backgroundColor: "gold",
-    color: "white",
+    color: "black",
     "&:hover": {
-      backgroundColor: "white",
+      backgroundColor: "black",
       color: "gold"
     }
   },
   menutItem: {
     fontSize: "10px",
     textDecoration: "none",
-    backgroundColor: "white",
+    backgroundColor: "black",
     color: "gold",
     "&:hover": {
       backgroundColor: "gold",
-      color: "white"
+      color: "black"
     }
   }
 }));

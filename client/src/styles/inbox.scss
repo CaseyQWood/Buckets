@@ -1,23 +1,74 @@
+@font-face {
+  font-family: 'Arvo';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Arvo');
+}
+
 .inbox {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: teal;
-  width: 25%;
-  border-radius: 15px;
+  width: 66%;
+  min-height: 100vh;
+  border-radius: 15px 15px 0 0;
   z-index: 1;
+  box-shadow: 2px 7px 10px rgb(155, 152, 152);
+  padding-top: 75px;
+  margin: auto;
 }
 
 .inbox--tupperware{
+
+  // .MultiListItem-root {
+  //   width: 100%;
+  //   padding: 0 1em;
+  // }
+  
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 150px;
+  width: 100%;
+  .message__card {
+    display: flex;
+    flex-direction: column;
+    width: 33.33%;
+    text-decoration: none;
+    margin: 1em;
+    .MuiCardContent-root {
+      min-height: 100px;
+    }
+    .MuiCardActions-root {
+     margin-top: auto;
+     display: flex;
+     justify-content: space-between;
+     border-top: 1px solid lightgrey;
+    }
+  }
+  
 }
 
-.capitan {
-  margin-top: 120px;
+.capitan__container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+ 
+}
+
+.header {
+  font-size: 36px;
+  font-family: 'Arvo';
+  width: 100%;
+  margin: .5em 1em;
+  text-align: left;
+}
+
+.admeral {
+  background-image: url('./white-simple-gradient.png');
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mail-r3f {
+  margin-bottom: -55px;
 }
