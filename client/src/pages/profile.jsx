@@ -19,6 +19,7 @@ import useActiveData from "../hooks/useActiveData";
 import useGoalData from "../hooks/useGoalsData";
 import useUserData from "../hooks/useUserData";
 import useVisiblity from "../hooks/useVisiblity";
+import useProfileState from "../hooks/useProfileData";
 
 export default function Profile() {
   //Handles visibility of Chat component
@@ -49,36 +50,39 @@ export default function Profile() {
       spendLimit={ele.spend_limit}
     />
   })
-  // Generates a progress bar for each category
-  //const categoryProgress = categoryState.values.map((values, index) => {
-  //  return (
-  //    <ProgressBar
-  //      key={index}
-  //      currentValue={50}
-  //      name={values[0]}
-  //      spendLimit={values[1]}
-  //    />
-  //  );
-  //});
-  //Handles goal data for the progress bar component
-  const { goalState } = useGoalData();
-  // Generate a progress bar for each goal
-  const goalProgress = goalState.values.map((values, index) => {
+
+  //Set up data for graph
+  const {profileState} = useProfileState();
+  console.log("STATE: ", profileState);
+  const graphNames = profileState.actualSpends.map (ele => {
+    return ele.name;
+  })
+
+  const graphExpected = profileState.expectedSpends.map(ele => {
+    return Number(ele.expected_total.replace(/[^0-9.-]+/g, ""));
+  })
+
+  const graphActual = profileState.actualSpends.map(ele => {
+    return Number(ele.actual_total.replace(/[^0-9.-]+/g, ""));
+  })
+  //Set up data for goals
+  //Generate a progress bar for each goal
+  const goalProgress = profileState.goals.map((goal, index) => {
+    const currentValue = percentCalculator(goal.amount_added, goal.amount_to_goal);
+    
     return (
       <ProgressBar
         key={index}
-        currentValue={80}
-        name={values[0]}
-        spendLimit={values[1]}
+        currentValue={currentValue}
+        name={goal.name}
+        spendLimit={goal.amount_to_goal}
       />
     );
   });
   //Handles user data for the Profile Page
-  const { userState } = useUserData();
-  // Generates user info section
-  const userInfo = userState.values.map((values, index) => {
-    return <UserInfo income={values[1]} key={index} />;
-  });
+  const activeBudget = profileState.expectedSpends.find(ele => {ele.active = true});
+  console.log("ACTIVE BUDGET: ", activeBudget)
+  const userInfo = <UserInfo income={profileState.user.individual_income} />;
 
   const [showResults, setShowResults] = React.useState(false);
   const onClick = () => setShowResults(true);
@@ -91,7 +95,7 @@ export default function Profile() {
     )
   } 
 
-  // controls how many coins drop 
+  // controls how many coins drop
   function Coins(props) {
     const container = []
     for (let i = 0; i < props.numOfCoins; i ++) {
@@ -130,7 +134,7 @@ export default function Profile() {
           <Grid item xs={6}>
             <div className="center-col-profile">
               <div className="previous-budget-graph">
-                <BudgetActualExpected />
+                <BudgetActualExpected actual={graphActual} expected={graphExpected} names={graphNames}/>
               </div>
               <div className="category-bars" style={{ margin: 1 + "em" }}>
                 {categoryProgress}

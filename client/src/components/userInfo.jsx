@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/userInfo.scss';
 
-export default function userInfo(props) {
+export default function UserInfo(props) {
   const {income} = props;
 
   return (
