@@ -11,6 +11,8 @@ import '../styles/progressBar.scss'
 export default function BudgetCategory(props) {
   const {name, currentValue, spend_limit, onDelete} = props;
   
+  const value = currentValue === undefined ? 0 : currentValue;
+
   let backgroundColor;
 
   if (currentValue < 75) {
@@ -21,7 +23,8 @@ export default function BudgetCategory(props) {
   
   const fillerStylesBudget = {
     height: '100%',
-    width: `${currentValue}%`,
+    width: `${value}%`,
+    maxWidth: '100%', 
     'backgroundColor': `${backgroundColor}`,
     'borderRadius': 'inherit',
     'textAlign': 'center'
@@ -34,7 +37,7 @@ export default function BudgetCategory(props) {
         <div className="category-progress-bar">
           <div className="progress-container">
             <div className="progress-filler" style={fillerStylesBudget}>
-              <div className="progress-label">{`${currentValue}%`}</div>
+              <div className="progress-label">{`${value}%`}</div>
             </div>
           </div>
         </div>

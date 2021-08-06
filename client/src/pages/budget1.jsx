@@ -15,8 +15,8 @@ export default function Budget1() {
   console.log("ACTIVE CATEGORY: ", activeCategory)
 
   const percentCalculator = (num, den) => {
-    const number1 = Number(num.replace(/[^0-9.-]+/g, ""));
-    const number2 = Number(den.replace(/[^0-9.-]+/g, ""));
+    const number1 = num ? Number(num.replace(/[^0-9.-]+/g, "")) : 0.0;
+    const number2 = den ? Number(den.replace(/[^0-9.-]+/g, "")) : 0.0;
 
     return ((number1 / number2) * 100).toFixed(2);
   };
@@ -67,7 +67,7 @@ export default function Budget1() {
   return (
     <div className="budget-container">
       {newBudget}
-      <NewCategory budget_id={1} onSave={createNewCategory}/>
+      <NewCategory budget_id={state.budget_id} onSave={createNewCategory}/>
       <ShareBudget budgetId={state.budget_id}/>
     </div>
     
