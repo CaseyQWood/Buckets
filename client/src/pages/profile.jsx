@@ -20,7 +20,7 @@ import { Link } from "react-router-dom";
 import UserInfo from "../components/userInfo";
 import Join from "../components/Join";
 
-import useCategoryData from "../hooks/useCategoryData";
+import useActiveData from "../hooks/useActiveData";
 import useGoalData from "../hooks/useGoalsData";
 import useUserData from "../hooks/useUserData";
 import useVisiblity from "../hooks/useVisiblity";
@@ -30,18 +30,41 @@ export default function Profile() {
   const [ChatComponent, toggleVisibility] = useVisiblity(<NewChat />, false);
 
   // Handles category data for the progress bar component
-  const { categoryState } = useCategoryData();
+  const { state } = useActiveData();
+  const percentCalculator = (num, den) => {
+    const number1 = num ? Number(num.replace(/[^0-9.-]+/g, "")) : 0.0;
+    const number2 = den ? Number(den.replace(/[^0-9.-]+/g, "")) : 0.0;
+
+    return ((number1 / number2) * 100).toFixed(2);
+  };
+
+  const checkSpend = (spendArray, category) => {
+    for (const spend of spendArray) {
+      if (spend.id === category.category_id) {
+        return percentCalculator(spend.sum, category.spend_limit);
+      }
+    }
+  }
+
+  const categoryProgress = state.categories.map((ele, index) => {
+    return <ProgressBar 
+      key={index}
+      currentValue={checkSpend(state.totalSpendCategories, ele)}
+      name={ele.name}
+      spendLimit={ele.spend_limit}
+    />
+  })
   // Generates a progress bar for each category
-  const categoryProgress = categoryState.values.map((values, index) => {
-    return (
-      <ProgressBar
-        key={index}
-        currentValue={50}
-        name={values[0]}
-        spendLimit={values[1]}
-      />
-    );
-  });
+  //const categoryProgress = categoryState.values.map((values, index) => {
+  //  return (
+  //    <ProgressBar
+  //      key={index}
+  //      currentValue={50}
+  //      name={values[0]}
+  //      spendLimit={values[1]}
+  //    />
+  //  );
+  //});
   //Handles goal data for the progress bar component
   const { goalState } = useGoalData();
   // Generate a progress bar for each goal

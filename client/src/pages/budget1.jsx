@@ -17,7 +17,6 @@ export default function Budget1() {
   const percentCalculator = (num, den) => {
     const number1 = num ? Number(num.replace(/[^0-9.-]+/g, "")) : 0.0;
     const number2 = den ? Number(den.replace(/[^0-9.-]+/g, "")) : 0.0;
-    console.log("N1: ", number1, "N2: ", number2)
 
     return ((number1 / number2) * 100).toFixed(2);
   };
