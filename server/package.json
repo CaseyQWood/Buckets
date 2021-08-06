@@ -18,8 +18,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon ./src/index.js",
-    "reset": "psql -U labber -d bucketup < ./src/db/schema/users.sql && psql -U labber -d bucketup < ./src/db/schema/budgets.sql && psql -U labber -d bucketup < ./src/db/schema/categories.sql && psql -U labber -d bucketup < ./src/db/schema/expenses.sql && psql -U labber -d bucketup < ./src/db/schema/goals.sql",
-    "seed": "psql -U labber -d bucketup < ./src/db/seeds/users.sql && psql -U labber -d bucketup < ./src/db/seeds/budgets.sql && psql -U labber -d bucketup < ./src/db/seeds/categories.sql && psql -U labber -d bucketup < ./src/db/seeds/expenses.sql && psql -U labber -d bucketup < ./src/db/seeds/goals.sql"
+    "reset": "psql -U labber -d bucketup < ./src/db/schema/users.sql && psql -U labber -d bucketup < ./src/db/schema/budgets.sql && psql -U labber -d bucketup < ./src/db/schema/categories.sql && psql -U labber -d bucketup < ./src/db/schema/expenses.sql && psql -U labber -d bucketup < ./src/db/schema/goals.sql && psql -U labber -d bucketup < ./src/db/schema/messages.sql",
+    "seed": "psql -U labber -d bucketup < ./src/db/seeds/users.sql && psql -U labber -d bucketup < ./src/db/seeds/budgets.sql && psql -U labber -d bucketup < ./src/db/seeds/categories.sql && psql -U labber -d bucketup < ./src/db/seeds/expenses.sql && psql -U labber -d bucketup < ./src/db/seeds/goals.sql && psql -U labber -d bucketup < ./src/db/seeds/messages.sql"
   },
   "author": "",
   "license": "ISC"
