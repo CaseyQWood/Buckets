@@ -4,6 +4,7 @@ canvas {
 }
 
 .user-login {
+  color: white;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -16,17 +17,39 @@ canvas {
   width: 100vw;
 }
 
+.input-field {
+  height: 35px;
+  font-size: 1.1rem; 
+  border: none;
+  width: 100%;
+  font-size: 15px;
+  border-radius: 3px;
+}
+
+.submit-button {
+  height: 35px;
+  width: 80px;
+  font-size: 15px;
+  background-color: gold;
+  border:3px solid white ;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  }
+
+
 .login {
   position: relative;
   display: flex;
+  justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
-  background-color: bisque;
-  width: 25%;
+  background-color: gold;
+  width: 40vh;
+  height: 30vh;
   border-radius: 15px;
   z-index: 1;
 }
-
 
 
 .falling-coins{

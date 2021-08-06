@@ -71,10 +71,14 @@ export default function NavBar(props) {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <Link to="/budget" style={{ textDecoration: "none"}}>
-            <MenuItem className={classes.root, classes.menutItem}>CURRENT BUDGET</MenuItem>
+          <Link to="/budget" style={{ textDecoration: "none" }}>
+            <MenuItem className={classes.root, classes.menutItem}>
+              CURRENT BUDGET
+            </MenuItem>
           </Link>
-          <MenuItem className={classes.root, classes.menutItem}>CREATE A NEW BUDGET</MenuItem>
+          <MenuItem className={classes.root, classes.menutItem}>
+            CREATE A NEW BUDGET
+          </MenuItem>
         </Menu>
         <Menu
           style={{ marginTop: "50px" }}
@@ -88,13 +92,17 @@ export default function NavBar(props) {
             to="/profile"
             style={{ textDecoration: "none", color: "black" }}
           >
-            <MenuItem className={classes.root, classes.menutItem}>DASHBOARD</MenuItem>
+            <MenuItem className={classes.root, classes.menutItem}>
+              DASHBOARD
+            </MenuItem>
           </Link>
           <Link
             to="/messages"
             style={{ textDecoration: "none", color: "black" }}
           >
-            <MenuItem className={classes.root, classes.menutItem}>MESSAGE</MenuItem>
+            <MenuItem className={classes.root, classes.menutItem}>
+              MESSAGE
+            </MenuItem>
           </Link>
         </Menu>
         <Grid

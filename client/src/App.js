@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useEffect } from 'react';
-import axios from "axios";
-import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
+
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './pages/login';
 import Register from './pages/register';
 import Profile from './pages/profile';
