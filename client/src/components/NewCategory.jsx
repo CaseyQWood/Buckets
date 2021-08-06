@@ -47,7 +47,7 @@ export default function NewCategory(props) {
             <label>Spending Limit:</label>
             <input type="text" ref={spending_limit}></input>
             <br></br>
-            <button type="submit" className="new-category-button" >Submit</button>
+            <button type="submit" className="new-category-button" onClick={close}>Submit</button>
           </form>
         </div>
       </div>
