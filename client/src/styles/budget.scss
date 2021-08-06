@@ -1,13 +1,39 @@
 .budget-div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+ display: flex;
 }
 
 .budget-expense {
+
+}
+
+.r3f-chest {
+  width: 66%;
+  padding-top: 5em;
+  margin-bottom: -55px;
+
+}
+
+.emperor {
+  background-image: url('./white-simple-gradient.png');
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.budget-container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-around;
-  background: lightgray;
-  width: 90%;
+  padding-top: 75px;
+  width: 75%;
+  border-radius: 15px;
+  box-shadow: 2px 7px 10px rgb(155, 152, 152);
+
+    .progress-label{
+      font-size: 1em;
+    }
 }

@@ -1,11 +1,16 @@
-import React, {useState} from 'react';
-
+import React, {useState, useRef, Suspense} from 'react';
 import useActiveData from '../hooks/useActiveData';
 import ShareBudget from '../components/ShareBudgetsModal'
 import BudgetCategory from '../components/budgetCategory';
 import BudgetExpense from '../components/budgetExpense';
 import NewCategory from '../components/NewCategory';
 import NewExpense from '../components/NewExpense';
+import * as THREE from 'three'
+import { Canvas } from '@react-three/fiber';
+import SotChest from '../3dobjects/SotChest';
+
+import "../styles/budget.scss";
+import { OrbitControls } from '@react-three/drei';
 
 //Create a React page that renders categories, and expenses by category
 export default function Budget1() {
@@ -63,13 +68,39 @@ export default function Budget1() {
       </div>
     )
   })
+
+  function Plane(props) {
+
+    const material = new THREE.ShadowMaterial();
+    material.opacity = 0.2;
+    const ref = useRef()
+    return (
+      <mesh material={material} rotation={[-Math.PI / 2, 0, 0]} {...props} castShadow receiveShadow>
+        <planeBufferGeometry  args={[15,15]}/>         
+      </mesh >
+    )
+  } 
   
   return (
-    <div className="budget-container">
-      {newBudget}
-      <NewCategory budget_id={state.budget_id} onSave={createNewCategory}/>
-      <ShareBudget budgetId={state.budget_id}/>
+    <div className='emperor'>
+      <div className='r3f-chest'>
+        <Canvas shadows camera={{angle: 0.5, position: [0.5, 0.1, 3.5] }}>
+          <ambientLight intensity={0.65}/>
+          <pointLight castShadow position={[-5, 10, 10]} intensity={0.5}  angle={1}/>
+            <Suspense fallback={null}>
+              {/* <OrbitControls/> */}
+              <Plane position={[0, -1, 0]}/>
+              <SotChest rotation={[0,-1.75,0]} position={[0,-1,0]} scale={0.02}/>
+            </Suspense>
+        </Canvas>
+      </div>
+      <div className="budget-container">
+        {newBudget}
+        <NewCategory budget_id={state.budget_id} onSave={createNewCategory}/>
+        <ShareBudget budgetId={state.budget_id}/>
+      </div>
     </div>
+    
     
   )
 }
