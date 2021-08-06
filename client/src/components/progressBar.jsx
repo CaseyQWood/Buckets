@@ -4,7 +4,8 @@ import '../styles/progressBar.scss';
 export default function ProgressBar(props) {
   const { currentValue, name, spendLimit } = props;
 
-
+  const value = currentValue === undefined ? 0 : currentValue;
+  
   let backgroundColor;
   // Set's color for the graph will be changed to final color scheme closer too
   if (currentValue < 75) {
@@ -16,6 +17,7 @@ export default function ProgressBar(props) {
   const fillerStyles = {
     height: '100%',
     width: `${currentValue}%`,
+    maxWidth: '100%',
     'backgroundColor': `${backgroundColor}`,
     'borderRadius': 'inherit',
     'textAlign': 'center'
@@ -26,7 +28,7 @@ export default function ProgressBar(props) {
       <h3 className="category-margin">{name}</h3>
       <div className="progress-container">
         <div className="progress-filler" style={fillerStyles}>
-          <span className="progress-label">{`${currentValue}%`}</span>
+          <span className="progress-label">{`${value}%`}</span>
         </div>
       </div>
       <h3>{spendLimit}</h3>

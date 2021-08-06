@@ -7,7 +7,6 @@ import axios from 'axios';
 
 export default function NewCategory(props) {
   const name = React.useRef(null);
-  const budget_id = React.useRef(null);
   const spending_limit = React.useRef(null);
 
   const handleSubmit = (ele) => {
@@ -22,7 +21,7 @@ export default function NewCategory(props) {
     props.onSave(category);
   }
   
-  console.log("NAME: ", name, "budget_id", budget_id, "spending_limit: ", spending_limit)
+  console.log("NAME: ", name, "spending_limit: ", spending_limit)
   return(
   <Popup
     trigger={<button className="button">
@@ -47,7 +46,7 @@ export default function NewCategory(props) {
             <label>Spending Limit:</label>
             <input type="text" ref={spending_limit}></input>
             <br></br>
-            <button type="submit" className="new-category-button" onClick={close}>Submit</button>
+            <button type="submit" className="new-category-button">Submit</button>
           </form>
         </div>
       </div>

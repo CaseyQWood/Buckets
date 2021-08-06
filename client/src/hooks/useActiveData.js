@@ -67,7 +67,7 @@ export default function useActiveData(initial) {
         ]).then((all) => {
           const categories = all[0].data;
           const totalSpendCategories = all[1].data;
-          setState(prev => ({...prev, categories,totalSpendCategories}))
+          setState(prev => ({...prev, categories, totalSpendCategories}))
         })
       })
   };

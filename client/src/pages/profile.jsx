@@ -45,7 +45,7 @@ export default function Profile() {
     return <ProgressBar 
       key={index}
       currentValue={checkSpend(state.totalSpendCategories, ele)}
-      name={ele.name}
+      name={ele.category_name}
       spendLimit={ele.spend_limit}
     />
   })
