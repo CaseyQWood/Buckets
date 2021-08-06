@@ -80,9 +80,9 @@ export default function Profile() {
     );
   });
   //Handles user data for the Profile Page
-  const activeBudget = profileState.expectedSpends.find(ele => {ele.active = true});
+  const activeBudget = profileState.expectedSpends.find(ele => {if (ele.active === true) return ele}).expected_total;
   console.log("ACTIVE BUDGET: ", activeBudget)
-  const userInfo = <UserInfo income={profileState.user.individual_income} />;
+  const userInfo = <UserInfo income={profileState.user.individual_income} expectedExpenses={activeBudget}/>;
 
   const [showResults, setShowResults] = React.useState(false);
   const onClick = () => setShowResults(true);
