@@ -96,6 +96,52 @@ const budgetsRoutes = (db) => {
       });
   });
 
+
+
+  // Sum expected budget, actual budget, by budget name
+  router.get('/all/expectedbudget/:id', (req, res) => {
+    const ownerId = req.params.id;
+
+    db.query(`
+    SELECT SUM(categories.spending_limit) as expected_total,
+    budgets.id as budget_id,
+    budgets.active as active
+    FROM categories 
+    JOIN budgets on categories.budget_id = budgets.id 
+    WHERE budgets.user_id = $1
+    GROUP BY budgets.id;
+     `, [ownerId])
+      .then(response => {
+        res.json(response.rows)
+      })
+      .catch((error) => {
+        res.json(error.message)
+      });
+  });
+
+  // Sum actual budget,
+  router.get('/all/actualbudget/:id', (req, res) => {
+    const ownerId = req.params.id;
+
+    db.query(`
+    SELECT SUM(expenses.cost) as actual_total,
+    budgets.active as active,
+    budgets.name as name,
+    budgets.id as budget_id
+    FROM budgets
+    JOIN categories ON categories.budget_id = budgets.id
+    JOIN expenses ON expenses.category_id = categories.id
+    WHERE budgets.user_id = $1
+    GROUP BY budgets.name, budgets.id;
+     `, [ownerId])
+      .then(response => {
+        res.json(response.rows)
+      })
+      .catch((error) => {
+        res.json(error.message)
+      });
+  });
+
   // Grab all expenses for the current budget
   router.get('/all/expenses/:id', (req, res) => {
     const ownerId = req.params.id;
@@ -105,12 +151,13 @@ const budgetsRoutes = (db) => {
     expenses.category_id as category_id,
     expenses.cost  as cost,
     expenses.amount_paid as amount_paid,
-    expenses.payee as payee
+    expenses.payee as payee,
+    expenses.id as expense_id
     FROM expenses
     JOIN categories ON categories.id = expenses.category_id
     JOIN budgets ON budgets.id = categories.budget_id
-    WHERE budgets.active = true AND budgets.user_id = 1;
-    `)
+    WHERE budgets.active = true AND budgets.user_id = $1;
+    `, [ownerId])
       .then(respones => {
         res.json(respones.rows)
       })

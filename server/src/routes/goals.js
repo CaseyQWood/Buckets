@@ -21,11 +21,26 @@ const goalsRoutes = (db) => {
     const reqParams = req.params.id;
     db.query(
       `
-      SELECT * from goals where goals.id = $1;
+      SELECT * from goals where goals.user_id = $1;
       `
     ,[reqParams])
       .then((response) => {
         res.json(response.rows[0]);
+      })
+      .catch((error) => {
+        res.json(error.message);
+      });
+  });
+  //-------------get all goals
+  router.get("/all/:id", (req, res) => {
+    const ownerId = req.params.id;
+    db.query(
+      `
+      SELECT * from goals where goals.user_id = $1;
+      `
+    ,[ownerId])
+      .then((response) => {
+        res.json(response.rows);
       })
       .catch((error) => {
         res.json(error.message);
