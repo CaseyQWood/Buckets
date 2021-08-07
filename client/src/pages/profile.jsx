@@ -7,10 +7,12 @@ import ChatButton from "../components/ChatButton";
 import NewChat from "../components/NewChat";
 
 import { Physics, usePlane} from '@react-three/cannon'
-import { Canvas } from '@react-three/fiber'
+import { Canvas, extend } from '@react-three/fiber'
 import Bucket from '../3dobjects/PolyBucket'
 import Coin from '../3dobjects/BucketCoin'
 import Wall from '../3dobjects/PhysicsWalls'
+import Icon from "../components/progressBar";
+import DarkIcon from "../3dobjects/DarkGraph";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from 'three'
 
@@ -72,12 +74,14 @@ export default function Profile() {
     const currentValue = percentCalculator(goal.amount_added, goal.amount_to_goal);
     
     return (
-      <ProgressBar
-        key={index}
-        currentValue={currentValue}
-        name={goal.name}
-        spendLimit={goal.amount_to_goal}
-      />
+
+        <ProgressBar
+          key={index}
+          currentValue={currentValue}
+          name={goal.name}
+          spendLimit={goal.amount_to_goal}
+        />
+      
     );
   });
 
@@ -159,31 +163,51 @@ export default function Profile() {
 
             <div>{userInfo}</div>
               <div className="right-col-profile">
-                <div className="goals-bars">{goalProgress}</div>
+
+                <div className="goals-bars">
+                  <h3>Goals:</h3>
+                  {goalProgress}
+                </div>
+
                 <div className="buttonComponent">
                   <span>
                     <Button variant="contained" size="large">
                       Create a New Budget
                     </Button>
                   </span>
+
                   <span>
                     <Button variant="contained" size="large">
                       Create a New Goal
                     </Button>
                   </span>
                 </div>
+
               </div>
             
           </Grid>
 
           <Grid item xs={6}>
             <div className="center-col-profile">
+              <div>
+                <Canvas>
+                    <OrbitControls/>
+
+                  <pointLight castShadow position={[-5, 10, 10]} intensity={1.5} />
+                  <Suspense fallback={null}>
+                    <DarkIcon/>
+
+                  </Suspense>
+                </Canvas>
+
+              </div>
               
               <div className="previous-budget-graph">
                 <BudgetActualExpected actual={graphActual} expected={graphExpected} names={graphNames}/>
               </div>
 
               <div className="category-bars" style={{ margin: 1 + "em" }}>
+                <h3>Categories</h3>
                 {categoryProgress}
               </div>
 

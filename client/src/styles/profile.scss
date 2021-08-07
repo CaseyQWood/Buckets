@@ -6,13 +6,20 @@
 }
 
 .goals-bars {
-  margin: 1vw;
-  background:rgb(251, 196, 106);
-  border-radius: 2vw;
+  margin: 14px;
+  border-radius: 15px;
+  box-shadow: 2px 7px 10px rgb(155, 152, 152);
+
+  padding: 50px 14px 14px 14px;
 }
 
 .category-bars {
-  height: 1vw;
+  
+  margin: 14px;
+  border-radius: 15px;
+  box-shadow: 2px 7px 10px rgb(155, 152, 152);
+
+  padding: 50px 14px 14px 14px;
 }
 
 .threeJS {
@@ -23,3 +30,11 @@
 canvas {
   height: 200px;
 }
+
+.previous-budget-graph {
+  border-radius: 15px;
+  box-shadow: 2px 7px 10px rgb(155, 152, 152);
+  margin: 14px;
+  padding: 14px;
+}
+
