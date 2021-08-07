@@ -87,5 +87,41 @@ export default function useActiveData(initial) {
     })
   }
 
-  return { state, deleteExpense, deleteCategory, createNewCategory, createNewExpense }
+  const editCategory = (category) => {
+    return axios.put(`http://localhost:3002/api/categories/${category.category_id}`, category)
+    .then(() => {
+        console.log("IN EDIT CATEGORY", category)
+        Promise.all([
+          axios.get(`http://localhost:3002/api/budgets/all/expenses/${userId}`),
+          axios.get(`http://localhost:3002/api/budgets/all/categories/${userId}`),
+          axios.get(`http://localhost:3002/api/budgets/all/totalbycategory/${userId}`)
+        ]).then((all) => {
+          const expenses = all[0].data;
+          const categories = all[1].data;
+          const totalSpendCategories = all[2].data;
+          setState(prev => ({...prev, expenses, categories, totalSpendCategories}))
+        })
+    });
+  }
+
+  const editExpense = (expense) => {
+    return axios.put(`http://localhost:3002/api/expenses/${expense.category_id}`, expense)
+    .then(() => {
+        console.log("IN EDIT CATEGORY", expense)
+        Promise.all([
+          axios.get(`http://localhost:3002/api/budgets/all/expenses/${userId}`),
+          axios.get(`http://localhost:3002/api/budgets/all/categories/${userId}`),
+          axios.get(`http://localhost:3002/api/budgets/all/totalbycategory/${userId}`)
+        ]).then((all) => {
+          const expenses = all[0].data;
+          const categories = all[1].data;
+          const totalSpendCategories = all[2].data;
+          setState(prev => ({...prev, expenses, categories, totalSpendCategories}))
+        })
+    });
+  }
+
+  
+
+  return { state, deleteExpense, deleteCategory, createNewCategory, createNewExpense, editCategory, editExpense }
 }

@@ -15,7 +15,7 @@ import { OrbitControls } from '@react-three/drei';
 //Create a React page that renders categories, and expenses by category
 export default function Budget1() {
   //Collect Categories, and expenses using a PromiseAll hook
-  const {state, deleteExpense, deleteCategory, createNewCategory, createNewExpense } = useActiveData();
+  const {state, deleteExpense, deleteCategory, createNewCategory, createNewExpense, editCategory, editExpense } = useActiveData();
   const[activeCategory, setActiveCategory] = useState(null);
 
   const percentCalculator = (num, den) => {
@@ -37,7 +37,16 @@ export default function Budget1() {
     const expensesArray = [];
     for (const expense of expenseArray) {
       if (expense.category_id === categoryId && expense.category_id === activeCategory) {
-        expensesArray.push(<BudgetExpense key={expense.expense_id} payee={expense.payee} name={expense.expense_name} amount_paid={expense.amount_paid} cost={expense.cost} onDelete={() => deleteExpense(expense.expense_id)}/>);
+        expensesArray.push(
+          <BudgetExpense 
+            key={expense.expense_id} 
+            payee={expense.payee} 
+            name={expense.expense_name} 
+            amount_paid={expense.amount_paid} cost={expense.cost} 
+            onDelete={() => deleteExpense(expense.expense_id)}
+            onEdit={editExpense}
+            categoryId={expense.category_id}
+          />);
       }
     }
     //Push a new category Component here
@@ -50,6 +59,7 @@ export default function Budget1() {
 
   //iterate through categories that belong to the current budget generating a category component for each
   const newBudget = state.categories.map(category => {
+    console.log("WHAT IS THIS VALUE ", category.category_id);
     return(
       <div className="category-container" onClick={() => {
         if (activeCategory !== 0) {
@@ -59,7 +69,15 @@ export default function Budget1() {
         }
       }
         }>
-        <BudgetCategory getExpensesByCategory={getExpensesByCategory} expenses={state.expenses} category_id={category.category_id} onDelete={() => {deleteCategory(category.category_id)}} spend_limit={category.spend_limit} name={category.category_name} currentValue={checkSpend(state.totalSpendCategories, category)}/>
+        <BudgetCategory 
+        getExpensesByCategory={getExpensesByCategory} 
+        expenses={state.expenses} 
+        category_id={category.category_id} 
+        onDelete={() => {deleteCategory(category.category_id)}} 
+        spend_limit={category.spend_limit} name={category.category_name} 
+        currentValue={checkSpend(state.totalSpendCategories, category)}
+        onEdit={editCategory}
+        />
       </div>
     )
   })
