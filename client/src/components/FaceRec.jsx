@@ -51,7 +51,6 @@ export default function FaceRec(props) {
       canvasRef.current.height = videoHeight;
       // detect face
       const face = await net.estimateFaces(video);
-      // console.log("face---", face);
 
       // get canvas context
       const ctx = canvasRef.current.getContext("2d");

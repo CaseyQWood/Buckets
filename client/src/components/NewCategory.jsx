@@ -1,9 +1,8 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import Popup from 'reactjs-popup';
 import '../styles/NewCategory.scss';
 import { Fab } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import axios from 'axios';
 
 export default function NewCategory(props) {
   const name = React.useRef(null);
@@ -21,7 +20,6 @@ export default function NewCategory(props) {
     props.onSave(category);
   }
   
-  console.log("NAME: ", name, "spending_limit: ", spending_limit)
   return(
   <Popup
     trigger={<button className="button">

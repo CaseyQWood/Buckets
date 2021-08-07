@@ -1,21 +1,10 @@
-import React, { Suspense, useRef } from 'react'
+import React, { Suspense} from 'react'
 import useMessagesData from '../hooks/useMessagesData'
 import SharedTemplate from '../components/TemplateMessage'
-import { makeStyles } from '@material-ui/core/styles';
-import ListItem from '@material-ui/core/ListItem';
 import '../styles/inbox.scss'
 import { Canvas } from '@react-three/fiber';
 import MailIcon from '../3dobjects/MailIcon';
-import { OrbitControls, ContactShadows } from '@react-three/drei';
-import { SpotLightHelper } from 'three';
-import { useHelper, softShadows, Shadow } from '@react-three/drei';
 import * as THREE from 'three'
-
-
-
-function ListItemLink(props) {
-  return <ListItem button component="a" {...props} />;
-}
 
 
 export default function Messages(props) {
@@ -26,7 +15,6 @@ export default function Messages(props) {
 
     const material = new THREE.ShadowMaterial();
     material.opacity = 0.2;
-    const ref = useRef()
     return (
       <mesh material={material} rotation={[-Math.PI / 2, 0, 0]} {...props} castShadow receiveShadow>
         <planeBufferGeometry  args={[15,15]}/>         

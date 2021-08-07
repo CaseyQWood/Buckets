@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 
-// import TextContainer from '../TextContainer/TextContainer';
 import Messages from './Messages';
 import InfoBar from "./InfoBar";
 import Input from "./Input";
@@ -27,12 +26,8 @@ const NewChat = (props) => {
 
   useEffect(() => {
     
-    // const { name, room } = queryString.parse(location.search);
     // pass endpoint to server localhost:3002
     socket = io(ENDPOINT, { transports: ["websocket"]});
-
-    // console.log("room ----", room);
-    // console.log("name ----", name);
 
     setRoom(room);
     setName(name);
@@ -66,7 +61,6 @@ const NewChat = (props) => {
   }
 
   // Testing messages record and message
-  // console.log(message, messages);
 
   return (
     <div className="outerContainer">

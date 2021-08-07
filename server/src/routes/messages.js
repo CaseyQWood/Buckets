@@ -16,14 +16,12 @@ const messagesRoutes = (db) => {
 
 
   router.put('/send', (req, res) => {
-    console.log('this is req', req.body)
     db.query(`
       INSERT INTO messages (sender_id, budget_id,  message, reciever_email) 
       VALUES ($1, $2, $3, $4)
       RETURNING *
     `, [req.body.userID, req.body.budgetId, req.body.message, req.body.recieverMail]
     )
-    // .then((response) => {console.log('response', response.rows)})
   })
 
 
@@ -33,8 +31,6 @@ const messagesRoutes = (db) => {
     const convertID = (obj, id) => {
       return obj.budget_id = id
     }
-
-    console.log('this is the data',req.body)
 
     db.query(`
       SELECT * FROM budgets

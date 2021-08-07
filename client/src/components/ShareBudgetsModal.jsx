@@ -1,8 +1,6 @@
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import Popup from 'reactjs-popup';
 import '../styles/NewCategory.scss';
-import { Fab } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
 import axios from 'axios';
 
 export default function ShareBudget(props) {
@@ -16,7 +14,6 @@ export default function ShareBudget(props) {
     const url = "http://localhost:3002/api/messages/send";
     return axios
     .put(url, {userId, budgetId: currentBudget, message: inputMessage, recieverMail: inputEmail})
-    .then(() => console.log("test front end"));
     }
   
   return(

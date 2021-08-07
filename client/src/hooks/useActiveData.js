@@ -22,7 +22,6 @@ export default function useActiveData(initial) {
       const totalSpendCategories = all[2].data;
       const budget_id = all[2].data[0].budget_id;
       setState(prev => ({...prev, categories, expenses, totalSpendCategories, budget_id }))
-      console.log("STATE: ", state)
     })
   }, [])
 

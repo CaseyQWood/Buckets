@@ -16,14 +16,11 @@ import { Grid, Box, Button } from "@material-ui/core";
 import UserInfo from "../components/userInfo";
 
 import useActiveData from "../hooks/useActiveData";
-import useGoalData from "../hooks/useGoalsData";
-import useUserData from "../hooks/useUserData";
 import useVisiblity from "../hooks/useVisiblity";
 import useProfileState from "../hooks/useProfileData";
 
 export default function Profile() {
   const { profileState, userState } = useProfileState();
-  console.log("USER STATE IN PROFILE PAGE", userState)
   //Handles visibility of Chat component
   const [ChatComponent, toggleVisibility] = useVisiblity(<NewChat />, false);
   //Access needed data with Axios
@@ -112,14 +109,9 @@ export default function Profile() {
   const actualBudget = actualSpend ? actualSpend.actual_total : 0;
   const actualBudgetNum = actualBudget ? Number(actualBudget.replace(/[^0-9.-]+/g, "")) : 0;
 
-
-  //const expectedSpendNum = Number(expectedBudget.replace(/[^0-9.-]+/g, "")) ? Number(expectedBudget.replace(/[^0-9.-]+/g, "")) : 0;
-  //const actualSpendNum = Number(actualBudget.replace(/[^0-9.-]+/g, "")) ? Number(actualBudget.replace(/[^0-9.-]+/g, "")) : 0;
   const totalRemainingNumber = expectedBudgetNum - actualBudgetNum;
   const totalRemainingFormatted = `$${totalRemainingNumber}.00` 
-  console.log("TOTAL: ", expectedBudgetNum, actualBudgetNum)
-  const totalRemainingFunds = `$ ${expectedBudget - actualBudget}`;
-  console.log("ACTIVE BUDGET: ", expectedBudget, actualBudget)
+
   const userInfo = <UserInfo income={profileState.user.individual_income} expectedExpenses={expectedBudget} balance={totalRemainingFormatted}/>;
 
  // currently have OrbitControls and Debug commented out as they are used to TS but not for production 

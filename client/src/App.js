@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from './pages/login';
 import Register from './pages/register';
 import Profile from './pages/profile';
-import Budget from './pages/budget';
 import Analytics from './pages/Analytics.jsx';
 import Messages from './pages/messages';
 import Join from './components/Join.jsx';

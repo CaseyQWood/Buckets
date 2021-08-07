@@ -9,8 +9,6 @@ const analyticsRoutes = (db) => {
     const from = req.body.from;
     const to = req.body.to;
     
-    console.log("from----budget backend", from);
-    console.log("to----budget backend", to);
 
     db.query(
       `SELECT users.first_name as first_name, users.last_name as last_name, categories.name, categories.id, SUM(cost) as total_expense, budgets.start_date as start_date, budgets.end_date as end_date, categories.spending_limit as spending_limit
@@ -35,9 +33,6 @@ const analyticsRoutes = (db) => {
     const userId = req.params.id;
     const from = req.body.from;
     const to = req.body.to;
-    
-    console.log("from----goal backend", from);
-    console.log("to----goal backend", to);
 
     db.query(
       `SELECT goals.name, goals.amount_to_goal, goals.start_date, goals.end_date from goals WHERE goals.start_date >= $2 AND goals.end_date <= $3 AND goals.user_id = $1;

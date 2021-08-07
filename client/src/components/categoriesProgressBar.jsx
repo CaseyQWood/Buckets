@@ -5,7 +5,6 @@ import useCategoryData from '../hooks/useCategoryData';
 export default function CategoriesProgressBar(props) {
   const { currentValue } = props;
   const { state } = useCategoryData();
-  console.log('State in Progress: ', state.values)
   
   let backgroundColor;
 
@@ -14,14 +13,6 @@ export default function CategoriesProgressBar(props) {
   } else { 
     backgroundColor = 'rgb(255, 99, 132)'
   };
-
-  //const categoryProgress = function(state) {
-  //  for(const value of state.values) {
-  //    return (
-  //      
-  //    )
-  //  }
-  //};
   
   const fillerStyles = {
     height: '100%',
