@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/progressBar.scss';
+import { Divider } from '@material-ui/core';
 
 export default function ProgressBar(props) {
   const { currentValue, name, spendLimit } = props;
@@ -25,13 +26,13 @@ export default function ProgressBar(props) {
   // Progress bar structure
   return (
     <div className="category-progress-bar">
-      <h3 className="category-margin">{name}</h3>
+      <h4 className="category-margin">{name}: {spendLimit}</h4>
       <div className="progress-container">
         <div className="progress-filler" style={fillerStyles}>
           <span className="progress-label">{`${value}%`}</span>
         </div>
       </div>
-      <h3>{spendLimit}</h3>
+      <p>{spendLimit}</p>
     </div>
   );
 };
