@@ -61,7 +61,7 @@ export default function NavBar(props) {
   };
 
   return (
-    <AppBar className={classes.root}>
+    <AppBar className={(classes.root)}>
       <Toolbar>
         <Menu
           style={{ marginTop: "50px" }}
