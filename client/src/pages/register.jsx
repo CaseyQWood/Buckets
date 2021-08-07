@@ -1,8 +1,10 @@
 import React from 'react';
 import NewCategory from '../components/NewCategory';
+import useProfileState from '../hooks/useProfileData';
 
 export default function Register() {
-
+  const { profileState } = useProfileState();
+  console.log(profileState)
   // logic goes here
 
   return (
