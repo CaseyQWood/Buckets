@@ -16,7 +16,6 @@ const options = {
     },
     title: {
       display: true,
-      text: 'Expenses vs Spending Limit',
       fontSize: 40
     },
   },
