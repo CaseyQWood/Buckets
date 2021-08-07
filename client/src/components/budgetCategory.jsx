@@ -6,11 +6,12 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Box from '@material-ui/core/Box';
+import EditCategory from '../components/EditCategory';
 
 import '../styles/progressBar.scss'
 
 export default function BudgetCategory(props) {
-  const {name, currentValue, spend_limit, onDelete} = props;
+  const {name, currentValue, spend_limit, onDelete, onEdit, category_id} = props;
   const [show, setShow] = useState(false)
   const value = currentValue === undefined ? 0 : currentValue;
 
@@ -89,7 +90,7 @@ export default function BudgetCategory(props) {
               Total amount:{spend_limit}
             </Typography>
           <div className="category-icons">
-            <EditIcon />
+            <EditCategory onEdit={onEdit} categoryId={category_id}/>
             <DeleteIcon onClick={onDelete}/>
           </div>
         </div>
