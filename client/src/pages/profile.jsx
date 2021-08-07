@@ -19,10 +19,15 @@ import useActiveData from "../hooks/useActiveData";
 import useGoalData from "../hooks/useGoalsData";
 import useUserData from "../hooks/useUserData";
 import useVisiblity from "../hooks/useVisiblity";
+import useProfileState from "../hooks/useProfileData";
 
 export default function Profile() {
+  const { profileState, userState } = useProfileState();
+  console.log("USER STATE IN PROFILE PAGE", userState)
   //Handles visibility of Chat component
   const [ChatComponent, toggleVisibility] = useVisiblity(<NewChat />, false);
+  //Access needed data with Axios
+  
 
   // Handles category data for the progress bar component
   const { state } = useActiveData();
@@ -40,7 +45,7 @@ export default function Profile() {
       }
     }
   }
-
+  //Renders categories component
   const categoryProgress = state.categories.map((ele, index) => {
     return <ProgressBar 
       key={index}
@@ -49,35 +54,32 @@ export default function Profile() {
       spendLimit={ele.spend_limit}
     />
   })
-  // Generates a progress bar for each category
-  //const categoryProgress = categoryState.values.map((values, index) => {
-  //  return (
-  //    <ProgressBar
-  //      key={index}
-  //      currentValue={50}
-  //      name={values[0]}
-  //      spendLimit={values[1]}
-  //    />
-  //  );
-  //});
-  //Handles goal data for the progress bar component
-  const { goalState } = useGoalData();
-  // Generate a progress bar for each goal
-  const goalProgress = goalState.values.map((values, index) => {
+
+  //Set up data for graph
+  const graphNames = profileState.actualSpends.map (ele => {
+    return ele.name;
+  })
+
+  const graphExpected = profileState.expectedSpends.map(ele => {
+    return Number(ele.expected_total.replace(/[^0-9.-]+/g, ""));
+  })
+
+  const graphActual = profileState.actualSpends.map(ele => {
+    return Number(ele.actual_total.replace(/[^0-9.-]+/g, ""));
+  })
+
+  //Generate a progress bar for each goal
+  const goalProgress = profileState.goals.map((goal, index) => {
+    const currentValue = percentCalculator(goal.amount_added, goal.amount_to_goal);
+    
     return (
       <ProgressBar
         key={index}
-        currentValue={80}
-        name={values[0]}
-        spendLimit={values[1]}
+        currentValue={currentValue}
+        name={goal.name}
+        spendLimit={goal.amount_to_goal}
       />
     );
-  });
-  //Handles user data for the Profile Page
-  const { userState } = useUserData();
-  // Generates user info section
-  const userInfo = userState.values.map((values, index) => {
-    return <UserInfo income={values[1]} key={index} />;
   });
 
   const [showResults, setShowResults] = React.useState(false);
@@ -91,7 +93,7 @@ export default function Profile() {
     )
   } 
 
-  // controls how many coins drop 
+  // controls how many coins drop
   function Coins(props) {
     const container = []
     for (let i = 0; i < props.numOfCoins; i ++) {
@@ -99,6 +101,26 @@ export default function Profile() {
     }
     return container
   }
+
+  
+  //Handles userInfo data for the Profile Page
+  const expectedSpend = profileState.expectedSpends.find(ele => ele.active);
+  const expectedBudget = expectedSpend ? expectedSpend.expected_total : 0;
+  const expectedBudgetNum = expectedBudget ? Number(expectedBudget.replace(/[^0-9.-]+/g, "")) : 0;
+
+  const actualSpend = profileState.actualSpends.find(ele => ele.active);
+  const actualBudget = actualSpend ? actualSpend.actual_total : 0;
+  const actualBudgetNum = actualBudget ? Number(actualBudget.replace(/[^0-9.-]+/g, "")) : 0;
+
+
+  //const expectedSpendNum = Number(expectedBudget.replace(/[^0-9.-]+/g, "")) ? Number(expectedBudget.replace(/[^0-9.-]+/g, "")) : 0;
+  //const actualSpendNum = Number(actualBudget.replace(/[^0-9.-]+/g, "")) ? Number(actualBudget.replace(/[^0-9.-]+/g, "")) : 0;
+  const totalRemainingNumber = expectedBudgetNum - actualBudgetNum;
+  const totalRemainingFormatted = `$${totalRemainingNumber}.00` 
+  console.log("TOTAL: ", expectedBudgetNum, actualBudgetNum)
+  const totalRemainingFunds = `$ ${expectedBudget - actualBudget}`;
+  console.log("ACTIVE BUDGET: ", expectedBudget, actualBudget)
+  const userInfo = <UserInfo income={profileState.user.individual_income} expectedExpenses={expectedBudget} balance={totalRemainingFormatted}/>;
 
  // currently have OrbitControls and Debug commented out as they are used to TS but not for production 
   return (
@@ -130,7 +152,7 @@ export default function Profile() {
           <Grid item xs={6}>
             <div className="center-col-profile">
               <div className="previous-budget-graph">
-                <BudgetActualExpected />
+                <BudgetActualExpected actual={graphActual} expected={graphExpected} names={graphNames}/>
               </div>
               <div className="category-bars" style={{ margin: 1 + "em" }}>
                 {categoryProgress}
