@@ -107,6 +107,3 @@ app.use("/api/messages", messagesRoutes(db));
 app.use("/api/analytics", analyticsRoutes(db));
 
 
-// app.listen(port, () => {
-//   console.log(`Example app listening at http://localhost:${port}`);
-// });

@@ -17,7 +17,6 @@ export default function Budget1() {
   //Collect Categories, and expenses using a PromiseAll hook
   const {state, deleteExpense, deleteCategory, createNewCategory, createNewExpense } = useActiveData();
   const[activeCategory, setActiveCategory] = useState(null);
-  console.log("ACTIVE CATEGORY: ", activeCategory)
 
   const percentCalculator = (num, den) => {
     const number1 = num ? Number(num.replace(/[^0-9.-]+/g, "")) : 0.0;
@@ -37,7 +36,6 @@ export default function Budget1() {
   const getExpensesByCategory = (expenseArray, categoryId) => {
     const expensesArray = [];
     for (const expense of expenseArray) {
-      //console.log("EXPENSE OUTSIDE:", expense.category_id, "CATEGORYID:", categoryId);
       if (expense.category_id === categoryId && expense.category_id === activeCategory) {
         expensesArray.push(<BudgetExpense key={expense.expense_id} payee={expense.payee} name={expense.expense_name} amount_paid={expense.amount_paid} cost={expense.cost} onDelete={() => deleteExpense(expense.expense_id)}/>);
       }
@@ -62,9 +60,6 @@ export default function Budget1() {
       }
         }>
         <BudgetCategory getExpensesByCategory={getExpensesByCategory} expenses={state.expenses} category_id={category.category_id} onDelete={() => {deleteCategory(category.category_id)}} spend_limit={category.spend_limit} name={category.category_name} currentValue={checkSpend(state.totalSpendCategories, category)}/>
-        {/* <div className="expense-container" >
-          {getExpensesByCategory(state.expenses, category.category_id)}
-        </div> */}
       </div>
     )
   })
@@ -73,7 +68,6 @@ export default function Budget1() {
 
     const material = new THREE.ShadowMaterial();
     material.opacity = 0.2;
-    const ref = useRef()
     return (
       <mesh material={material} rotation={[-Math.PI / 2, 0, 0]} {...props} castShadow receiveShadow>
         <planeBufferGeometry  args={[15,15]}/>         

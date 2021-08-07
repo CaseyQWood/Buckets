@@ -1,5 +1,5 @@
 import "date-fns";
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import Grid from "@material-ui/core/Grid";
 import DateFnsUtils from "@date-io/date-fns";
 import {
@@ -7,7 +7,6 @@ import {
   KeyboardDatePicker
 } from "@material-ui/pickers";
 import { makeStyles } from "@material-ui/core/styles";
-import { alpha } from "@material-ui/core/styles";
 import BarChart from "../components/BarChart";
 import PieChart from "../components/PieChart";
 import { analyiticsContext } from "../providers/AnalyticsProvider";
@@ -57,10 +56,6 @@ export default function Analytics() {
 
     return [year, month, day].join("-");
   }
-  
-  // console.log("budget to Analytics component", budget);
-  // console.log("goals to Analytics component", goals);
-
 
   // set up labels for bar chart based on retrived data from database
   const budgetLabels = (budget) => {
@@ -69,7 +64,6 @@ export default function Analytics() {
     for (let i = 0; i < budget.length; i++) {
       const date = new Date(formatDate(budget[i].start_date));
       const month = date.toLocaleString('default', { month: 'long' });
-      // console.log(month)
       labels.push(month + ": " + budget[i].name);
     }
     return labels;
@@ -100,12 +94,13 @@ export default function Analytics() {
   // use retrived data from database to feed pie chart
   const goalData = (goals) => {
     let goalsData = [];
+
     if (goals === undefined) return goalsData;
     for (let i = 0; i < goals.length; i++) {
       let intForMoney = Number(goals[i].amount_to_goal.replace(/[^0-9.-]+/g,""));
       goalsData.push(intForMoney)
     }
-    // console.log("goalData---",goalsData)
+
     return goalsData;
   };
 
@@ -114,8 +109,6 @@ export default function Analytics() {
     let goalLabel = [];
     if (goals === undefined) return goalLabel;
     for (let i = 0; i < goals.length; i++) {
-     
-      // console.log(month)
       goalLabel.push(goals[i].name);
     }
     return goalLabel;

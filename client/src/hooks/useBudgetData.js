@@ -7,7 +7,6 @@ export default function useBudget(initial) {
   });
 
   const userId = parseInt(sessionStorage.token);
-  console.log('this is ID', userId)
 
   useEffect(() => {
     axios.get(`http://localhost:3002/api/budgets/all/${userId}`).then(res => {

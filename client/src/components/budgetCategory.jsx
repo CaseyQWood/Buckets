@@ -1,16 +1,9 @@
-//<div>Category Name prop</div>
-//<div>Category Progress Bar component</div>
-//<div>Amount</div>
-//<div className="icons">Edit/Delete</div></div>
 import React, {useState} from 'react';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import PropTypes from 'prop-types';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Box from '@material-ui/core/Box';
 
@@ -20,8 +13,6 @@ export default function BudgetCategory(props) {
   const {name, currentValue, spend_limit, onDelete} = props;
   const [show, setShow] = useState(false)
   const value = currentValue === undefined ? 0 : currentValue;
-
-  console.log('.............',props)
 
   let backgroundColor;
 
@@ -74,7 +65,6 @@ export default function BudgetCategory(props) {
         clearInterval(timer);
       };
     }, []);
-    console.log('this is values', props.value)
   
     return <CircularProgressWithLabel size={100} thickness={7} color={props.value >= 100 ? 'secondary' : 'primary'} value={progress} />;
   }

@@ -6,8 +6,6 @@ export default function useCategoryData(initial) {
     values: [],
   });
 
-  const userId = sessionStorage.token;
-
   useEffect(() => {
     axios.get('http://localhost:3002/api/categories')
     .then(res => {

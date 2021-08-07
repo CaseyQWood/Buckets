@@ -36,13 +36,11 @@ export default function AnalyticsProvider(props) {
   // set date from
   const from = function(dateFrom) {
     setState({...dateFrom, dateFrom: formatDate(dateFrom)});
-    // console.log("dateFrom---", formatDate(dateFrom));
   };
 
   // set date to
   const to = function(dateTo) {
     setState({...dateTo, dateTo: formatDate(dateTo)});
-    // console.log("dateTo---", formatDate(dateTo));
   };
 
   // send request to api to retrive data from database
@@ -54,9 +52,6 @@ export default function AnalyticsProvider(props) {
     ]).then((all) => {
       const analyticsBudget = all[0].data;
       const analyticsGoals = all[1].data;
-
-      // console.log("analyticsBudget--------", analyticsBudget);
-      // console.log("analyticsGoals--------", analyticsGoals);
 
       setState({...state, budget: analyticsBudget, goals: analyticsGoals});
     })
