@@ -1,9 +1,26 @@
-.budget-div {
- display: flex;
+@font-face {
+  font-family: 'Arvo';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Arvo');
 }
 
-.budget-expense {
+.budget-div {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ width: 25%;
+ 
+ .MuiPaper-root {
+  border-radius: 15px;
+  display: flex;
+  flex-direction: row;
+ }
+}
 
+.category-icons {
+  display: flex;
+  justify-content: space-between;
 }
 
 .r3f-chest {
@@ -21,6 +38,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 15px;
+
 }
 
 .budget-container {
@@ -28,7 +47,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding-top: 75px;
+  padding-top: 50px;
   width: 75%;
   border-radius: 15px;
   box-shadow: 2px 7px 10px rgb(155, 152, 152);
@@ -36,4 +55,27 @@
     .progress-label{
       font-size: 1em;
     }
+}
+
+.dial__graph {
+  text-align-last: center;
+}
+
+.MuiCircularProgress-root{
+  width: 50em;
+  height: 50em;
+}
+
+.expenses__container {
+  width: 15em;
+}
+
+.category__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card__core{
+  width: 25%;
 }

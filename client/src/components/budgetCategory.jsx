@@ -2,7 +2,7 @@
 //<div>Category Progress Bar component</div>
 //<div>Amount</div>
 //<div className="icons">Edit/Delete</div></div>
-import React from 'react';
+import React, {useState} from 'react';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Card from '@material-ui/core/Card';
@@ -18,8 +18,10 @@ import '../styles/progressBar.scss'
 
 export default function BudgetCategory(props) {
   const {name, currentValue, spend_limit, onDelete} = props;
-  
+  const [show, setShow] = useState(false)
   const value = currentValue === undefined ? 0 : currentValue;
+
+  console.log('.............',props)
 
   let backgroundColor;
 
@@ -51,6 +53,7 @@ export default function BudgetCategory(props) {
           display="flex"
           alignItems="center"
           justifyContent="center"
+          
         >
           <Typography variant="caption" component="div" color="textSecondary">{`${Math.round(
             props.value,
@@ -73,21 +76,24 @@ export default function BudgetCategory(props) {
     }, []);
     console.log('this is values', props.value)
   
-    return <CircularProgressWithLabel thickness={5} color={props.value >= 100 ? 'secondary' : 'primary'} value={progress} />;
+    return <CircularProgressWithLabel size={100} thickness={7} color={props.value >= 100 ? 'secondary' : 'primary'} value={progress} />;
   }
 
   // make it so at 75 goes yellow 100 red 
   // when over 100% try and indicate its more then one rotation 
   
   return(
-    <div className='emperor'>
-      <div className="budget-div">
-        <Card >
+   
+    <div className="budget-div">
+      <Card >
+        <div>
           <CardContent>
-            <Typography  color="textSecondary" gutterBottom>
-              {name} {spend_limit}
+            <Typography color="textSecondary" gutterBottom>
+              {name}
             </Typography>
+            <div className='dial__graph' onClick={() => {setShow(true)}}>
               <CircularStatic value={value}/>
+            </div>
           </CardContent>
           <Typography  color="textSecondary" gutterBottom>
               Total amount:{spend_limit}
@@ -96,9 +102,13 @@ export default function BudgetCategory(props) {
             <EditIcon />
             <DeleteIcon onClick={onDelete}/>
           </div>
-        </Card>
-      </div>
+        </div>
+        <div>
+          {show ? props.getExpensesByCategory(props.expenses, props.category_id) : <div></div>}
+        </div>
+      </Card>
     </div>
+    
     
 
 

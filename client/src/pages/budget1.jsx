@@ -61,10 +61,10 @@ export default function Budget1() {
         }
       }
         }>
-        <BudgetCategory onDelete={() => {deleteCategory(category.category_id)}} spend_limit={category.spend_limit} name={category.category_name} currentValue={checkSpend(state.totalSpendCategories, category)}/>
-        <div className="expense-container" >
+        <BudgetCategory getExpensesByCategory={getExpensesByCategory} expenses={state.expenses} category_id={category.category_id} onDelete={() => {deleteCategory(category.category_id)}} spend_limit={category.spend_limit} name={category.category_name} currentValue={checkSpend(state.totalSpendCategories, category)}/>
+        {/* <div className="expense-container" >
           {getExpensesByCategory(state.expenses, category.category_id)}
-        </div>
+        </div> */}
       </div>
     )
   })
@@ -85,7 +85,7 @@ export default function Budget1() {
     <div className='emperor'>
       <div className='r3f-chest'>
         <Canvas shadows camera={{angle: 0.5, position: [0.5, 0.1, 3.5] }}>
-          <ambientLight intensity={0.65}/>
+          <ambientLight intensity={0.9}/>
           <pointLight castShadow position={[-5, 10, 10]} intensity={0.5}  angle={1}/>
             <Suspense fallback={null}>
               {/* <OrbitControls/> */}
@@ -95,9 +95,11 @@ export default function Budget1() {
         </Canvas>
       </div>
       <div className="budget-container">
-        {newBudget}
-        <NewCategory budget_id={state.budget_id} onSave={createNewCategory}/>
-        <ShareBudget budgetId={state.budget_id}/>
+        <h3 className='header'>Incoming Templates: {<ShareBudget budgetId={state.budget_id}/>}</h3>
+        <div className='category__container'>
+          {newBudget}
+          <NewCategory budget_id={state.budget_id} onSave={createNewCategory}/>
+        </div>
       </div>
     </div>
     
