@@ -61,7 +61,7 @@ export default function NavBar(props) {
   };
 
   return (
-    <AppBar className={classes.root}>
+    <AppBar className={(classes.root)}>
       <Toolbar>
         <Menu
           style={{ marginTop: "50px" }}
@@ -72,11 +72,11 @@ export default function NavBar(props) {
           onClose={handleClose}
         >
           <Link to="/budget" style={{ textDecoration: "none" }}>
-            <MenuItem className={classes.root, classes.menutItem}>
+            <MenuItem className={(classes.root, classes.menutItem)}>
               CURRENT BUDGET
             </MenuItem>
           </Link>
-          <MenuItem className={classes.root, classes.menutItem}>
+          <MenuItem className={(classes.root, classes.menutItem)}>
             CREATE A NEW BUDGET
           </MenuItem>
         </Menu>
@@ -92,15 +92,23 @@ export default function NavBar(props) {
             to="/profile"
             style={{ textDecoration: "none", color: "black" }}
           >
-            <MenuItem className={classes.root, classes.menutItem}>
+            <MenuItem className={(classes.root, classes.menutItem)}>
               DASHBOARD
+            </MenuItem>
+          </Link>
+          <Link
+            to="/analytics"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <MenuItem className={(classes.root, classes.menutItem)}>
+              ANALYTICS
             </MenuItem>
           </Link>
           <Link
             to="/messages"
             style={{ textDecoration: "none", color: "black" }}
           >
-            <MenuItem className={classes.root, classes.menutItem}>
+            <MenuItem className={(classes.root, classes.menutItem)}>
               MESSAGE
             </MenuItem>
           </Link>
@@ -112,13 +120,13 @@ export default function NavBar(props) {
           alignItems="flex-start"
         >
           <Link to="/" style={{ textDecoration: "none" }}>
-            <Button className={classes.root, classes.button}>
+            <Button className={(classes.root, classes.button)}>
               <LocalAtmIcon />
               BucketUp
             </Button>
           </Link>
           <Button
-            className={classes.root, classes.button}
+            className={(classes.root, classes.button)}
             saria-controls="simple-menu"
             aria-haspopup="true"
             onClick={handleClick}
@@ -126,27 +134,27 @@ export default function NavBar(props) {
             <AccountBalanceWalletIcon />
             Your Budeget
           </Button>
-          <Link to="/profile" style={{ textDecoration: "none" }}>
-            <Button
-              className={classes.root, classes.button}
-              saria-controls="menue-message"
-              aria-haspopup="true"
-              onClick={handleClick1}
-            >
-              <AccountCircleIcon />
-              Profile
-            </Button>
-          </Link>
-          <Button className={classes.root, classes.button}>
+
+          <Button
+            className={(classes.root, classes.button)}
+            saria-controls="menue-message"
+            aria-haspopup="true"
+            onClick={handleClick1}
+          >
+            <AccountCircleIcon />
+            Profile
+          </Button>
+
+          <Button className={(classes.root, classes.button)}>
             <FaceIcon />
             About us
           </Button>
-          <Button className={classes.root, classes.button}>
+          <Button className={(classes.root, classes.button)}>
             <ErrorOutlineIcon />
             Report
           </Button>
           <Link to="/login" style={{ textDecoration: "none" }}>
-            <Button className={classes.root, classes.button}>
+            <Button className={(classes.root, classes.button)}>
               <VpnKeyIcon />
               Login
             </Button>

@@ -36,7 +36,7 @@ export default function Login() {
           sessionStorage.setItem("token", user.id);
           sessionStorage.setItem("firstName", user.first_name);
           sessionStorage.setItem("lastName", user.last_name);
-          
+ 
         }
       });
     });
