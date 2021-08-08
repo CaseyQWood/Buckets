@@ -57,6 +57,8 @@ io.on('connection', (socket) => {
     const user = getUser(socket.id);
 
     // emit message from frontend
+    console.log('user sendmessge~!!!!', user);
+    // user.room = "BucketUp"
     io.to(user.room).emit('message', { user: user.name, text: message });
 
     callback();
