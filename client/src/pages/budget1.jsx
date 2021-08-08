@@ -10,6 +10,7 @@ import { Canvas } from '@react-three/fiber';
 import SotChest from '../3dobjects/SotChest';
 
 import "../styles/budget.scss";
+import NavBar from "../components/NavBar.jsx";
 import { OrbitControls } from '@react-three/drei';
 
 //Create a React page that renders categories, and expenses by category
@@ -94,6 +95,8 @@ export default function Budget1() {
   } 
   
   return (
+    <>
+    <NavBar />
     <div className='emperor'>
       <div className='r3f-chest'>
         <Canvas shadows camera={{angle: 0.5, position: [0.5, 0.1, 3.5] }}>
@@ -114,7 +117,7 @@ export default function Budget1() {
         </div>
       </div>
     </div>
-    
+    </>
     
   )
 }

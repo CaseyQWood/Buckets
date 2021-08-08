@@ -18,6 +18,7 @@ import UserInfo from "../components/userInfo";
 import useActiveData from "../hooks/useActiveData";
 import useVisiblity from "../hooks/useVisiblity";
 import useProfileState from "../hooks/useProfileData";
+import NavBar from "../components/NavBar.jsx";
 
 export default function Profile() {
   const { profileState, userState } = useProfileState();
@@ -117,6 +118,7 @@ export default function Profile() {
  // currently have OrbitControls and Debug commented out as they are used to TS but not for production 
   return (
     <>
+    <NavBar/>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={3}>
           <Grid item xs>
