@@ -29,6 +29,17 @@ export default function useProfileState() {
       console.log("ERROR: ", error.message)
     })
   }, []);
+
+  const addGoal = (goal) => {
+    return axios.post('http://localhost:3002/api/goals/', goal)
+      .then(() => {
+        return axios.get(`http://localhost:3002/api/goals/all/${userId}`)
+          .then((response) => {
+            const goals = response.data;
+            setProfileState(prev => ({...prev, goals}))
+          })
+      })
+  }
   
-  return { profileState, userState };
+  return { profileState, userState, addGoal };
 }

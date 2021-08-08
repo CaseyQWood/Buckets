@@ -1,13 +1,12 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import Popup from 'reactjs-popup';
 import '../styles/NewCategory.scss';
-import EditIcon from '@material-ui/icons/Edit';
+import { Button } from '@material-ui/core';
 
 export default function NewExpense(props) {
   const name = React.useRef(null);
-  const cost = React.useRef(null);
-  const payee = React.useRef(null);
-  const amount_paid = React.useRef(null);
+  const amount_to_goal = React.useRef(null);
+  const amount_added = React.useRef(null);
 
   const getCurrentDay = () => {
     const dateObj = new Date();
@@ -19,29 +18,29 @@ export default function NewExpense(props) {
     return dateString;
   }
 
+
+
   const handleSubmit = (ele) => {
     ele.preventDefault();
 
-    const expense = {
+    const goal = {
       name: name.current.value,
-      cost: cost.current.value,
-      category_id: props.categoryId,
-      start_date: getCurrentDay(),
-      end_date: getCurrentDay(),
-      payee: payee.current.value,
-      amount_paid: amount_paid.current.value,
-      frequency: "Once",
-      priority: 2
+      user_id: sessionStorage.token,
+      budget_id: props.budgetId,
+      amount_to_goal: amount_to_goal.current.value,
+      amount_added: amount_added.current.value,
+      start_date: getCurrentDay,
+      end_date: getCurrentDay
     }
 
-    props.onEdit(expense);
+    props.onSave(goal);
   }
 
   return (
     <Popup
-      trigger={
-        <EditIcon />
-      }
+      trigger={<Button variant="contained" size="large">
+        Create a New Goal
+      </Button>}
       modal
       nested
     >
@@ -50,18 +49,16 @@ export default function NewExpense(props) {
           <button className="close" onClick={close}>
             &times;
           </button>
-          <div className="header"> Edit Expense: </div>
+          <div className="header"> Create a New Expense: </div>
           <div className="category-form-container">
             {' '}
             <form class="new-category-form" onSubmit={handleSubmit}>
               <label>Name:</label>
               <input type="text" ref={name}></input>
-              <label>Cost:</label>
-              <input type="text" ref={cost}></input>
-              <label>Payee:</label>
-              <input type="text" ref={payee}></input>
-              <label>Amount paid so far:</label>
-              <input type="text" ref={amount_paid}></input>
+              <label>Total Cost:</label>
+              <input type="text" ref={amount_to_goal}></input>
+              <label>Contributions so far:</label>
+              <input type="text" ref={amount_added}></input>
               <br></br>
               <button className="new-category-button" type="submit">Submit</button>
             </form>
