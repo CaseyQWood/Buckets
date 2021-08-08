@@ -35,7 +35,7 @@ export default function BudgetActualExpected(props) {
   return (
     <>
       <div className='header'>
-        <h1 className='title'>Expected VS. Actual</h1>
+        <h3 className='title'>Expected VS. Actual</h3>
         <div className='links'>
         </div>
       </div>

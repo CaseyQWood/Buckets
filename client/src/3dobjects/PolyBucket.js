@@ -11,7 +11,7 @@ export default function Bucket(props) {
   return (
     <group ref={group} {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
-        <mesh geometry={nodes.Mesh_0.geometry} material={materials['Material.001']} />
+        <mesh castShadow geometry={nodes.Mesh_0.geometry} material={materials['Material.001']} />
       </group>
     </group>
   )

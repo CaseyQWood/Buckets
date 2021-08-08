@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, { useRef, useState } from 'react';
 import Popup from 'reactjs-popup';
 import '../styles/NewCategory.scss';
 import EditIcon from '@material-ui/icons/Edit';
@@ -18,8 +18,6 @@ export default function NewExpense(props) {
     const dateString = `${year}-${month}-${day}`;
     return dateString;
   }
-    
-  
 
   const handleSubmit = (ele) => {
     ele.preventDefault();
@@ -31,45 +29,45 @@ export default function NewExpense(props) {
       start_date: getCurrentDay(),
       end_date: getCurrentDay(),
       payee: payee.current.value,
-      amount_paid: amount_paid.current.value, 
+      amount_paid: amount_paid.current.value,
       frequency: "Once",
       priority: 2
     }
 
     props.onEdit(expense);
   }
-  
-  return(
-  <Popup
-    trigger={
-            <EditIcon />
-            }
-    modal
-    nested
-  >
-    {close => (
-      <div className="modal">
-        <button className="close" onClick={close}>
-          &times;
-        </button>
-        <div className="header"> Edit Expense: </div>
-        <div className="category-form-container">
-          {' '}
-          <form class="new-category-form" onSubmit={handleSubmit}>
-            <label>Name:</label>
-            <input type="text" ref={name}></input>
-            <label>Cost:</label>
-            <input type="text" ref={cost}></input>
-            <label>Payee:</label>
-            <input type="text" ref={payee}></input>
-            <label>Amount paid so far:</label>
-            <input type="text" ref={amount_paid}></input>
-            <br></br>
-            <button className="new-category-button" type="submit">Submit</button>
-          </form>
+
+  return (
+    <Popup
+      trigger={
+        <EditIcon />
+      }
+      modal
+      nested
+    >
+      {close => (
+        <div className="modal">
+          <button className="close" onClick={close}>
+            &times;
+          </button>
+          <div className="header"> Edit Expense: </div>
+          <div className="category-form-container">
+            {' '}
+            <form class="new-category-form" onSubmit={handleSubmit}>
+              <label>Name:</label>
+              <input type="text" ref={name}></input>
+              <label>Cost:</label>
+              <input type="text" ref={cost}></input>
+              <label>Payee:</label>
+              <input type="text" ref={payee}></input>
+              <label>Amount paid so far:</label>
+              <input type="text" ref={amount_paid}></input>
+              <br></br>
+              <button className="new-category-button" type="submit">Submit</button>
+            </form>
+          </div>
         </div>
-      </div>
-    )}
-  </Popup>
+      )}
+    </Popup>
   );
 };
