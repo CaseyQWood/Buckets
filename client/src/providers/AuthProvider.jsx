@@ -10,15 +10,12 @@ export default function AuthProvider(props) {
     const firstName = sessionStorage.firstName;
     const lastName = sessionStorage.lastName;
     const userName = `${firstName}, ${lastName}`;
-    console.log("login email!!!!", email);
-    console.log("login pass", password);
+    
     setUser({email, password, name: userName});
     setAuth(true);
-    console.log("user from authProv", user);
-    console.log("auth from authProv", auth);
   }
 
-  const logout = (email, password) => {
+  const logout = () => {
     setUser({ email: "", name: "" });
     setAuth(false);
   }
