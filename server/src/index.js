@@ -17,7 +17,7 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 // import helper functions
-const { addUser, removeUser, getUser, getUsersInRoom } = require('./users.js')
+const { addUser, removeUser, getUser, getUsersInRoom } = require('./helper/users.js')
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
