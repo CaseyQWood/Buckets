@@ -13,7 +13,9 @@ import Home from "./pages/Home";
 
 import { useContext } from "react";
 import { analyiticsContext } from "./providers/AnalyticsProvider";
+import { authContext } from "./providers/AnalyticsProvider";
 import AnalyticsProvider from "./providers/AnalyticsProvider";
+import AuthProvider from "./providers/AuthProvider";
 
 // import AdapterDateFns from '@material-ui/lab/AdapterDateFns';
 // import LocalizationProvider from '@material-ui/lab/LocalizationProvider';
@@ -24,6 +26,7 @@ function App() {
   return (
     <>
       <Router>
+          <AuthProvider>
           <Route exact={true} path="/" component={Home} /> 
           <Route exact={true} path="/login" component={Login} />  
           <Route exact={true} path="/register" component={Register} />
@@ -36,7 +39,8 @@ function App() {
           <AnalyticsProvider>
             <Route exact={true} path="/analytics" component={Analytics} />
           </AnalyticsProvider>
-    
+          
+          </AuthProvider>
       </Router>
     </>
   );
