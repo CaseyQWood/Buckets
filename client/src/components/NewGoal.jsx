@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React from 'react';
 import Popup from 'reactjs-popup';
 import '../styles/NewCategory.scss';
 import { Button } from '@material-ui/core';
@@ -17,8 +17,8 @@ export default function NewExpense(props) {
     const dateString = `${year}-${month}-${day}`;
     return dateString;
   }
-    
-  
+
+
 
   const handleSubmit = (ele) => {
     ele.preventDefault();
@@ -35,36 +35,36 @@ export default function NewExpense(props) {
 
     props.onSave(goal);
   }
-  
-  return(
-  <Popup
-    trigger={<Button variant="contained" size="large">
-              Create a New Goal
-            </Button>}
-    modal
-    nested
-  >
-    {close => (
-      <div className="modal">
-        <button className="close" onClick={close}>
-          &times;
-        </button>
-        <div className="header"> Create a New Expense: </div>
-        <div className="category-form-container">
-          {' '}
-          <form class="new-category-form" onSubmit={handleSubmit}>
-            <label>Name:</label>
-            <input type="text" ref={name}></input>
-            <label>Total Cost:</label>
-            <input type="text" ref={amount_to_goal}></input>
-            <label>Contributions so far:</label>
-            <input type="text" ref={amount_added}></input>
-            <br></br>
-            <button className="new-category-button" type="submit">Submit</button>
-          </form>
+
+  return (
+    <Popup
+      trigger={<Button variant="contained" size="large">
+        Create a New Goal
+      </Button>}
+      modal
+      nested
+    >
+      {close => (
+        <div className="modal">
+          <button className="close" onClick={close}>
+            &times;
+          </button>
+          <div className="header"> Create a New Expense: </div>
+          <div className="category-form-container">
+            {' '}
+            <form class="new-category-form" onSubmit={handleSubmit}>
+              <label>Name:</label>
+              <input type="text" ref={name}></input>
+              <label>Total Cost:</label>
+              <input type="text" ref={amount_to_goal}></input>
+              <label>Contributions so far:</label>
+              <input type="text" ref={amount_added}></input>
+              <br></br>
+              <button className="new-category-button" type="submit">Submit</button>
+            </form>
+          </div>
         </div>
-      </div>
-    )}
-  </Popup>
+      )}
+    </Popup>
   );
 };
