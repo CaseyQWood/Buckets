@@ -10,15 +10,12 @@ import Join from "./components/Join.jsx";
 import Chat from "./components/Chat.jsx";
 import Budget1 from "./pages/budget1";
 import Home from "./pages/Home";
-
 import { useContext } from "react";
 import { analyiticsContext } from "./providers/AnalyticsProvider";
 import { authContext } from "./providers/AnalyticsProvider";
 import AnalyticsProvider from "./providers/AnalyticsProvider";
 import AuthProvider from "./providers/AuthProvider";
 
-// import AdapterDateFns from '@material-ui/lab/AdapterDateFns';
-// import LocalizationProvider from '@material-ui/lab/LocalizationProvider';
 
 // currently the commented out section was just for testing base 3d object dependancies ahead of time please disregard
 
@@ -39,7 +36,7 @@ function App() {
           <AnalyticsProvider>
             <Route exact={true} path="/analytics" component={Analytics} />
           </AnalyticsProvider>
-          
+
           </AuthProvider>
       </Router>
     </>
