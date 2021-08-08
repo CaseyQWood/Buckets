@@ -4,7 +4,7 @@ canvas {
 }
 
 .user-login {
-  color: white;
+  color: black;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -17,10 +17,11 @@ canvas {
   width: 100vw;
 }
 
-.input-field {
+input.input-field {
+  background-color: gold;
   height: 35px;
-  font-size: 1.1rem; 
-  border: none;
+  font-size: 1.1rem;
+  border:2px solid black !important;
   width: 100%;
   font-size: 15px;
   border-radius: 3px;
@@ -29,15 +30,28 @@ canvas {
 .submit-button {
   height: 35px;
   width: 80px;
+  font-weight: bold;
   font-size: 15px;
   background-color: gold;
-  border:3px solid white ;
+  border: 2px solid black;
   border-radius: 5px;
-  color: white;
+  color: black;
+  box-shadow: 2px 2px 1px gray;
   cursor: pointer;
-  }
+}
 
-
+.submit-button:hover {
+  height: 35px;
+  width: 80px;
+  font-weight: bold;
+  font-size: 15px;
+  background-color: black;
+  border: 2px solid gold;
+  border-radius: 5px;
+  color: gold;
+  box-shadow: 2px 2px 1px gray;
+  cursor: pointer;
+}
 .login {
   position: relative;
   display: flex;
@@ -46,16 +60,19 @@ canvas {
   align-items: center;
   background-color: gold;
   width: 40vh;
-  height: 30vh;
+  height: 40vh;
   border-radius: 15px;
   z-index: 1;
+  box-shadow: 2px 3px 10px rgb(113, 104, 104);
 }
 
-
-.falling-coins{
-z-index: -1;
-position: fixed;
-height: 100vw;
-width: 100vw;
+.other-sign-in {
+  margin-top: 15px;
 }
 
+.falling-coins {
+  z-index: -1;
+  position: fixed;
+  height: 100vw;
+  width: 100vw;
+}

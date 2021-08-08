@@ -149,10 +149,6 @@ export default function NavBar(props) {
             <FaceIcon />
             About us
           </Button>
-          <Button className={(classes.root, classes.button)}>
-            <ErrorOutlineIcon />
-            Report
-          </Button>
           <Link to="/login" style={{ textDecoration: "none" }}>
             <Button className={(classes.root, classes.button)}>
               <VpnKeyIcon />

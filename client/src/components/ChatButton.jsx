@@ -1,4 +1,5 @@
 import React from "react";
+import SmsIcon from '@material-ui/icons/Sms';
 import "../styles/ChatButton.scss";
 
 export default function ChatButton(props) {
@@ -7,10 +8,7 @@ export default function ChatButton(props) {
         <div className="icon facebook">
           <div className="tooltip">Help?</div>
           <span>
-          <img
-            src="https://img1.wsimg.com/dc-assets/live-engage/images/chat-baloon.svg"
-            alt="Contact Us"
-          ></img>
+          <SmsIcon />
           </span>
         </div>
       </div>  
