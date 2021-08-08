@@ -7,6 +7,16 @@ import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Box from '@material-ui/core/Box';
 import EditCategory from '../components/EditCategory';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import InfoIcon from '@material-ui/icons/Info';
+import { List } from '@material-ui/core';
+import { ListSubheader } from '@material-ui/core';
+import { ListItem } from '@material-ui/core';
+import { ListItemText } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { Paper } from '@material-ui/core';
+
 
 import '../styles/progressBar.scss'
 
@@ -72,33 +82,51 @@ export default function BudgetCategory(props) {
 
   // make it so at 75 goes yellow 100 red 
   // when over 100% try and indicate its more then one rotation 
+
+
   
   return(
    
-    <div className="budget-div">
-      <Card >
-        <div>
-          <CardContent>
-            <Typography color="textSecondary" gutterBottom>
+  
+      <Card style={props.activeCategory === props.category_id ? {width: "calc((100% / 2) - 1em)", display: 'flex', height: '15em'} : {width: "calc((100% / 4) - 1em)", height: '15em'}} >
+
+        <CardContent style={{width: '-webkit-fill-available'}}>
+          
+          <div className='card__title'>
+            <h3>
               {name}
-            </Typography>
-            <div className='dial__graph' onClick={() => {setShow(true)}}>
-              <CircularStatic value={value}/>
-            </div>
-          </CardContent>
+            </h3>
+            <span onClick={() => props.expand(props.category_id)}>
+              <InfoIcon/>
+            </span>
+            
+          </div>
+          <div className='dial__graph' onClick={() => {setShow(true)}}>
+            <CircularStatic value={value}/>
+          </div>
           <Typography  color="textSecondary" gutterBottom>
-              Total amount:{spend_limit}
-            </Typography>
+            Total amount:{spend_limit}
+          </Typography>
           <div className="category-icons">
             <EditCategory onEdit={onEdit} categoryId={category_id}/>
             <DeleteIcon onClick={onDelete}/>
           </div>
-        </div>
-        <div>
-          {show ? props.getExpensesByCategory(props.expenses, props.category_id) : <div></div>}
-        </div>
+        </CardContent>
+        
+    
+       
+          <Paper style={{maxHeight: "15em", overflow: 'auto', width: '-webkit-fill-available'}}>
+            <List>
+            {props.getExpensesByCategory(props.expenses, props.category_id)}
+            </List>
+           
+          </Paper>
+          
+          {/* {show ? props.getExpensesByCategory(props.expenses, props.category_id) : <div></div>} */}
+       
+
       </Card>
-    </div>
+    
     
     
 
