@@ -20,7 +20,9 @@ import NewChat from "../components/NewChat";
 export default function Budget1() {
   //Collect Categories, and expenses using a PromiseAll hook
   const {state, deleteExpense, deleteCategory, createNewCategory, createNewExpense, editCategory, editExpense } = useActiveData();
-  const[activeCategory, setActiveCategory] = useState(null);
+  const[activeCategory, setActiveCategory] = useState(0);
+
+  const [ChatComponent, toggleVisibility] = useVisiblity(<NewChat />, false);
 
   const [ChatComponent, toggleVisibility] = useVisiblity(<NewChat />, false);
 
@@ -48,7 +50,8 @@ export default function Budget1() {
             key={expense.expense_id} 
             payee={expense.payee} 
             name={expense.expense_name} 
-            amount_paid={expense.amount_paid} cost={expense.cost} 
+            amount_paid={expense.amount_paid}
+            cost={expense.cost} 
             onDelete={() => deleteExpense(expense.expense_id)}
             onEdit={editExpense}
             categoryId={expense.category_id}
@@ -63,28 +66,42 @@ export default function Budget1() {
     return expensesArray;
   }
 
+  const expand = (category_id) => {
+    if (activeCategory !== 0) {
+      setActiveCategory(0);
+    } else {
+      setActiveCategory(category_id);
+    }
+  }
+
   //iterate through categories that belong to the current budget generating a category component for each
   const newBudget = state.categories.map(category => {
-    console.log("WHAT IS THIS VALUE ", category.category_id);
+    console.log("WHAT IS THIS VALUE ", activeCategory);
+
+
+
+
     return(
-      <div className="category-container" onClick={() => {
-        if (activeCategory !== 0) {
-          setActiveCategory(0);
-        } else {
-        setActiveCategory(category.category_id);
-        }
-      }
-        }>
+      // <div className="category-container" onClick={() => {
+      //   if (activeCategory !== 0) {
+      //     setActiveCategory(0);
+      //   } else {
+      //   setActiveCategory(category.category_id);
+      //   }
+      // }
+      //   }>
         <BudgetCategory 
-        getExpensesByCategory={getExpensesByCategory} 
-        expenses={state.expenses} 
-        category_id={category.category_id} 
-        onDelete={() => {deleteCategory(category.category_id)}} 
-        spend_limit={category.spend_limit} name={category.category_name} 
-        currentValue={checkSpend(state.totalSpendCategories, category)}
-        onEdit={editCategory}
+          activeCategory={activeCategory}
+          getExpensesByCategory={getExpensesByCategory} 
+          expenses={state.expenses} 
+          category_id={category.category_id} 
+          onDelete={() => {deleteCategory(category.category_id)}} 
+          spend_limit={category.spend_limit} name={category.category_name} 
+          currentValue={checkSpend(state.totalSpendCategories, category)}
+          onEdit={editCategory}
+          expand={expand}
         />
-      </div>
+      // </div>
     )
   })
 
@@ -115,11 +132,11 @@ export default function Budget1() {
         </Canvas>
       </div>
       <div className="budget-container">
-        <h3 className='header'>Incoming Templates: {<ShareBudget budgetId={state.budget_id}/>}</h3>
+        <h3 className='header'>Current Categories: {<ShareBudget budgetId={state.budget_id}/>}</h3>
         <div className='category__container'>
           {newBudget}
-          <NewCategory budget_id={state.budget_id} onSave={createNewCategory}/>
         </div>
+        <NewCategory budget_id={state.budget_id} onSave={createNewCategory}/>
       </div>
     </div>
     <ChatButton onClick={toggleVisibility} />
