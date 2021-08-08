@@ -11,13 +11,18 @@ import SotChest from '../3dobjects/SotChest';
 
 import "../styles/budget.scss";
 import NavBar from "../components/NavBar.jsx";
-import { OrbitControls } from '@react-three/drei';
+import useVisiblity from "../hooks/useVisiblity";
+import ChatButton from "../components/ChatButton";
+import NewChat from "../components/NewChat";
+
 
 //Create a React page that renders categories, and expenses by category
 export default function Budget1() {
   //Collect Categories, and expenses using a PromiseAll hook
   const {state, deleteExpense, deleteCategory, createNewCategory, createNewExpense, editCategory, editExpense } = useActiveData();
   const[activeCategory, setActiveCategory] = useState(null);
+
+  const [ChatComponent, toggleVisibility] = useVisiblity(<NewChat />, false);
 
   const percentCalculator = (num, den) => {
     const number1 = num ? Number(num.replace(/[^0-9.-]+/g, "")) : 0.0;
@@ -117,6 +122,8 @@ export default function Budget1() {
         </div>
       </div>
     </div>
+    <ChatButton onClick={toggleVisibility} />
+        {ChatComponent}
     </>
     
   )

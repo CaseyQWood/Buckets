@@ -7,17 +7,16 @@ import ChatButton from "../components/ChatButton";
 import NewChat from "../components/NewChat";
 
 import { Physics, usePlane } from '@react-three/cannon'
-import { Canvas, extend } from '@react-three/fiber'
+import { Canvas } from '@react-three/fiber'
 import Bucket from '../3dobjects/PolyBucket'
 import Coin from '../3dobjects/BucketCoin'
 import Wall from '../3dobjects/PhysicsWalls'
-import Icon from "../components/progressBar";
 import NewGoal from '../components/NewGoal'
 import DarkIcon from "../3dobjects/DarkGraph";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from 'three'
 
-import { Grid, Box, Button } from "@material-ui/core";
+import { Grid, Box } from "@material-ui/core";
 import UserInfo from "../components/userInfo";
 
 import useActiveData from "../hooks/useActiveData";
@@ -30,7 +29,7 @@ export default function Profile() {
   //Handles visibility of Chat component
   const [ChatComponent, toggleVisibility] = useVisiblity(<NewChat />, false);
   //Access needed data with Axios
-  const budgetId = profileState ? profileState.actualSpends[0].budget_id : 0;
+  const budgetId = profileState.actualSpends[0] ? profileState.actualSpends[0].budget_id : 0;
 
   // Handles category data for the progress bar component
   const { state } = useActiveData();
@@ -134,7 +133,7 @@ export default function Profile() {
 
   const userInfo = <UserInfo income={profileState.user.individual_income} expectedExpenses={expectedBudget} balance={totalRemainingFormatted} />;
 
-  // currently have OrbitControls and Debug commented out as they are used to TS but not for production 
+  // currently have OrbitControls and Debug commented out as they are used to TS but not for production
   return (
 
     <>

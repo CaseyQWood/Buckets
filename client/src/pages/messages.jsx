@@ -6,10 +6,13 @@ import { Canvas } from '@react-three/fiber';
 import MailIcon from '../3dobjects/MailIcon';
 import * as THREE from 'three'
 import NavBar from "../components/NavBar.jsx";
+import useVisiblity from "../hooks/useVisiblity";
+import ChatButton from "../components/ChatButton";
+import NewChat from "../components/NewChat";
 
 export default function Messages(props) {
   const {messageState} = useMessagesData()
-
+  const [ChatComponent, toggleVisibility] = useVisiblity(<NewChat />, false);
 
   function Plane(props) {
 
@@ -21,8 +24,8 @@ export default function Messages(props) {
       </mesh >
     )
   } 
-  // implement messages for other actions 
-  // add a delete button 
+ // implement messages for other actions 
+ // add a delete button 
  // try to on load of page spinn the icon 
 
   return (
@@ -51,6 +54,8 @@ export default function Messages(props) {
         </div>
       </div>
     </div>
+    <ChatButton onClick={toggleVisibility} />
+        {ChatComponent}
     </>
   )
 }
