@@ -12,6 +12,7 @@ import Bucket from '../3dobjects/PolyBucket'
 import Coin from '../3dobjects/BucketCoin'
 import Wall from '../3dobjects/PhysicsWalls'
 import Icon from "../components/progressBar";
+import NewGoal from '../components/NewGoal'
 import DarkIcon from "../3dobjects/DarkGraph";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from 'three'
@@ -24,11 +25,12 @@ import useVisiblity from "../hooks/useVisiblity";
 import useProfileState from "../hooks/useProfileData";
 
 export default function Profile() {
-  const { profileState, userState } = useProfileState();
+  const { profileState, userState, addGoal } = useProfileState();
   //Handles visibility of Chat component
   const [ChatComponent, toggleVisibility] = useVisiblity(<NewChat />, false);
   //Access needed data with Axios
-  
+  const budgetId = profileState ? profileState.actualSpends[0].budget_id : 0;
+  console.log("BUDGET ID", budgetId) 
 
   // Handles category data for the progress bar component
   const { state } = useActiveData();
@@ -171,15 +173,7 @@ export default function Profile() {
 
                 <div className="buttonComponent">
                   <span>
-                    <Button variant="contained" size="large">
-                      Create a New Budget
-                    </Button>
-                  </span>
-
-                  <span>
-                    <Button variant="contained" size="large">
-                      Create a New Goal
-                    </Button>
+                    <NewGoal onSave={addGoal} budgetId={budgetId} />
                   </span>
                 </div>
 
