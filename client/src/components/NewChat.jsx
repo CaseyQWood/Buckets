@@ -25,7 +25,7 @@ const NewChat = (props) => {
 
   useEffect(() => {
     
-    // pass endpoint to server localhost:3002
+    // pass the endpoint to server localhost:3002
     socket = io(ENDPOINT, { transports: ["websocket"]});
 
     setRoom(room);
@@ -34,7 +34,7 @@ const NewChat = (props) => {
     // emit from client side socket with join even
     socket.emit('join', { name, room }, (error) => {
       if(error) {
-        // alert(error);
+        alert(error);
       }
     });
   }, [userName, question]);
@@ -64,7 +64,6 @@ const NewChat = (props) => {
   const switchChatMode = () => {
     if (chatVis === true) setChatVis(false);
     else setChatVis(true);
-    console.log("chat vis!!!", chatVis);
   }
  
 
