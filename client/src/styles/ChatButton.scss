@@ -36,8 +36,8 @@
   position: absolute;
   top: 0;
   font-size: 14px;
-  background-color: #ffffff;
-  color: #ffffff;
+  background-color: black;
+  color:black;
   padding: 5px 8px;
   border-radius: 5px;
   box-shadow: 2px 7px 10px rgb(113, 104, 104);
@@ -51,6 +51,7 @@
   content: "";
   height: 8px;
   width: 16px;
+  color: black;
   background-color: #ffffff;
   bottom: -3px;
   left: 50%;
@@ -74,7 +75,7 @@
 .wrapper .facebook:hover .tooltip,
 .wrapper .facebook:hover .tooltip::before {
   background-color: gold;
-  color: #ffffff;
+  color: black
 }
 
 .screen {

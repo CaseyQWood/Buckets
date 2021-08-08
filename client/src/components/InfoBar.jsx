@@ -1,7 +1,7 @@
 import React from 'react';
-
+import CloseIcon from '@material-ui/icons/Close';
 import onlineIcon from '../icons/onlineIcon.png';
-import closeIcon from '../icons/closeIcon.png';
+import ClearIcon from '@material-ui/icons/Clear';
 
 import '../styles/InfoBar.scss';
 
@@ -12,7 +12,7 @@ const InfoBar = ({room}) => (
       <div>{room}</div>
     </div>
     <div className="rightInnerContainer">
-      <a href="/profile"><img src={closeIcon} alt="close icon" /></a>
+      <ClearIcon />
     </div>
   </div>
 );

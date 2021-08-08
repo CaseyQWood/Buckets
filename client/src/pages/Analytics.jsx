@@ -11,6 +11,7 @@ import BarChart from "../components/BarChart";
 import PieChart from "../components/PieChart";
 import { analyiticsContext } from "../providers/AnalyticsProvider";
 import ProgressBar from "../components/progressBar";
+import NavBar from "../components/NavBar.jsx";
 
 const useStyles = makeStyles((theme) => ({
   timePicker: {
@@ -255,6 +256,7 @@ export default function Analytics() {
 
   return (
     <>
+      <NavBar />
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Grid
           container
