@@ -5,7 +5,7 @@ import '../styles/inbox.scss'
 import { Canvas } from '@react-three/fiber';
 import MailIcon from '../3dobjects/MailIcon';
 import * as THREE from 'three'
-
+import NavBar from "../components/NavBar.jsx";
 
 export default function Messages(props) {
   const {messageState} = useMessagesData()
@@ -26,6 +26,8 @@ export default function Messages(props) {
  // try to on load of page spinn the icon 
 
   return (
+    <>
+    <NavBar />
     <div className='admeral'>
       <div className='capitan'>
         
@@ -49,6 +51,7 @@ export default function Messages(props) {
         </div>
       </div>
     </div>
+    </>
   )
 }
 
