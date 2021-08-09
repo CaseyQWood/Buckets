@@ -16,7 +16,7 @@
   margin: 2vw;
 }
 .new-category-button {
-	color: black !important;
+	color: black;
 	text-transform: uppercase;
 	text-decoration: none;
 	background: gold;
@@ -25,11 +25,12 @@
 	border-radius: 5px;
 	display: inline-block;
 	transition: all 0.4s ease 0s;
-  box-shadow: 2.5px 5px black;
+  box-shadow: 2.5px 5px grey;
 }
 
 .new-category-button:hover {
-	background: #434343;
+	background: black;
+  color: gold;
 	letter-spacing: 1px;
 	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
 	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
