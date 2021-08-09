@@ -52,6 +52,7 @@ input.input-field {
   box-shadow: 2px 2px 1px gray;
   cursor: pointer;
 }
+
 .login {
   position: relative;
   display: flex;
@@ -60,14 +61,41 @@ input.input-field {
   align-items: center;
   background-color: gold;
   width: 40vh;
-  height: 40vh;
+  height: 60vh;
   border-radius: 15px;
   z-index: 1;
   box-shadow: 2px 3px 10px rgb(113, 104, 104);
 }
+.face {
+  margin-top: 20%;
+  text-align: center;
+}
+
+.face-header {
+  height: 300px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
 
 .other-sign-in {
   margin-top: 15px;
+}
+
+.other-sign-in-icon:hover {
+  
+  font-weight: bold;
+
+  background-color: black;
+  border: 2px solid gold;
+  border-radius: 5px;
+  color: gold;
+  box-shadow: 2px 2px 1px gray;
+  cursor: pointer;
 }
 
 .falling-coins {
@@ -75,4 +103,8 @@ input.input-field {
   position: fixed;
   height: 100vw;
   width: 100vw;
+}
+
+.login-emperor {
+ 
 }
