@@ -44,7 +44,7 @@ export default function Budget1() {
   //Collect Categories, and expenses using a PromiseAll hook
   const { budgetListState } = useBudgetList();
   const [open, setOpen] = useState(true);
-  const {state, deleteExpense, deleteCategory, createNewCategory, createNewExpense, editCategory, editExpense } = useActiveData();
+  const {state, deleteExpense, deleteCategory, createNewCategory, createNewExpense, editCategory, editExpense , setState} = useActiveData();
   const[activeCategory, setActiveCategory] = useState(0);
 
   const [ChatComponent, toggleVisibility] = useVisiblity(<NewChat />, false);
@@ -161,6 +161,15 @@ export default function Budget1() {
       </div>
       <div className="budget-container">
         <h3 className='header'>Current Categories: {<ShareBudget budgetId={state.budget_id}/>}</h3>
+        <SplitButton
+            setState={() => setState}
+            state={state}
+            selectedIndex={selectedIndex}
+            setSelectedIndex={setSelectedIndex}
+            currentBudgetId={state.budget_id}
+            defaultId={defaultIndex}
+            budgetList={budgetListState.budgetListData}
+          />
         <div className='category__container'>
           {newBudget}
         </div>
