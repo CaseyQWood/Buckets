@@ -20,9 +20,7 @@ export default function NewExpense(props) {
   }
 
   const handleSubmit = (ele) => {
-    ele.preventDefault();
-
-    const expense = {
+      const expense = {
       name: name.current.value,
       cost: cost.current.value,
       category_id: props.categoryId,
@@ -38,7 +36,7 @@ export default function NewExpense(props) {
   }
 
   return (
-    <Popup
+    <Popup open={false}
       trigger={
         <EditIcon />
       }

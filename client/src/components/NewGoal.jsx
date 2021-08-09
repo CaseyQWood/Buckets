@@ -7,12 +7,6 @@ export default function NewExpense(props) {
   const name = React.useRef(null);
   const amount_to_goal = React.useRef(null);
   const amount_added = React.useRef(null);
-
-  const [open, setOpen] = useState(true);
-
-  const handleClose = () => {
-    setOpen(false);
-  }
   
   const getCurrentDay = () => {
     const dateObj = new Date();
@@ -27,8 +21,6 @@ export default function NewExpense(props) {
 
 
   const handleSubmit = (ele) => {
-    ele.preventDefault();
-
     const goal = {
       name: name.current.value,
       user_id: sessionStorage.token,
@@ -40,7 +32,6 @@ export default function NewExpense(props) {
     }
 
     props.onSave(goal);
-    handleClose();
   }
 
   return (

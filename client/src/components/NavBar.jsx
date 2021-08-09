@@ -121,7 +121,7 @@ export default function NavBar(props) {
             onClick={handleClick}
           >
             <AccountBalanceWalletIcon />
-            Your Budeget
+            Your Budget
           </Button>
           </Link>
 
