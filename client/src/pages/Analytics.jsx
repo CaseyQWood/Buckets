@@ -15,12 +15,13 @@ import NavBar from "../components/NavBar.jsx";
 import useVisiblity from "../hooks/useVisiblity";
 import ChatButton from "../components/ChatButton";
 import NewChat from "../components/NewChat";
+import "../styles/Analytics.scss";
 
 const useStyles = makeStyles((theme) => ({
   timePicker: {
     backgroundcolor: "gold",
     color: "gold",
-    marginTop: "150px"
+    marginTop: "50px"
   }
 }));
 
@@ -120,7 +121,7 @@ export default function Analytics() {
     return goalsData;
   };
 
-  //  use retrived added to goal data from database to feed pie chart 
+  //  use retrived added to goal data from database to feed pie chart
   const addedToGoalData = (goals) => {
     let addedToGoalData = [];
 
@@ -157,17 +158,22 @@ export default function Analytics() {
   // generate a progress bar for each goal
   const goalArr = goals || [];
   const goalProgress = goalArr.map((goal, index) => {
-      const currentValue = percentCalculator(goal.amount_added, goal.amount_to_goal);
-      return (
+    const currentValue = percentCalculator(
+      goal.amount_added,
+      goal.amount_to_goal
+    );
+    return (
+      <div className="progress-bar">
         <ProgressBar
           key={index}
           currentValue={currentValue}
           name={goal.name}
           spendLimit={goal.amount_to_goal}
         />
-      );
-  })
-  
+      </div>
+    );
+  });
+
   // use retrived data from database to feed bar chart
   const data = {
     labels: budgetLabels(budget),
@@ -215,18 +221,14 @@ export default function Analytics() {
       {
         label: "",
         backgroundColor: [
-          "#C9DE00",
-          "#2FDE00",
-          "#00A6B4",
-          "#6800B4",
-          "#6800B4"
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(255, 206, 86, 0.2)"
         ],
         hoverBackgroundColor: [
-          "#4B5000",
-          "#175000",
-          "#003350",
-          "#35014F",
-          "#35014F"
+          "rgba(255, 99, 132, 1)",
+          "rgba(54, 162, 235, 1)",
+          "rgba(255, 206, 86, 1)"
         ],
         data: goalData(goals)
       }
@@ -239,20 +241,14 @@ export default function Analytics() {
       {
         label: "",
         backgroundColor: [
-          "#B21F00",
-          "#C9DE00",
-          "#2FDE00",
-          "#00A6B4",
-          "#6800B4",
-          "#6800B4"
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(255, 206, 86, 0.2)"
         ],
         hoverBackgroundColor: [
-          "#501800",
-          "#4B5000",
-          "#175000",
-          "#003350",
-          "#35014F",
-          "#35014F"
+          "rgba(255, 99, 132, 1)",
+          "rgba(54, 162, 235, 1)",
+          "rgba(255, 206, 86, 1)"
         ],
         data: addedToGoalData(goals)
       }
@@ -261,66 +257,79 @@ export default function Analytics() {
 
   return (
     <>
-      <NavBar />
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <Grid
-          container
-          justifyContent="space-around"
-          className={classes.timePicker}
-        >
-          <KeyboardDatePicker
-            disableToolbar
-            variant="inline"
-            format="yyyy-MM-dd"
-            margin="normal"
-            id="date-picker-inline"
-            label="From"
-            value={selectedFromDate}
-            onChange={handleDateFromChange}
-            KeyboardButtonProps={{
-              "aria-label": "change date"
-            }}
-          />
-          <KeyboardDatePicker
-            disableToolbar
-            variant="inline"
-            format="yyyy-MM-dd"
-            margin="normal"
-            id="date-picker-inline"
-            label="To"
-            value={selectedToDate}
-            onChange={handleDateToChange}
-            KeyboardButtonProps={{
-              "aria-label": "change date"
-            }}
-          />
-        </Grid>
-        <button
-          onClick={() =>
-            searchDate(formatDate(selectedFromDate), formatDate(selectedToDate))
-          }
-        >
-          Search
-        </button>
-      </MuiPickersUtilsProvider>
-      <div className="barchart">
-        <h3>Expenses vs Spending Limit</h3>
-        <BarChart barData={data} options={options} />
+      <div className="analtyics-emperor">
+        <div>
+          <NavBar />
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <Grid
+              container
+              justifyContent="space-around"
+              className={classes.timePicker}
+            >
+              <KeyboardDatePicker
+                disableToolbar
+                variant="inline"
+                format="yyyy-MM-dd"
+                margin="normal"
+                id="date-picker-inline"
+                label="From"
+                value={selectedFromDate}
+                onChange={handleDateFromChange}
+                KeyboardButtonProps={{
+                  "aria-label": "change date"
+                }}
+              />
+              <KeyboardDatePicker
+                disableToolbar
+                variant="inline"
+                format="yyyy-MM-dd"
+                margin="normal"
+                id="date-picker-inline"
+                label="To"
+                value={selectedToDate}
+                onChange={handleDateToChange}
+                KeyboardButtonProps={{
+                  "aria-label": "change date"
+                }}
+              />
+               <button
+              className="search-button"
+              onClick={() =>
+                searchDate(
+                  formatDate(selectedFromDate),
+                  formatDate(selectedToDate)
+                )
+              }
+            >
+              Search
+            </button>
+            </Grid>
+           
+          </MuiPickersUtilsProvider>
+          <div className="barchart" >
+            <p>Expenses vs Spending Limit</p>
+            <div style={{width: "600px"}}>
+            <BarChart barData={data} options={options} />
+            </div>
+          </div>
+
+          <div className="piechart-goal">
+            <p>Goals</p>
+              <PieChart pieData={pieGoalData} />
+          </div>
+         
+            <div className="piechart-goal">
+            <p >Added amount to goals</p>
+            
+              <PieChart pieData={pieAddedAmountData} />
+            </div>
+
+          <div className="piechart-goal">{goalProgress}</div>
+        </div>
       </div>
 
-      <div className="piechart-goal">
-        <h3>Goals</h3>
-        <PieChart pieData={pieGoalData} />
-      </div>
-
-      <div className="piechart-added-amount">
-        <h3>Added amount to goals</h3>
-        <PieChart pieData={pieAddedAmountData} />
-      </div>
-        {goalProgress}
-
-        <ChatButton onClick={toggleVisibility} />
-        {ChatComponent}
+      <ChatButton onClick={toggleVisibility} />
+      {ChatComponent}
     </>
   );
 }

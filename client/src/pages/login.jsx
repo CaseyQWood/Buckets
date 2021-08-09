@@ -52,6 +52,7 @@ export default function Login() {
 
   return (
     <>
+    <div className='login-emperor'>
       <div className="general">
         <div className="falling-coins">
           <Canvas height={window.innerHeight} width={window.innerWidth}>
@@ -78,6 +79,7 @@ export default function Login() {
         ) : (
           <div> </div>
         )}
+      </div>
       </div>
     </>
   );

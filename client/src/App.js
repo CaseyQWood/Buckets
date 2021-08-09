@@ -36,11 +36,6 @@ function App() {
           <AnalyticsProvider>
             <Route exact={true} path="/analytics" component={Analytics} />
           </AnalyticsProvider>
-<<<<<<< HEAD
-          
-=======
-
->>>>>>> fddc3a12e537056685e99683620c3eca9672abfa
           </AuthProvider>
       </Router>
     </>

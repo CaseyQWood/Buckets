@@ -46,11 +46,7 @@ export default function NavBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEl1, setAnchorEl1] = React.useState(null);
 
-<<<<<<< HEAD
-  const { auth, user } = useContext(authContext);
-=======
   const { auth, user , logout} = useContext(authContext);
->>>>>>> fddc3a12e537056685e99683620c3eca9672abfa
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -71,23 +67,6 @@ export default function NavBar(props) {
   return (
     <AppBar className={(classes.root)}>
       <Toolbar>
-        <Menu
-          style={{ marginTop: "50px" }}
-          id="simple-menu"
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-        >
-          <Link to="/budget" style={{ textDecoration: "none" }}>
-            <MenuItem className={(classes.root, classes.menutItem)}>
-              CURRENT BUDGET
-            </MenuItem>
-          </Link>
-          <MenuItem className={(classes.root, classes.menutItem)}>
-            CREATE A NEW BUDGET
-          </MenuItem>
-        </Menu>
         <Menu
           style={{ marginTop: "50px" }}
           id="menue-message"
@@ -133,6 +112,8 @@ export default function NavBar(props) {
               BucketUp
             </Button>
           </Link>
+          
+          <Link to="/budget" style={{ textDecoration: "none" }}>
           <Button
             className={(classes.root, classes.button)}
             saria-controls="simple-menu"
@@ -142,6 +123,7 @@ export default function NavBar(props) {
             <AccountBalanceWalletIcon />
             Your Budeget
           </Button>
+          </Link>
 
           <Button
             className={(classes.root, classes.button)}
@@ -164,26 +146,14 @@ export default function NavBar(props) {
               Login
             </Button>
           </Link> }
-<<<<<<< HEAD
-          {auth && <Button className={(classes.root, classes.button)}><EmojiEmotionsIcon/>Hi, {user.name}</Button>
-          }
-          {auth && 
-            <Button className={(classes.root, classes.button)}>
-=======
           {auth && <Button className={(classes.root, classes.button)}><EmojiEmotionsIcon/>Hi, {user.name}!</Button>
           }
           {auth && 
             <Button className={(classes.root, classes.button)} onClick={() => logout()}>
->>>>>>> fddc3a12e537056685e99683620c3eca9672abfa
               <ExitToAppIcon />
               logout
             </Button>
           }
-<<<<<<< HEAD
-          
-
-=======
->>>>>>> fddc3a12e537056685e99683620c3eca9672abfa
 
         </Grid>
       </Toolbar>

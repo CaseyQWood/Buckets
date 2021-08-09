@@ -42,16 +42,11 @@ const checkSpend = (spendArray, category) => {
 //Create a React page that renders categories, and expenses by category
 export default function Budget1() {
   //Collect Categories, and expenses using a PromiseAll hook
-<<<<<<< HEAD
-  const {state, deleteExpense, deleteCategory, createNewCategory, createNewExpense, editCategory, editExpense, setState } = useActiveData();
-  const[activeCategory, setActiveCategory] = useState(0);
-  const { budgetListState } = useBudgetList()
-=======
+  const { budgetListState } = useBudgetList();
   const [open, setOpen] = useState(true);
-  const {state, deleteExpense, deleteCategory, createNewCategory, createNewExpense, editCategory, editExpense } = useActiveData();
+  const {state, deleteExpense, deleteCategory, createNewCategory, createNewExpense, editCategory, editExpense , setState} = useActiveData();
   const[activeCategory, setActiveCategory] = useState(0);
 
->>>>>>> fddc3a12e537056685e99683620c3eca9672abfa
   const [ChatComponent, toggleVisibility] = useVisiblity(<NewChat />, false);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
@@ -106,21 +101,12 @@ export default function Budget1() {
     }
   }
 
-  const expand = (category_id) => {
-    if (activeCategory !== 0) {
-      setActiveCategory(0);
-    } else {
-      setActiveCategory(category_id);
-    }
-  }
+  
 
   //iterate through categories that belong to the current budget generating a category component for each
   const newBudget = state.categories.map(category => {
     console.log("WHAT IS THIS VALUE ", activeCategory);
 
-<<<<<<< HEAD
-    return(
-=======
 
 
 
@@ -133,7 +119,6 @@ export default function Budget1() {
       //   }
       // }
       //   }>
->>>>>>> fddc3a12e537056685e99683620c3eca9672abfa
         <BudgetCategory 
           activeCategory={activeCategory}
           getExpensesByCategory={getExpensesByCategory} 
@@ -145,10 +130,7 @@ export default function Budget1() {
           onEdit={editCategory}
           expand={expand}
         />
-<<<<<<< HEAD
-=======
       // </div>
->>>>>>> fddc3a12e537056685e99683620c3eca9672abfa
     )
   })
 
@@ -179,12 +161,15 @@ export default function Budget1() {
       </div>
       <div className="budget-container">
         <h3 className='header'>Current Categories: {<ShareBudget budgetId={state.budget_id}/>}</h3>
-<<<<<<< HEAD
-
-        <SplitButton setState={() => setState} state={state} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} currentBudgetId={state.budget_id} defaultId={defaultIndex} budgetList={budgetListState.budgetListData}/>
-
-=======
->>>>>>> fddc3a12e537056685e99683620c3eca9672abfa
+        <SplitButton
+            setState={() => setState}
+            state={state}
+            selectedIndex={selectedIndex}
+            setSelectedIndex={setSelectedIndex}
+            currentBudgetId={state.budget_id}
+            defaultId={defaultIndex}
+            budgetList={budgetListState.budgetListData}
+          />
         <div className='category__container'>
           {newBudget}
         </div>

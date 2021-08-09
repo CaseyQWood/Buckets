@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import LocalAtmIcon from "@material-ui/icons/LocalAtm";
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
+import GitHubIcon from '@material-ui/icons/GitHub';
 import "../styles/LoginForm.scss";
 
 export default function LoginForm(props) {
@@ -11,7 +13,7 @@ export default function LoginForm(props) {
   return (
     <div className="user-login">
       <div className="login">
-        <h3>Login</h3>
+        <h2>Login<LocalAtmIcon/></h2>
         <form>
           <input
             className="input-field"
@@ -40,10 +42,11 @@ export default function LoginForm(props) {
         </div>
 
         <div className="other-sign-in">
-          <h5>Sign in with</h5>
-          <InstagramIcon/>
-          <FacebookIcon />
-          <TwitterIcon />
+          <h5>Or Sign in with</h5>
+          <InstagramIcon className="other-sign-in-icon"/>
+          <FacebookIcon className="other-sign-in-icon"/>
+          <TwitterIcon className="other-sign-in-icon"/>
+          <GitHubIcon className="other-sign-in-icon"/>
         </div>
       </div>
     </div>

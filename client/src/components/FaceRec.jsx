@@ -63,8 +63,12 @@ export default function FaceRec(props) {
   };
   runFacemesh();
   return (
-    <div className="App">
-      <header className="App-header">
+    <>
+    
+    <div className="face">
+    <h2>Smile please! 🤑</h2>
+      <header className="face-header ">
+        
         <Webcam
           ref={webcamRef}
           style={{
@@ -96,5 +100,6 @@ export default function FaceRec(props) {
         />
       </header>
     </div>
+    </>
   );
 }
