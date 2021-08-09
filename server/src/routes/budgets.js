@@ -34,6 +34,46 @@ const budgetsRoutes = (db) => {
       });
   });
 
+    // -------------get budget by owner_id
+    router.get("/list/:id", (req, res) => {
+      const budgetId = req.params.id;
+  
+      db.query(
+        `
+        SELECT * from budgets where user_id = $1;
+        `,
+        [budgetId]
+      )
+        .then((response) => {
+          res.json(response.rows);
+        })
+        .catch((error) => {
+          res.json(error.message);
+        });
+    });
+
+    // ---------- updates which budget is active
+    router.put("/save/:id", (req, res) => {
+      console.log('THIS IS INSIDE ROUTE -- REQ',req.body.budgetData)
+  
+      db.query(`
+        UPDATE budgets SET active = 
+        case
+        when id = $1 then true
+        when id != $1 then false
+        end
+        RETURNING *;
+        `
+        ,[req.body.budgetData.id])
+        .then((response) => {
+          console.log('THIS IS REPONSE',response.rows)
+          res.json(response.rows);
+        })
+        .catch((error) => {
+          res.json(error.message);
+        });
+    });
+
   // ------------get budget with categories and expenses EVIL DATASTRUCTURE USE WITH EXTREME
   router.get("/all/:id", (req, res) => {
     const ownerId = req.params.id;

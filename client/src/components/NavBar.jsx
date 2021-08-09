@@ -46,7 +46,11 @@ export default function NavBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEl1, setAnchorEl1] = React.useState(null);
 
+<<<<<<< HEAD
+  const { auth, user } = useContext(authContext);
+=======
   const { auth, user , logout} = useContext(authContext);
+>>>>>>> fddc3a12e537056685e99683620c3eca9672abfa
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -160,14 +164,26 @@ export default function NavBar(props) {
               Login
             </Button>
           </Link> }
+<<<<<<< HEAD
+          {auth && <Button className={(classes.root, classes.button)}><EmojiEmotionsIcon/>Hi, {user.name}</Button>
+          }
+          {auth && 
+            <Button className={(classes.root, classes.button)}>
+=======
           {auth && <Button className={(classes.root, classes.button)}><EmojiEmotionsIcon/>Hi, {user.name}!</Button>
           }
           {auth && 
             <Button className={(classes.root, classes.button)} onClick={() => logout()}>
+>>>>>>> fddc3a12e537056685e99683620c3eca9672abfa
               <ExitToAppIcon />
               logout
             </Button>
           }
+<<<<<<< HEAD
+          
+
+=======
+>>>>>>> fddc3a12e537056685e99683620c3eca9672abfa
 
         </Grid>
       </Toolbar>
