@@ -24,7 +24,6 @@ export default function Budget1() {
 
   const [ChatComponent, toggleVisibility] = useVisiblity(<NewChat />, false);
 
-  const [ChatComponent, toggleVisibility] = useVisiblity(<NewChat />, false);
 
   const percentCalculator = (num, den) => {
     const number1 = num ? Number(num.replace(/[^0-9.-]+/g, "")) : 0.0;
