@@ -4,19 +4,28 @@
   flex-direction: column;
 }
 
+.modalInput {
+  border-radius: 2vw;
+  background: gold;
+  height: 2vw;
+  border: 2px solid black;
+  color: black;
+}
+
 .new-category-form {
   margin: 2vw;
 }
 .new-category-button {
-	color: #fff !important;
+	color: black !important;
 	text-transform: uppercase;
 	text-decoration: none;
 	background: gold;
-	padding: 20px;
+  border: 2px rgba(0, 0, 0, 0.5) solid;
+	padding: 10px;
 	border-radius: 5px;
 	display: inline-block;
-	border: none;
 	transition: all 0.4s ease 0s;
+  box-shadow: 2.5px 5px black;
 }
 
 .new-category-button:hover {
@@ -32,8 +41,8 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 100%;
-  border-bottom: 1px solid gray;
+  width: 95%;
+  border-bottom: 1px solid black;
   font-size: 18px;
   text-align: center;
   padding: 5px;
@@ -64,9 +73,11 @@
 
 .popup-content {
   margin: auto;
-  background: rgb(255, 255, 255);
+  background: gold;
   width: 50%;
   padding: 5px;
+  -webkit-animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+  border-radius: 20px;  
 }
 .popup-arrow {
   color: rgb(255, 255, 255);
@@ -104,8 +115,4 @@
     opacity: 1;
     box-shadow: 0 0 500px rgba(241, 241, 241, 0);
   }
-}
-.popup-content {
-  -webkit-animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
-  border-radius: 20px;
 }

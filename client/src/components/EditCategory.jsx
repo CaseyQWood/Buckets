@@ -21,7 +21,7 @@ export default function NewCategory(props) {
   }
   
   return(
-  <Popup
+  <Popup open={false}
     trigger={
               <EditIcon />
     }
@@ -37,12 +37,13 @@ export default function NewCategory(props) {
         <div className="category-form-container">
           {' '}
           <form class="new-category-form" onSubmit={handleSubmit}>
-            <label>Name:</label>
-            <input type="text" ref={name}></input>
-            <label>Spending Limit:</label>
-            <input type="text" ref={spending_limit}></input>
+            <input type="text" ref={name} placeholder="   Name" className="modalInput"></input>
+            <br></br>
+            <input type="text" ref={spending_limit} placeholder="   SpendingLimit" className="modalInput"></input>
             <br></br>
             <button type="submit" className="new-category-button">Submit</button>
+            <br></br>
+            <button className="new-category-button" onClick={close}>Done</button>
           </form>
         </div>
       </div>

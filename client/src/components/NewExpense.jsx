@@ -10,6 +10,12 @@ export default function NewExpense(props) {
   const payee = React.useRef(null);
   const amount_paid = React.useRef(null);
 
+  const [open, setOpen] = useState(true);
+  
+  const handleClose = () => {
+    setOpen(false);
+  }
+
   const getCurrentDay = () => {
     const dateObj = new Date();
     const month = dateObj.getUTCMonth() + 1;
@@ -19,8 +25,6 @@ export default function NewExpense(props) {
     const dateString = `${year}-${month}-${day}`;
     return dateString;
   }
-
-
 
   const handleSubmit = (ele) => {
     ele.preventDefault();
@@ -38,6 +42,7 @@ export default function NewExpense(props) {
     }
 
     props.onSave(expense);
+    handleClose();
   }
 
   return (
@@ -59,16 +64,17 @@ export default function NewExpense(props) {
           <div className="category-form-container">
             {' '}
             <form class="new-category-form" onSubmit={handleSubmit}>
-              <label>Name:</label>
-              <input type="text" ref={name}></input>
-              <label>Cost:</label>
-              <input type="text" ref={cost}></input>
-              <label>Payee:</label>
-              <input type="text" ref={payee}></input>
-              <label>Amount paid so far:</label>
-              <input type="text" ref={amount_paid}></input>
+              <input type="text" ref={name} placeholder="   Name" className="modalInput"></input>
+              <br></br>
+              <input type="text" ref={cost} placeholder="   Cost" className="modalInput"></input>
+              <br></br>
+              <input type="text" ref={payee} placeholder="   Payee" className="modalInput"></input>
+              <br></br>
+              <input type="text" ref={amount_paid} placeholder="   Amount paid so far..." className="modalInput"></input>
               <br></br>
               <button className="new-category-button" type="submit">Submit</button>
+              <br></br>
+              <button className="new-category-button" onClick={close}>Done</button>
             </form>
           </div>
         </div>
