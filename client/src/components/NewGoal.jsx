@@ -56,16 +56,15 @@ export default function NewExpense(props) {
           <button className="close" onClick={close}>
             &times;
           </button>
-          <div className="header"> Create a New Expense: </div>
+          <div className="header"> Create a New Goal: </div>
           <div className="category-form-container">
             {' '}
             <form class="new-category-form" onSubmit={handleSubmit}>
-              <label>Name:</label>
-              <input type="text" ref={name}></input>
-              <label>Total Cost:</label>
-              <input type="text" ref={amount_to_goal}></input>
-              <label>Contributions so far:</label>
-              <input type="text" ref={amount_added}></input>
+              <input type="text" ref={name} placeholder="   Name" className="modalInput"></input>
+              <br></br>
+              <input type="text" ref={amount_to_goal} placeholder="   Total Cost" className="modalInput"></input>
+              <br></br>
+              <input type="text" ref={amount_added} placeholder="   Contributions so far..." className="modalInput"></input>
               <br></br>
               <button className="new-category-button" type="submit">Submit</button>
               <br></br>

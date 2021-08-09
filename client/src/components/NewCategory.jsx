@@ -43,10 +43,9 @@ export default function NewCategory(props) {
         <div className="category-form-container">
           {' '}
           <form class="new-category-form" onSubmit={handleSubmit}>
-            <label>Name:</label>
-            <input type="text" ref={name}></input>
-            <label>Spending Limit:</label>
-            <input type="text" ref={spending_limit}></input>
+            <input type="text" ref={name} placeholder="  Name" className="modalInput"></input>
+            <br></br>
+            <input type="text" ref={spending_limit} placeholder="  Spending Limit" className="modalInput"></input>
             <br></br>
             <button type="submit" className="new-category-button">Submit</button>
             <br></br>

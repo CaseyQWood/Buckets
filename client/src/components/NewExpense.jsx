@@ -64,14 +64,13 @@ export default function NewExpense(props) {
           <div className="category-form-container">
             {' '}
             <form class="new-category-form" onSubmit={handleSubmit}>
-              <label>Name:</label>
-              <input type="text" ref={name}></input>
-              <label>Cost:</label>
-              <input type="text" ref={cost}></input>
-              <label>Payee:</label>
-              <input type="text" ref={payee}></input>
-              <label>Amount paid so far:</label>
-              <input type="text" ref={amount_paid}></input>
+              <input type="text" ref={name} placeholder="   Name" className="modalInput"></input>
+              <br></br>
+              <input type="text" ref={cost} placeholder="   Cost" className="modalInput"></input>
+              <br></br>
+              <input type="text" ref={payee} placeholder="   Payee" className="modalInput"></input>
+              <br></br>
+              <input type="text" ref={amount_paid} placeholder="   Amount paid so far..." className="modalInput"></input>
               <br></br>
               <button className="new-category-button" type="submit">Submit</button>
               <br></br>
