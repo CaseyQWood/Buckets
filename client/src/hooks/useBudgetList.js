@@ -11,7 +11,6 @@ export default function useBudgetList(initial) {
   useEffect(() => {
     axios.get(`http://localhost:3002/api/budgets/list/${userId}`).then(res => {
       const budget = res.data;
-      console.log('INSIDE HOOK', budget)
       setBudgetListState(prev => ({...prev, budgetListData: budget}))
     });
   }, []);

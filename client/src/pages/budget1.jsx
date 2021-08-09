@@ -46,12 +46,8 @@ export default function Budget1() {
   const [open, setOpen] = useState(true);
   const {state,updateCurrentBudget,  deleteExpense, deleteCategory, createNewCategory, createNewExpense, editCategory, editExpense , setState} = useActiveData();
   const[activeCategory, setActiveCategory] = useState(0);
-
   const [ChatComponent, toggleVisibility] = useVisiblity(<NewChat />, false);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-
-  
-  console.log('UNITED STATES OF WHAT ?!', state)
 
   const budgetNames = (listOfBudgets) => {
     let container = []

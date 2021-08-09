@@ -53,9 +53,8 @@ const budgetsRoutes = (db) => {
     });
 
     // ---------- updates which budget is active
-    router.put("/save/:id", (req, res) => {
-      console.log('THIS IS INSIDE ROUTE -- REQ',req.body.budgetData)
-  
+    router.put("/save/:id", (req, res) => {  
+      console.log('what is this ', req.body.budgetData)
       db.query(`
         UPDATE budgets SET active = 
         case
@@ -66,7 +65,6 @@ const budgetsRoutes = (db) => {
         `
         ,[req.body.budgetData.id])
         .then((response) => {
-          console.log('THIS IS REPONSE',response.rows)
           res.json(response.rows);
         })
         .catch((error) => {

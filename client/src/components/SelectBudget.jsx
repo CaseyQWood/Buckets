@@ -93,7 +93,7 @@ export default function SplitButton(props) {
                     {budgetNames(props.budgetList).map((option, index) => (
 
                       <MenuItem
-                        key={option}
+                        key={index}
                         // disabled={index === 0}
                         selected={index === props.selectedIndex}
                         onClick={(event) => handleMenuItemClick(event, index)}
