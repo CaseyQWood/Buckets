@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { cloneElement } from 'react';
 import Popup from 'reactjs-popup';
 import '../styles/NewCategory.scss';
 import { Fab } from '@material-ui/core';
@@ -18,6 +18,10 @@ export default function NewCategory(props) {
     }
 
     props.onSave(category);
+  }
+
+  const closeAfterTimeout = () => {
+    setTimeout(() => {handleSubmit()}, 500)
   }
   
   return(
@@ -45,6 +49,8 @@ export default function NewCategory(props) {
             <input type="text" ref={spending_limit}></input>
             <br></br>
             <button type="submit" className="new-category-button">Submit</button>
+            <br></br>
+            <button className="new-category-button" onClick={close}>Done</button>
           </form>
         </div>
       </div>

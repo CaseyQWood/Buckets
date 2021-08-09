@@ -64,6 +64,8 @@ export default function NewExpense(props) {
               <input type="text" ref={amount_paid}></input>
               <br></br>
               <button className="new-category-button" type="submit">Submit</button>
+              <br></br>
+              <button className="new-category-button" onClick={close}>Done</button>
             </form>
           </div>
         </div>

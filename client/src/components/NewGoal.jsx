@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Popup from 'reactjs-popup';
 import '../styles/NewCategory.scss';
 import { Button } from '@material-ui/core';
@@ -8,6 +8,12 @@ export default function NewExpense(props) {
   const amount_to_goal = React.useRef(null);
   const amount_added = React.useRef(null);
 
+  const [open, setOpen] = useState(true);
+
+  const handleClose = () => {
+    setOpen(false);
+  }
+  
   const getCurrentDay = () => {
     const dateObj = new Date();
     const month = dateObj.getUTCMonth() + 1;
@@ -34,6 +40,7 @@ export default function NewExpense(props) {
     }
 
     props.onSave(goal);
+    handleClose();
   }
 
   return (
@@ -61,6 +68,8 @@ export default function NewExpense(props) {
               <input type="text" ref={amount_added}></input>
               <br></br>
               <button className="new-category-button" type="submit">Submit</button>
+              <br></br>
+              <button className="new-category-button" onClick={close}>Done</button>
             </form>
           </div>
         </div>

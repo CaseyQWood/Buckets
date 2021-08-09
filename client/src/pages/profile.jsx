@@ -29,7 +29,7 @@ export default function Profile() {
   //Handles visibility of Chat component
   const [ChatComponent, toggleVisibility] = useVisiblity(<NewChat />, false);
   //Access needed data with Axios
-  const budgetId = profileState ? profileState.actualSpends[0].budget_id : 0;
+  const budgetId = profileState.actualSpends[0] ? profileState.actualSpends[0].budget_id : 0;
 
   // Handles category data for the progress bar component
   const { state } = useActiveData();
@@ -75,7 +75,6 @@ export default function Profile() {
     const currentValue = percentCalculator(goal.amount_added, goal.amount_to_goal);
 
     return (
-
       <ProgressBar
         key={index}
         currentValue={currentValue}

@@ -10,6 +10,12 @@ export default function NewExpense(props) {
   const payee = React.useRef(null);
   const amount_paid = React.useRef(null);
 
+  const [open, setOpen] = useState(true);
+  
+  const handleClose = () => {
+    setOpen(false);
+  }
+
   const getCurrentDay = () => {
     const dateObj = new Date();
     const month = dateObj.getUTCMonth() + 1;
@@ -19,8 +25,6 @@ export default function NewExpense(props) {
     const dateString = `${year}-${month}-${day}`;
     return dateString;
   }
-
-
 
   const handleSubmit = (ele) => {
     ele.preventDefault();
@@ -38,6 +42,7 @@ export default function NewExpense(props) {
     }
 
     props.onSave(expense);
+    handleClose();
   }
 
   return (
@@ -69,6 +74,8 @@ export default function NewExpense(props) {
               <input type="text" ref={amount_paid}></input>
               <br></br>
               <button className="new-category-button" type="submit">Submit</button>
+              <br></br>
+              <button className="new-category-button" onClick={close}>Done</button>
             </form>
           </div>
         </div>

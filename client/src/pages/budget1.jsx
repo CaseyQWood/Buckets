@@ -15,6 +15,7 @@ import { OrbitControls } from '@react-three/drei';
 //Create a React page that renders categories, and expenses by category
 export default function Budget1() {
   //Collect Categories, and expenses using a PromiseAll hook
+  const [open, setOpen] = useState(true);
   const {state, deleteExpense, deleteCategory, createNewCategory, createNewExpense, editCategory, editExpense } = useActiveData();
   const[activeCategory, setActiveCategory] = useState(null);
 
@@ -55,6 +56,10 @@ export default function Budget1() {
     };
     
     return expensesArray;
+  }
+
+  const handleClose = () => {
+    setOpen(false);
   }
 
   //iterate through categories that belong to the current budget generating a category component for each
@@ -110,7 +115,7 @@ export default function Budget1() {
         <h3 className='header'>Incoming Templates: {<ShareBudget budgetId={state.budget_id}/>}</h3>
         <div className='category__container'>
           {newBudget}
-          <NewCategory budget_id={state.budget_id} onSave={createNewCategory}/>
+          <NewCategory budget_id={state.budget_id} onSave={createNewCategory} onClose={handleClose}/>
         </div>
       </div>
     </div>
