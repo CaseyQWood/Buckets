@@ -10,12 +10,6 @@ export default function NewExpense(props) {
   const payee = React.useRef(null);
   const amount_paid = React.useRef(null);
 
-  const [open, setOpen] = useState(true);
-  
-  const handleClose = () => {
-    setOpen(false);
-  }
-
   const getCurrentDay = () => {
     const dateObj = new Date();
     const month = dateObj.getUTCMonth() + 1;
@@ -28,7 +22,7 @@ export default function NewExpense(props) {
 
   const handleSubmit = (ele) => {
     ele.preventDefault();
-
+    
     const expense = {
       name: name.current.value,
       cost: cost.current.value,
@@ -42,7 +36,6 @@ export default function NewExpense(props) {
     }
 
     props.onSave(expense);
-    handleClose();
   }
 
   return (

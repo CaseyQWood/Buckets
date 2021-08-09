@@ -8,8 +8,6 @@ export default function NewCategory(props) {
   const spending_limit = React.useRef(null);
 
   const handleSubmit = (ele) => {
-    ele.preventDefault();
-
     const category = {
       category_id: props.categoryId,
       updatedName: name.current.value,

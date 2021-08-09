@@ -9,8 +9,6 @@ export default function NewCategory(props) {
   const spending_limit = React.useRef(null);
 
   const handleSubmit = (ele) => {
-    ele.preventDefault();
-
     const category = {
       name: name.current.value,
       budget_id: props.budget_id,
@@ -18,10 +16,6 @@ export default function NewCategory(props) {
     }
 
     props.onSave(category);
-  }
-
-  const closeAfterTimeout = () => {
-    setTimeout(() => {handleSubmit()}, 500)
   }
   
   return(
