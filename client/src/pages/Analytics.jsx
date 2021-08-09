@@ -289,7 +289,7 @@ export default function Analytics() {
           <div className="chart-container">
             <div className="barchart">
               <p className="chart-title">Expenses vs Spending Limit</p>
-              <div style={{ width: "540px", height: "640px" }}>
+              <div style={{ width: "650px", height: "660px" }}>
                 <BarChart barData={data} options={options} />
               </div>
             </div>
@@ -303,14 +303,15 @@ export default function Analytics() {
                 <p className="chart-title">Added amount to goals</p>
 
                 <PieChart pieData={pieAddedAmountData} />
+                <ChatButton onClick={toggleVisibility} />
+      {ChatComponent}
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <ChatButton onClick={toggleVisibility} />
-      {ChatComponent}
+      
     </>
   );
 }
