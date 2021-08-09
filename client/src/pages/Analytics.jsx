@@ -155,25 +155,6 @@ export default function Analytics() {
     return ((number1 / number2) * 100).toFixed(2);
   };
 
-  // generate a progress bar for each goal
-  const goalArr = goals || [];
-  const goalProgress = goalArr.map((goal, index) => {
-    const currentValue = percentCalculator(
-      goal.amount_added,
-      goal.amount_to_goal
-    );
-    return (
-      <div className="progress-bar">
-        <ProgressBar
-          key={index}
-          currentValue={currentValue}
-          name={goal.name}
-          spendLimit={goal.amount_to_goal}
-        />
-      </div>
-    );
-  });
-
   // use retrived data from database to feed bar chart
   const data = {
     labels: budgetLabels(budget),
@@ -292,39 +273,39 @@ export default function Analytics() {
                   "aria-label": "change date"
                 }}
               />
-               <button
-              className="search-button"
-              onClick={() =>
-                searchDate(
-                  formatDate(selectedFromDate),
-                  formatDate(selectedToDate)
-                )
-              }
-            >
-              Search
-            </button>
+              <button
+                className="search-button"
+                onClick={() =>
+                  searchDate(
+                    formatDate(selectedFromDate),
+                    formatDate(selectedToDate)
+                  )
+                }
+              >
+                Search
+              </button>
             </Grid>
-           
           </MuiPickersUtilsProvider>
-          <div className="barchart" >
-            <p>Expenses vs Spending Limit</p>
-            <div style={{width: "600px"}}>
-            <BarChart barData={data} options={options} />
+          <div className="chart-container">
+            <div className="barchart">
+              <p className="chart-title">Expenses vs Spending Limit</p>
+              <div style={{ width: "540px", height: "640px" }}>
+                <BarChart barData={data} options={options} />
+              </div>
+            </div>
+            <div className="piechart-container">
+              <div className="piechart-goal" style={{ width: "320px" }}>
+                <p className="chart-title">Goals</p>
+                <PieChart pieData={pieGoalData} />
+              </div>
+
+              <div className="piechart-added" style={{ width: "320px" }}>
+                <p className="chart-title">Added amount to goals</p>
+
+                <PieChart pieData={pieAddedAmountData} />
+              </div>
             </div>
           </div>
-
-          <div className="piechart-goal">
-            <p>Goals</p>
-              <PieChart pieData={pieGoalData} />
-          </div>
-         
-            <div className="piechart-goal">
-            <p >Added amount to goals</p>
-            
-              <PieChart pieData={pieAddedAmountData} />
-            </div>
-
-          <div className="piechart-goal">{goalProgress}</div>
         </div>
       </div>
 
