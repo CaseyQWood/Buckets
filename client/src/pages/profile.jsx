@@ -12,9 +12,12 @@ import Bucket from '../3dobjects/PolyBucket'
 import Coin from '../3dobjects/BucketCoin'
 import Wall from '../3dobjects/PhysicsWalls'
 import NewGoal from '../components/NewGoal'
-import DarkIcon from "../3dobjects/DarkGraph";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from 'three'
+
+import NewGraph from "../3dobjects/NewGraph";
+import CheckMark from "../3dobjects/CheckMark";
+import ListObject from "../3dobjects/ListObject";
 
 import { Grid, Box } from "@material-ui/core";
 import UserInfo from "../components/userInfo";
@@ -103,6 +106,7 @@ export default function Profile() {
     return (
       <mesh material={material} rotation={[-Math.PI / 2, 0, 0]} {...props} castShadow receiveShadow>
         <planeBufferGeometry args={[15, 15]} />
+        <meshStandardMaterial color='red'/>
 
       </mesh >
     )
@@ -166,6 +170,19 @@ export default function Profile() {
             <div>{userInfo}</div>
             <div className="right-col-profile">
 
+            <div className="threeJS">
+              <Canvas shadows>
+                {/* <OrbitControls /> */}
+
+                <pointLight castShadow position={[-5, 10, 10]} intensity={1.5} />
+                <Suspense fallback={null}>
+                  <ShadowPlane position={[0, -3, 0]} />
+                  <CheckMark scale={0.355} position={[-4,-30, 0]} rotation={[0,-0.2,0]} castShadow />
+
+                </Suspense>
+              </Canvas>
+            </div>
+
               <div className="goals-bars">
                 <h3>Goals:</h3>
                 {goalProgress}
@@ -183,13 +200,14 @@ export default function Profile() {
 
           <Grid item xs={6}>
             <div className="center-col-profile">
-              <div>
-                <Canvas>
-                  <OrbitControls />
+              <div className="threeJS">
+                <Canvas shadows>
+                  {/* <OrbitControls /> */}
 
                   <pointLight castShadow position={[-5, 10, 10]} intensity={1.5} />
                   <Suspense fallback={null}>
-                    <DarkIcon />
+                    <ShadowPlane position={[0, -3, 0]} />
+                    <NewGraph scale={1.25} rotation={[0,-0.2,0]} castShadow position={[0, -3.3, 0]}/>
 
                   </Suspense>
                 </Canvas>
@@ -198,6 +216,20 @@ export default function Profile() {
 
               <div className="previous-budget-graph">
                 <BudgetActualExpected actual={graphActual} expected={graphExpected} names={graphNames} />
+              </div>
+
+              <div className="threeJS">
+                <Canvas shadows>
+                  <OrbitControls />
+
+                  <pointLight castShadow position={[-5, 10, 10]} intensity={1.5} />
+                  <Suspense fallback={null}>
+                    <ShadowPlane position={[0, -3, 0]} />
+                    <ListObject castShadow scale={0.1} rotation={[0,-0.2,0]} position={[-7.5, -5, 0.5]}/>
+
+                  </Suspense>
+                </Canvas>
+
               </div>
 
               <div className="category-bars" style={{ margin: 1 + "em" }}>
