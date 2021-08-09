@@ -21,7 +21,7 @@ export default function NewCategory(props) {
   }
   
   return(
-  <Popup
+  <Popup open={false}
     trigger={
               <EditIcon />
     }

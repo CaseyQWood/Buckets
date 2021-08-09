@@ -1,4 +1,4 @@
-import React, {useState, useRef, Suspense} from 'react';
+import React, {useState, useRef, Suspense, createContext} from 'react';
 import useActiveData from '../hooks/useActiveData';
 import ShareBudget from '../components/ShareBudgetsModal'
 import BudgetCategory from '../components/budgetCategory';
@@ -8,6 +8,8 @@ import NewExpense from '../components/NewExpense';
 import * as THREE from 'three'
 import { Canvas } from '@react-three/fiber';
 import SotChest from '../3dobjects/SotChest';
+import SplitButton from '../components/SelectBudget';
+import useBudgetList from '../hooks/useBudgetList';
 
 import "../styles/budget.scss";
 import NavBar from "../components/NavBar.jsx";
@@ -15,29 +17,51 @@ import useVisiblity from "../hooks/useVisiblity";
 import ChatButton from "../components/ChatButton";
 import NewChat from "../components/NewChat";
 
+const filterActiveBudget = (listOfBudgets, id) => {
+  console.log(listOfBudgets)
+  let container = ''
+  listOfBudgets.forEach(x => x.id === id ? container = x.name : console.log('false') )
+  return container
+}
+
+const percentCalculator = (num, den) => {
+  const number1 = num ? Number(num.replace(/[^0-9.-]+/g, "")) : 0.0;
+  const number2 = den ? Number(den.replace(/[^0-9.-]+/g, "")) : 0.0;
+
+  return ((number1 / number2) * 100).toFixed(2);
+};
+
+const checkSpend = (spendArray, category) => {
+  for (const spend of spendArray) {
+    if (spend.id === category.category_id) {
+      return percentCalculator(spend.sum, category.spend_limit);
+    }
+  }
+}
 
 //Create a React page that renders categories, and expenses by category
 export default function Budget1() {
   //Collect Categories, and expenses using a PromiseAll hook
-  const {state, deleteExpense, deleteCategory, createNewCategory, createNewExpense, editCategory, editExpense } = useActiveData();
-  const[activeCategory, setActiveCategory] = useState(null);
-
+  const {state, deleteExpense, deleteCategory, createNewCategory, createNewExpense, editCategory, editExpense, setState } = useActiveData();
+  const[activeCategory, setActiveCategory] = useState(0);
+  const { budgetListState } = useBudgetList()
   const [ChatComponent, toggleVisibility] = useVisiblity(<NewChat />, false);
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
 
-  const percentCalculator = (num, den) => {
-    const number1 = num ? Number(num.replace(/[^0-9.-]+/g, "")) : 0.0;
-    const number2 = den ? Number(den.replace(/[^0-9.-]+/g, "")) : 0.0;
-
-    return ((number1 / number2) * 100).toFixed(2);
-  };
   
-  const checkSpend = (spendArray, category) => {
-    for (const spend of spendArray) {
-      if (spend.id === category.category_id) {
-        return percentCalculator(spend.sum, category.spend_limit);
-      }
-    }
+  console.log('UNITED STATES OF WHAT ?!', state)
+
+  const budgetNames = (listOfBudgets) => {
+    let container = []
+    listOfBudgets.forEach(budget => {
+      budget.active ? container.unshift(budget.name) : container.push(budget.name)
+    })
+    return container
   }
+
+  const isActiveBudget = (element) => element === filterActiveBudget(budgetListState.budgetListData, state.budget_id);
+  const defaultIndex = budgetNames(budgetListState.budgetListData).findIndex(isActiveBudget)
+
   //Find a way to store all expenses and push those
   const getExpensesByCategory = (expenseArray, categoryId) => {
     const expensesArray = [];
@@ -48,7 +72,8 @@ export default function Budget1() {
             key={expense.expense_id} 
             payee={expense.payee} 
             name={expense.expense_name} 
-            amount_paid={expense.amount_paid} cost={expense.cost} 
+            amount_paid={expense.amount_paid}
+            cost={expense.cost} 
             onDelete={() => deleteExpense(expense.expense_id)}
             onEdit={editExpense}
             categoryId={expense.category_id}
@@ -63,33 +88,34 @@ export default function Budget1() {
     return expensesArray;
   }
 
+  const expand = (category_id) => {
+    if (activeCategory !== 0) {
+      setActiveCategory(0);
+    } else {
+      setActiveCategory(category_id);
+    }
+  }
+
   //iterate through categories that belong to the current budget generating a category component for each
   const newBudget = state.categories.map(category => {
-    console.log("WHAT IS THIS VALUE ", category.category_id);
+    console.log("WHAT IS THIS VALUE ", activeCategory);
+
     return(
-      <div className="category-container" onClick={() => {
-        if (activeCategory !== 0) {
-          setActiveCategory(0);
-        } else {
-        setActiveCategory(category.category_id);
-        }
-      }
-        }>
         <BudgetCategory 
-        getExpensesByCategory={getExpensesByCategory} 
-        expenses={state.expenses} 
-        category_id={category.category_id} 
-        onDelete={() => {deleteCategory(category.category_id)}} 
-        spend_limit={category.spend_limit} name={category.category_name} 
-        currentValue={checkSpend(state.totalSpendCategories, category)}
-        onEdit={editCategory}
+          activeCategory={activeCategory}
+          getExpensesByCategory={getExpensesByCategory} 
+          expenses={state.expenses} 
+          category_id={category.category_id} 
+          onDelete={() => {deleteCategory(category.category_id)}} 
+          spend_limit={category.spend_limit} name={category.category_name} 
+          currentValue={checkSpend(state.totalSpendCategories, category)}
+          onEdit={editCategory}
+          expand={expand}
         />
-      </div>
     )
   })
 
   function Plane(props) {
-
     const material = new THREE.ShadowMaterial();
     material.opacity = 0.2;
     return (
@@ -115,11 +141,14 @@ export default function Budget1() {
         </Canvas>
       </div>
       <div className="budget-container">
-        <h3 className='header'>Incoming Templates: {<ShareBudget budgetId={state.budget_id}/>}</h3>
+        <h3 className='header'>Current Categories: {<ShareBudget budgetId={state.budget_id}/>}</h3>
+
+        <SplitButton setState={() => setState} state={state} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} currentBudgetId={state.budget_id} defaultId={defaultIndex} budgetList={budgetListState.budgetListData}/>
+
         <div className='category__container'>
           {newBudget}
-          <NewCategory budget_id={state.budget_id} onSave={createNewCategory}/>
         </div>
+        <NewCategory budget_id={state.budget_id} onSave={createNewCategory}/>
       </div>
     </div>
     <ChatButton onClick={toggleVisibility} />
