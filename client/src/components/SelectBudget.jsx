@@ -37,16 +37,8 @@ export default function SplitButton(props) {
     return container
   }
 
-  console.log('*********', budgetNames(props.budgetList))
-  // const [array, setArray] = useState(budgetNames())
-
-
-
-  const handleClick = () => {
-  };
 
   const handleMenuItemClick = (event, index) => {
-    console.log('this is event !!!',event)
     props.setSelectedIndex(index)
     setOpen(false);
   };
@@ -59,21 +51,13 @@ export default function SplitButton(props) {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-
     setOpen(false);
   };
 
   useEffect(() => {
-    console.log('----------', budgetNames(props.budgetList)[props.selectedIndex])
-
     axios.put(`http://localhost:3002/api/budgets/save/1`, {budgetData: props.budgetList[props.selectedIndex], currentBudgetId: props.currentBudgetId})
     .then((res) => {
-      console.log('WHAT THE SHIT IS THIS',props.state)
-      
-      res.data.forEach((x) => {if(x.active === true) {props.setState(prev => ({...prev, budget_id: x.id})   )}})
-
-      console.log('WHAT THE SHIT IS THIS AFTER',props.state)
-      window.location.reload()
+      props.updateCurrentBudget()
     })
   }, [props.selectedIndex])
 
@@ -82,7 +66,7 @@ export default function SplitButton(props) {
     <Grid container direction="column" alignItems="center">
       <Grid item xs={12}>
         <ButtonGroup variant="contained" color="primary" ref={anchorRef} aria-label="split button">
-          <Button onClick={handleClick}>{budgetNames(props.budgetList)[props.selectedIndex]}</Button>
+          <Button>{budgetNames(props.budgetList)[props.selectedIndex]}</Button>
           <Button
             color="primary"
             size="small"
@@ -109,12 +93,11 @@ export default function SplitButton(props) {
                     {budgetNames(props.budgetList).map((option, index) => (
 
                       <MenuItem
-                        key={index}
-                        disabled={index === 0}
+                        key={option}
+                        // disabled={index === 0}
                         selected={index === props.selectedIndex}
                         onClick={(event) => handleMenuItemClick(event, index)}
                       >
-                        {console.log('WHAT IS IT PRECIOUS',option)}
                         {option}
                       </MenuItem>
                     ))}
