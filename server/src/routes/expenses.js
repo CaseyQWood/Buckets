@@ -57,7 +57,7 @@ const expensesRoutes = (db) => {
       });
   });
 
-  //-------------update expenses --not working properyly
+  //-------------update expenses 
   router.put("/:id", (req, res) => {
     const expenseID = req.params.id;
     const expenseName = req.body.name;

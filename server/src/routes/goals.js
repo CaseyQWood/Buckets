@@ -55,14 +55,15 @@ const goalsRoutes = (db) => {
     const amountToGoal = req.body.amount_to_goal;
     const startDate = req.body.start_date;
     const endDate = req.body.end_date;
+    const amountAdded = req.body.amount_added
  
     db.query(
       `
-      INSERT INTO goals(name, user_id, budget_id, amount_to_goal, start_date, end_date)
-      VALUES($1, $2, $3, $4, $5, $6) 
+      INSERT INTO goals(name, user_id, budget_id, amount_to_goal, amount_added, start_date, end_date)
+      VALUES($1, $2, $3, $4, $5, $6, $7) 
       RETURNING *;
       `
-    ,[goalsName, userId, budgetId, amountToGoal, startDate, endDate])
+    ,[goalsName, userId, budgetId, amountToGoal, amountAdded, startDate, endDate])
       .then((response) => {
         res.json(response.rows[0]);
       })

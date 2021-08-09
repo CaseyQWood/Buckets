@@ -21,8 +21,18 @@ VALUES
 ('Eating Out', 4, 600), 
 ('Investments', 4, 1000), 
 ('Camping Trip', 4, 600), 
+('Living expenses', 5, 1200), 
+('Groceries', 5, 350), 
+('Eating Out', 5, 600), 
+('Save For Vacation', 5, 800), 
+('Fitness', 5, 175), 
+('Living expenses', 6, 1200), 
+('Groceries', 6, 350), 
+('Eating Out', 6, 500), 
+('Save for Vacation', 6, 800), 
+('Fitness', 6, 175), 
 /*Second User */
-('Living expenses', 5, 6000), 
-('Groceries', 5, 2500), 
-('Misc.', 5, 10000);
+('Living expenses', 7, 6000), 
+('Groceries', 7, 2500), 
+('Misc.', 7, 10000);
 
