@@ -68,7 +68,6 @@ export default function FaceRec(props) {
         <Webcam
           ref={webcamRef}
           style={{
-            marginTop: 150,
             position: "absolute",
             marginLeft: "auto",
             marginRight: "auto",
@@ -84,8 +83,6 @@ export default function FaceRec(props) {
         <canvas
           ref={canvasRef}
           style={{
-            // background: "white",
-            marginTop: 150,
             position: "absolute",
             marginLeft: "auto",
             marginRight: "auto",

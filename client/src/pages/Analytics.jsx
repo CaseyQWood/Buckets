@@ -11,6 +11,10 @@ import BarChart from "../components/BarChart";
 import PieChart from "../components/PieChart";
 import { analyiticsContext } from "../providers/AnalyticsProvider";
 import ProgressBar from "../components/progressBar";
+import NavBar from "../components/NavBar.jsx";
+import useVisiblity from "../hooks/useVisiblity";
+import ChatButton from "../components/ChatButton";
+import NewChat from "../components/NewChat";
 
 const useStyles = makeStyles((theme) => ({
   timePicker: {
@@ -26,6 +30,8 @@ export default function Analytics() {
   const toDefaultDate = Date.now();
   const fromDaultDate = new Date(toDefaultDate);
   fromDaultDate.setMonth(fromDaultDate.getMonth() - 1);
+
+  const [ChatComponent, toggleVisibility] = useVisiblity(<NewChat />, false);
 
   const [selectedFromDate, setSelectedFromDate] = React.useState(
     new Date(fromDaultDate)
@@ -255,6 +261,7 @@ export default function Analytics() {
 
   return (
     <>
+      <NavBar />
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Grid
           container
@@ -311,6 +318,9 @@ export default function Analytics() {
         <PieChart pieData={pieAddedAmountData} />
       </div>
         {goalProgress}
+
+        <ChatButton onClick={toggleVisibility} />
+        {ChatComponent}
     </>
   );
 }

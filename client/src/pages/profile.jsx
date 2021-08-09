@@ -7,22 +7,22 @@ import ChatButton from "../components/ChatButton";
 import NewChat from "../components/NewChat";
 
 import { Physics, usePlane } from '@react-three/cannon'
-import { Canvas, extend } from '@react-three/fiber'
+import { Canvas } from '@react-three/fiber'
 import Bucket from '../3dobjects/PolyBucket'
 import Coin from '../3dobjects/BucketCoin'
 import Wall from '../3dobjects/PhysicsWalls'
-import Icon from "../components/progressBar";
 import NewGoal from '../components/NewGoal'
 import DarkIcon from "../3dobjects/DarkGraph";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from 'three'
 
-import { Grid, Box, Button } from "@material-ui/core";
+import { Grid, Box } from "@material-ui/core";
 import UserInfo from "../components/userInfo";
 
 import useActiveData from "../hooks/useActiveData";
 import useVisiblity from "../hooks/useVisiblity";
 import useProfileState from "../hooks/useProfileData";
+import NavBar from "../components/NavBar.jsx";
 
 export default function Profile() {
   const { profileState, userState, addGoal } = useProfileState();
@@ -132,10 +132,12 @@ export default function Profile() {
 
   const userInfo = <UserInfo income={profileState.user.individual_income} expectedExpenses={expectedBudget} balance={totalRemainingFormatted} />;
 
-  // currently have OrbitControls and Debug commented out as they are used to TS but not for production 
+  // currently have OrbitControls and Debug commented out as they are used to TS but not for production
   return (
-    <div>
 
+    <>
+    <NavBar/>
+    <div>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={3}>
 
@@ -213,6 +215,7 @@ export default function Profile() {
         {ChatComponent}
       </div>
     </div>
+    </>
   );
 }
 

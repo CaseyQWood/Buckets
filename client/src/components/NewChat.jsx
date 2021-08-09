@@ -4,7 +4,6 @@ import io from "socket.io-client";
 import Messages from './Messages';
 import InfoBar from "./InfoBar";
 import Input from "./Input";
-
 import "../styles/Chat.scss";
 
 const ENDPOINT = 'http://localhost:3002';
@@ -26,7 +25,7 @@ const NewChat = (props) => {
 
   useEffect(() => {
     
-    // pass endpoint to server localhost:3002
+    // pass the endpoint to server localhost:3002
     socket = io(ENDPOINT, { transports: ["websocket"]});
 
     setRoom(room);
@@ -35,7 +34,7 @@ const NewChat = (props) => {
     // emit from client side socket with join even
     socket.emit('join', { name, room }, (error) => {
       if(error) {
-        // alert(error);
+        alert(error);
       }
     });
   }, [userName, question]);
@@ -60,17 +59,30 @@ const NewChat = (props) => {
     }
   }
 
-  // Testing messages record and message
+  const [chatVis, setChatVis] = useState(true);
 
-  return (
-    <div className="outerContainer">
-      <div className="chat-container">
-        <InfoBar room={room} />
-        <Messages messages={messages} name={name} />
-        <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
+  const switchChatMode = () => {
+    if (chatVis === true) setChatVis(false);
+    else setChatVis(true);
+  }
+ 
+
+  // Testing messages record and message
+  if (chatVis) {
+    return (
+      <div className="outerContainer">
+        <div className="chat-container">
+          <InfoBar room={room} switchChatMode={switchChatMode}/>
+          <Messages messages={messages} name={name} />
+          <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div></div>
+    )
+  } 
 };
 
 export default NewChat;

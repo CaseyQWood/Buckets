@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import { AppBar, Toolbar } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -6,12 +6,14 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import LocalAtmIcon from "@material-ui/icons/LocalAtm";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
+import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import FaceIcon from "@material-ui/icons/Face";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import { authContext } from "../providers/AuthProvider";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,6 +45,8 @@ export default function NavBar(props) {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEl1, setAnchorEl1] = React.useState(null);
+
+  const { auth, user , logout} = useContext(authContext);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -149,16 +153,22 @@ export default function NavBar(props) {
             <FaceIcon />
             About us
           </Button>
-          <Button className={(classes.root, classes.button)}>
-            <ErrorOutlineIcon />
-            Report
-          </Button>
-          <Link to="/login" style={{ textDecoration: "none" }}>
+
+          {!auth && <Link to="/login" style={{ textDecoration: "none" }}>
             <Button className={(classes.root, classes.button)}>
               <VpnKeyIcon />
               Login
             </Button>
-          </Link>
+          </Link> }
+          {auth && <Button className={(classes.root, classes.button)}><EmojiEmotionsIcon/>Hi, {user.name}!</Button>
+          }
+          {auth && 
+            <Button className={(classes.root, classes.button)} onClick={() => logout()}>
+              <ExitToAppIcon />
+              logout
+            </Button>
+          }
+
         </Grid>
       </Toolbar>
     </AppBar>

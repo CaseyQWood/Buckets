@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import InstagramIcon from '@material-ui/icons/Instagram';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import TwitterIcon from '@material-ui/icons/Twitter';
 import "../styles/LoginForm.scss";
 
 export default function LoginForm(props) {
@@ -22,7 +25,7 @@ export default function LoginForm(props) {
           <input
             className="input-field"
             placeholder="Password"
-            type="text"
+            type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
@@ -34,6 +37,13 @@ export default function LoginForm(props) {
         </div>
         <div>
           <button className="submit-button">Register</button>
+        </div>
+
+        <div className="other-sign-in">
+          <h5>Sign in with</h5>
+          <InstagramIcon/>
+          <FacebookIcon />
+          <TwitterIcon />
         </div>
       </div>
     </div>

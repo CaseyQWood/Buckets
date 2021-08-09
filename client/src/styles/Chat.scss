@@ -8,6 +8,10 @@
   bottom: 5%;
   right: 5%;
 }
+.chat-close-button {
+  background-color: gold;
+  border: none;
+}
 
 .chat-container {
   border: 2px solid gold;
@@ -20,6 +24,7 @@
   height: 400%;
   width: 30%;
   border:1px gold;
+  z-index: 99;
 }
 
 .screen {
