@@ -54,12 +54,11 @@ const categoriesRoutes = (db) => {
   //-------------update category by id
   router.put("/:id", (req, res) => {
     const reqParams = req.params.id;
-    const updatedName = req.body.name;
-    const updatedLimit = req.body.spending_limit;
-
+    const updatedName = req.body.updatedName;
+    const updatedLimit = req.body.updatedLimit;
     db.query(
       `
-      UPDATE categories SET name = $2, spending_limit =$3 WHERE id = $1 RETURNING *;
+      UPDATE categories SET name = $2, spending_limit = $3 WHERE id = $1 RETURNING *;
       `
     ,[reqParams, updatedName, updatedLimit])
       .then((response) => {
