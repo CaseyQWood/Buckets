@@ -69,23 +69,6 @@ export default function NavBar(props) {
       <Toolbar>
         <Menu
           style={{ marginTop: "50px" }}
-          id="simple-menu"
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-        >
-          <Link to="/budget" style={{ textDecoration: "none" }}>
-            <MenuItem className={(classes.root, classes.menutItem)}>
-              CURRENT BUDGET
-            </MenuItem>
-          </Link>
-          <MenuItem className={(classes.root, classes.menutItem)}>
-            CREATE A NEW BUDGET
-          </MenuItem>
-        </Menu>
-        <Menu
-          style={{ marginTop: "50px" }}
           id="menue-message"
           anchorEl={anchorEl1}
           keepMounted
@@ -129,6 +112,8 @@ export default function NavBar(props) {
               BucketUp
             </Button>
           </Link>
+          
+          <Link to="/budget" style={{ textDecoration: "none" }}>
           <Button
             className={(classes.root, classes.button)}
             saria-controls="simple-menu"
@@ -138,6 +123,7 @@ export default function NavBar(props) {
             <AccountBalanceWalletIcon />
             Your Budeget
           </Button>
+          </Link>
 
           <Button
             className={(classes.root, classes.button)}
