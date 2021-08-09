@@ -19,10 +19,9 @@ import NewChat from "../components/NewChat";
 //Create a React page that renders categories, and expenses by category
 export default function Budget1() {
   //Collect Categories, and expenses using a PromiseAll hook
+  const [open, setOpen] = useState(true);
   const {state, deleteExpense, deleteCategory, createNewCategory, createNewExpense, editCategory, editExpense } = useActiveData();
   const[activeCategory, setActiveCategory] = useState(0);
-
-  const [ChatComponent, toggleVisibility] = useVisiblity(<NewChat />, false);
 
   const [ChatComponent, toggleVisibility] = useVisiblity(<NewChat />, false);
 
@@ -65,7 +64,10 @@ export default function Budget1() {
     
     return expensesArray;
   }
-
+  //This is never used 
+  const handleClose = () => {
+    setOpen(false);
+  }
   const expand = (category_id) => {
     if (activeCategory !== 0) {
       setActiveCategory(0);
