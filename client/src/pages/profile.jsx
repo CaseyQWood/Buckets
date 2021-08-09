@@ -75,7 +75,6 @@ export default function Profile() {
     const currentValue = percentCalculator(goal.amount_added, goal.amount_to_goal);
 
     return (
-
       <ProgressBar
         key={index}
         currentValue={currentValue}

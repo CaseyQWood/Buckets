@@ -17,7 +17,7 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 // import helper functions
-const { addUser, removeUser, getUser, getUsersInRoom } = require('./users.js')
+const { addUser, removeUser, getUser, getUsersInRoom } = require('./helper/users.js')
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
@@ -35,6 +35,7 @@ io.on('connection', (socket) => {
     console.log("userName---", name);
     console.log("room-----", room);
     const { error, user } = addUser({ id: socket.id, name, room });
+    
     if(error) return callback(error);
 
     // backend send message
@@ -69,7 +70,7 @@ io.on('connection', (socket) => {
     const user = removeUser(socket.id);
 
     if(user) {
-      io.to(user.room).emit('message', { user: 'Admin', text: `${user.name} has left.` });
+      io.to(user.room).emit('message', { user: 'BucketUp', text: `${user.name} has left.` });
       io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room)});
     }
   })

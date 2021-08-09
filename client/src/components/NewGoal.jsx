@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Popup from 'reactjs-popup';
 import '../styles/NewCategory.scss';
 import { Button } from '@material-ui/core';
@@ -8,6 +8,12 @@ export default function NewExpense(props) {
   const amount_to_goal = React.useRef(null);
   const amount_added = React.useRef(null);
 
+  const [open, setOpen] = useState(true);
+
+  const handleClose = () => {
+    setOpen(false);
+  }
+  
   const getCurrentDay = () => {
     const dateObj = new Date();
     const month = dateObj.getUTCMonth() + 1;
@@ -34,6 +40,7 @@ export default function NewExpense(props) {
     }
 
     props.onSave(goal);
+    handleClose();
   }
 
   return (
@@ -49,18 +56,19 @@ export default function NewExpense(props) {
           <button className="close" onClick={close}>
             &times;
           </button>
-          <div className="header"> Create a New Expense: </div>
+          <div className="header"> Create a New Goal: </div>
           <div className="category-form-container">
             {' '}
             <form class="new-category-form" onSubmit={handleSubmit}>
-              <label>Name:</label>
-              <input type="text" ref={name}></input>
-              <label>Total Cost:</label>
-              <input type="text" ref={amount_to_goal}></input>
-              <label>Contributions so far:</label>
-              <input type="text" ref={amount_added}></input>
+              <input type="text" ref={name} placeholder="   Name" className="modalInput"></input>
+              <br></br>
+              <input type="text" ref={amount_to_goal} placeholder="   Total Cost" className="modalInput"></input>
+              <br></br>
+              <input type="text" ref={amount_added} placeholder="   Contributions so far..." className="modalInput"></input>
               <br></br>
               <button className="new-category-button" type="submit">Submit</button>
+              <br></br>
+              <button className="new-category-button" onClick={close}>Done</button>
             </form>
           </div>
         </div>
