@@ -77,7 +77,10 @@
   background-color: gold;
   color: black
 }
-
+.chat-button-container {
+  font-family: Arial, Helvetica, sans-serif;
+  z-index: 99;
+}
 .screen {
   position: relative;
 }
