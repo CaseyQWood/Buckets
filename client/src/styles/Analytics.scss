@@ -4,7 +4,7 @@
 }
 
 .barchart {
-  height: 715px;
+  height: 795px;
   font-family: 'Arvo';
   width: 100%;
   z-index: 15;
@@ -43,7 +43,7 @@
 
 .piechart-goal {
  font-family: 'Arvo';
- height: 340px;
+ height: 380px;
  width: 100%;
  z-index: 15;
  border-radius: 15px;
@@ -53,7 +53,7 @@
 }
 
 .piechart-added {
- height: 340px;
+ height: 380px;
  font-family: 'Arvo';
  width: 100%;
  z-index: 15; 
@@ -72,7 +72,10 @@
 }
 
 .chart-title {
+  margin-top: 2vh;
   text-align: center;
+  font-family: Roboto, sans-serif;
+  font-size: 25px;
 }
 .analtyics-emperor {
   background-image: url('./white-simple-gradient.png');
