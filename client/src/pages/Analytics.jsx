@@ -71,15 +71,51 @@ export default function Analytics() {
   // set up labels for bar chart based on retrived data from database
   const budgetLabels = (budget) => {
     let labels = [];
+    let labelsObjArr = [];
     if (budget === undefined) return labels;
     for (let i = 0; i < budget.length; i++) {
+      let labelsObj = {};
       const date = new Date(formatDate(budget[i].start_date));
       const month = date.toLocaleString("default", { month: "long" });
-      labels.push(month + ": " + budget[i].name);
+      labelsObj.month = month;
+      labelsObj.cat = budget[i].name;
+      labelsObjArr.push(labelsObj);
+      labels.push([month + ":" + budget[i].name]);
     }
-    return labels;
+    return labelsObjArr;
   };
 
+  // set up month arr
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
+  // sort data based on month
+  const sorter = (a, b) => {
+    return months.indexOf(a.month) - months.indexOf(b.month);
+  };
+
+  const sorttedBudgetLable = budgetLabels(budget).sort(sorter);
+
+  const sorttedBudgetLableArr = (obj) => {
+    const arr = []
+    for(const ele of obj) {
+      arr.push(ele.month +":"+ ele.cat);
+    }
+    return arr;
+  }
+  
   // set up expense data in specific time range
   const budgetExpense = (budget) => {
     let expenseData = [];
@@ -157,7 +193,7 @@ export default function Analytics() {
 
   // use retrived data from database to feed bar chart
   const data = {
-    labels: budgetLabels(budget),
+    labels: sorttedBudgetLableArr(sorttedBudgetLable),
     datasets: [
       {
         label: "Total_expense",
@@ -282,7 +318,7 @@ export default function Analytics() {
                   )
                 }
               >
-                Search
+                SEARCH
               </button>
             </Grid>
           </MuiPickersUtilsProvider>
@@ -304,14 +340,12 @@ export default function Analytics() {
 
                 <PieChart pieData={pieAddedAmountData} />
                 <ChatButton onClick={toggleVisibility} />
-      {ChatComponent}
+                {ChatComponent}
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      
     </>
   );
 }
