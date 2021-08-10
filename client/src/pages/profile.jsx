@@ -140,7 +140,7 @@ export default function Profile() {
   // currently have OrbitControls and Debug commented out as they are used to TS but not for production
   return (
 
-    <>
+    <div className="general">
     <NavBar/>
     <div>
       <Box sx={{ flexGrow: 1 }}>
@@ -254,6 +254,6 @@ export default function Profile() {
         {ChatComponent}
       </div>
     </div>
-    </>
+    </div>
   );
 }
