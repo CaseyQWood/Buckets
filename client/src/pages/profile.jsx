@@ -18,6 +18,7 @@ import * as THREE from 'three'
 import NewGraph from "../3dobjects/NewGraph";
 import CheckMark from "../3dobjects/CheckMark";
 import ListObject from "../3dobjects/ListObject";
+import SmallPile from "../3dobjects/SmallPile";
 
 import { Grid, Box } from "@material-ui/core";
 import UserInfo from "../components/userInfo";
@@ -224,8 +225,8 @@ export default function Profile() {
 
                   <pointLight castShadow position={[-5, 10, 10]} intensity={1.5} />
                   <Suspense fallback={null}>
-                    <ShadowPlane position={[0, -3, 0]} />
-                    <ListObject castShadow scale={0.1} rotation={[0,-0.2,0]} position={[-7.5, -5, 0.5]}/>
+                    <ShadowPlane position={[0, -1.8, 0]} />
+                    <SmallPile castShadow scale={0.4} rotation={[0,-0.5,0]} position={[0, -1.6, 0]}/>
 
                   </Suspense>
                 </Canvas>
