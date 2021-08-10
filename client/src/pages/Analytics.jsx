@@ -325,7 +325,7 @@ export default function Analytics() {
           <div className="chart-container">
             <div className="barchart">
               <p className="chart-title">Expenses vs Spending Limit</p>
-              <div style={{ width: "650px", height: "660px" }}>
+              <div style={{ width: "660px", height: "660px" }}>
                 <BarChart barData={data} options={options} />
               </div>
             </div>
