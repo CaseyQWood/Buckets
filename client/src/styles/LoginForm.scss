@@ -8,7 +8,8 @@ canvas {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 10%;
+  height: 100%;
+  
 }
 
 .general {
@@ -54,6 +55,7 @@ input.input-field {
 }
 
 .login {
+  margin-top: 10%;
   position: relative;
   display: flex;
   color: white;
@@ -116,4 +118,8 @@ input.input-field {
 
 .login-emperor {
   margin-top: -65px;
+  background-image: url('./white-simple-gradient.png');
+  height: auto;
+  background-size: 100%;
+  z-index: -10;
 }
