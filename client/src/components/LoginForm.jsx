@@ -13,7 +13,7 @@ export default function LoginForm(props) {
   return (
     <div className="user-login">
       <div className="login">
-        <h2>Login<LocalAtmIcon/></h2>
+        <h2>BucketUp<LocalAtmIcon/></h2>
         <form>
           <input
             className="input-field"
