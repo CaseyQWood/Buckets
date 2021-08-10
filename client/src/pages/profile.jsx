@@ -106,7 +106,7 @@ export default function Profile() {
     return (
       <mesh material={material} rotation={[-Math.PI / 2, 0, 0]} {...props} castShadow receiveShadow>
         <planeBufferGeometry args={[15, 15]} />
-        <meshStandardMaterial color='red'/>
+        {/* <meshStandardMaterial color='red'/> */}
 
       </mesh >
     )
