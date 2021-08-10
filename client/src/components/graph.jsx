@@ -1,5 +1,6 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
+import { Divider } from '@material-ui/core';
 
 //This data will need to be replaced with previous budget data.
 
@@ -35,7 +36,7 @@ export default function BudgetActualExpected(props) {
   return (
     <>
       <div className='header'>
-        <h3 className='title' style={{fontFamily: 'Roboto, sans-serif'}}>Your Previous Budgets</h3>
+        <h3 className='title' style={{fontFamily: 'Roboto, sans-serif', fontSize: '36px'}}>Your Previous Budgets</h3>
         <div className='links'>
         </div>
       </div>

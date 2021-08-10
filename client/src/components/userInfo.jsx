@@ -17,7 +17,7 @@ export default function UserInfo(props) {
       <h4>Funds Remaining:</h4>
         <p>{balance}</p>
       <br></br>
-        <h4>Monthly Income:</h4>
+        <h4>Annual Income:</h4>
         <p>{income}</p>
       <br></br>
         <h4>Total Monthly Expenses:</h4>
