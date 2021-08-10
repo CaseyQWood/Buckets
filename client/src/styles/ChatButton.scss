@@ -15,8 +15,9 @@
 }
 
 .wrapper .icon {
+  color: white;
   position: relative;
-  background-color: gold;
+  background-color: #00588F;
   border-radius: 50%;
   padding: 15px;
   margin: 10px;
@@ -27,7 +28,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 10px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
@@ -36,8 +37,8 @@
   position: absolute;
   top: 0;
   font-size: 14px;
-  background-color: black;
-  color:black;
+  background-color: white;
+  color:#00588F;
   padding: 5px 8px;
   border-radius: 5px;
   box-shadow: 2px 7px 10px rgb(113, 104, 104);
@@ -51,7 +52,7 @@
   content: "";
   height: 8px;
   width: 16px;
-  color: black;
+  color: white;
   background-color: #ffffff;
   bottom: -3px;
   left: 50%;
@@ -74,8 +75,8 @@
 .wrapper .facebook:hover,
 .wrapper .facebook:hover .tooltip,
 .wrapper .facebook:hover .tooltip::before {
-  background-color: gold;
-  color: black
+  background-color: white;
+  color:#00588F
 }
 .chat-button-container {
   font-family: Arial, Helvetica, sans-serif;
