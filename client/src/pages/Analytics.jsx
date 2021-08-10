@@ -198,12 +198,12 @@ export default function Analytics() {
       {
         label: "Total_expense",
         data: budgetExpense(budget),
-        backgroundColor: "rgba(75, 192, 192, 0.2)"
+        backgroundColor: "#78D1F7"
       },
       {
         label: "Spending_limit",
         data: budgetSpendingLimit(budget),
-        backgroundColor: "rgba(255, 205, 86, 0.2)"
+        backgroundColor: "#F8574F"
       }
     ]
   };
@@ -238,14 +238,14 @@ export default function Analytics() {
       {
         label: "",
         backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)"
-        ],
-        hoverBackgroundColor: [
           "rgba(255, 99, 132, 1)",
           "rgba(54, 162, 235, 1)",
           "rgba(255, 206, 86, 1)"
+        ],
+        hoverBackgroundColor: [
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(255, 206, 86, 0.2)"
         ],
         data: goalData(goals)
       }
@@ -258,14 +258,14 @@ export default function Analytics() {
       {
         label: "",
         backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)"
-        ],
-        hoverBackgroundColor: [
           "rgba(255, 99, 132, 1)",
           "rgba(54, 162, 235, 1)",
           "rgba(255, 206, 86, 1)"
+        ],
+        hoverBackgroundColor: [
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(255, 206, 86, 0.2)"
         ],
         data: addedToGoalData(goals)
       }
