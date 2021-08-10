@@ -11,7 +11,7 @@ export default function ProgressBar(props) {
   // Set's color for the graph will be changed to final color scheme closer too
   if (currentValue < 75) {
     backgroundColor = '#A6E1FA'
-  } else if (currentValue < 100) { 
+  } else if (currentValue < 99) { 
     backgroundColor = '#FFC857'
   } else {
     backgroundColor = 'rgb(249, 112, 104)';
@@ -28,13 +28,16 @@ export default function ProgressBar(props) {
   // Progress bar structure
   return (
     <div className="category-progress-bar">
-      <h4 className="category-margin">{name}: {spendLimit}</h4>
+      <div className="category-margin">
+        <h4>{name}: </h4>
+        <h4>{spendLimit}</h4>
+      </div>
       <div className="progress-container">
         <div className="progress-filler" style={fillerStyles}>
           <span className="progress-label">{`${value}%`}</span>
         </div>
       </div>
-      <p>{spendLimit}</p>
+      <br></br>
     </div>
   );
 };

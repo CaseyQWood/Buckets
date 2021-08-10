@@ -10,6 +10,13 @@ import { Canvas } from '@react-three/fiber';
 import SotChest from '../3dobjects/SotChest';
 import SplitButton from '../components/SelectBudget';
 import useBudgetList from '../hooks/useBudgetList';
+import { Physics } from '@react-three/cannon';
+import ShadowPlane from '../3dobjects/ShadowPlane';
+import Wall from '../3dobjects/PhysicsWalls'
+import Bucket from '../3dobjects/PolyBucket';
+import Coins from '../3dobjects/Coins';
+import { OrbitControls } from '@react-three/drei';
+import { Debug, usePlane } from '@react-three/cannon';
 
 import "../styles/budget.scss";
 import NavBar from "../components/NavBar.jsx";
@@ -103,7 +110,12 @@ export default function Budget1() {
   const newBudget = state.categories.map(category => {
     console.log("WHAT IS THIS VALUE ", activeCategory);
 
-
+    function Plane() {
+      const [ref] = usePlane(() => ({ mass: 0, rotation: [-Math.PI / 2, 0, 0], position: [0, -2, 0] }))
+      return (
+        <mesh ref={ref} />
+      )
+    }
 
 
     return(
@@ -131,15 +143,12 @@ export default function Budget1() {
     )
   })
 
-  function Plane(props) {
-    const material = new THREE.ShadowMaterial();
-    material.opacity = 0.2;
+  function Plane() {
+    const [ref] = usePlane(() => ({ mass: 0, rotation: [-Math.PI / 2, 0, 0], position: [0, -2, 0] }))
     return (
-      <mesh material={material} rotation={[-Math.PI / 2, 0, 0]} {...props} castShadow receiveShadow>
-        <planeBufferGeometry  args={[15,15]}/>         
-      </mesh >
+      <mesh ref={ref} />
     )
-  } 
+  }
 
   
   return (
@@ -147,15 +156,32 @@ export default function Budget1() {
     <NavBar />
     <div className='emperor'>
       <div className='r3f-chest'>
-        <Canvas shadows camera={{angle: 0.5, position: [0.5, 0.1, 3.5] }}>
+        {/* <Canvas shadows camera={{angle: 0.5, position: [0.5, 0.1, 3.5] }}>
           <ambientLight intensity={0.9}/>
           <pointLight castShadow position={[-5, 10, 10]} intensity={0.5}  angle={1}/>
             <Suspense fallback={null}>
-              {/* <OrbitControls/> */}
+              <OrbitControls/>
               <Plane position={[0, -1, 0]}/>
               <SotChest rotation={[0,-1.75,0]} position={[0,-1,0]} scale={0.02}/>
             </Suspense>
+        </Canvas> */}
+
+        <Canvas shadows camera={{ position: [0, 0.5, 6], far: 500, fov: 60 }}>
+          {/* <OrbitControls/> */}
+          <pointLight castShadow position={[-5, 10, 10]} intensity={1.5} />
+          <Physics>
+            {/* <Debug> */}
+            <Suspense>
+              <Wall />
+              <Plane position={[0, 45, 0]} />
+              <Coins numOfCoins={10} />
+              <Bucket scale={7} position={[0, -1.8, 0]} rotation={[0, Math.random() * 5, 0]} />
+              <ShadowPlane position={[0, -3, 0]} />
+            </Suspense>
+            {/* </Debug> */}
+          </Physics>
         </Canvas>
+
       </div>
       <div className="budget-container">
         <h3 className='header'>Current Categories: </h3>
