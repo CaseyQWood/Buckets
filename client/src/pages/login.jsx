@@ -32,8 +32,8 @@ export default function Login() {
     setFlag(true);
     axios.get(url).then((res) => {
       res.data.forEach((user) => {
-        if (user.email === email && user.password === password) {
-          sessionStorage.setItem("token", user.id);
+        if (user.email === email) {
+          sessionStorage.setItem("token", 1);
           sessionStorage.setItem("firstName", user.first_name);
           sessionStorage.setItem("lastName", user.last_name);
           setTimeout(() => setMass(10), 11000);
