@@ -5,17 +5,24 @@ import '../styles/userInfo.scss';
 export default function UserInfo(props) {
   const {income, expectedExpenses, balance} = props;
 
+  const name = sessionStorage.firstName;
   return (
     <div className="user-info">
       <div>
-        <h2>Total Funds Remaining For the Month: {balance}</h2>
+        <h1 style={{fontSize: '36px'}}>{"Welcome " + name + '!'}</h1>
       </div>
       <Divider />
+      <br></br>
       <div>
-        <h3>Monthly Income:</h3>
+      <h4>Funds Remaining:</h4>
+        <p>{balance}</p>
+      <br></br>
+        <h4>Annual Income:</h4>
         <p>{income}</p>
-        <h3>Total Monthly Expenses:</h3>
+      <br></br>
+        <h4>Total Monthly Expenses:</h4>
         <p>{expectedExpenses}</p>
+      <br></br>
       </div>
     </div>
   )
