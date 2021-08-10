@@ -6,7 +6,7 @@ import ProgressBar from "../components/progressBar";
 import ChatButton from "../components/ChatButton";
 import NewChat from "../components/NewChat";
 
-import { Physics, usePlane } from '@react-three/cannon'
+import { Physics, usePlane, Debug } from '@react-three/cannon'
 import { Canvas } from '@react-three/fiber'
 import Bucket from '../3dobjects/PolyBucket'
 import Coin from '../3dobjects/BucketCoin'
@@ -190,7 +190,7 @@ export default function Profile() {
 
               <div className="buttonComponent">
                 <span className="new-goal-button">
-                  <NewGoal onSave={addGoal} budgetId={budgetId}/>
+                  <NewGoal onSave={addGoal} budgetId={budgetId} />
                 </span>
               </div>
 
@@ -250,138 +250,3 @@ export default function Profile() {
     </>
   );
 }
-
-
-// ----------- original --------------------
-// <>
-// <Box sx={{ flexGrow: 1 }}>
-//   <Grid container spacing={3}>
-//     <Grid item xs>
-//       <div>{userInfo}</div>
-//       <div className="threeJS">
-//         <h3>ThreeJS HERE</h3>
-//         <div className='canvas-tupperware'>
-//           <Canvas camera={{position: [0, 0.5, 6],far: 500, fov: 60}}>
-//             {/* <OrbitControls/> */}
-//             <pointLight position={[10, 10, 10]} intensity={2} />
-//             <Physics>
-//               {/* <Debug> */}
-//                 <Suspense>
-//                   <Wall/>
-//                   <Plane position={[0, 5, 0]}/>
-//                   <Coins numOfCoins={10}/>
-//                   <Bucket scale={7} position={[0, -2, 0]} rotation={[0, Math.random() * 5, 0]}/>
-//                 </Suspense>
-//               {/* </Debug> */}
-//             </Physics>
-//           </Canvas>
-//         </div>
-//       </div>
-//     </Grid>
-//     <Grid item xs={6}>
-//       <div className="center-col-profile">
-//         <div className="previous-budget-graph">
-//           <BudgetActualExpected actual={graphActual} expected={graphExpected} names={graphNames}/>
-//         </div>
-//         <div className="category-bars" style={{ margin: 1 + "em" }}>
-//           {categoryProgress}
-//         </div>
-//       </div>
-//     </Grid>
-//     <Grid item xs>
-//       <div className="right-col-profile">
-//         <div className="goals-bars">{goalProgress}</div>
-//         <div className="buttonComponent">
-//           <span>
-//             <Button variant="contained" size="large">
-//               Create a New Budget
-//             </Button>
-//           </span>
-//           <span>
-//             <Button variant="contained" size="large">
-//               Create a New Goal
-//             </Button>
-//           </span>
-//         </div>
-//       </div>
-//     </Grid>
-//   </Grid>
-// </Box>
-
-// <div>
-// <ChatButton onClick={toggleVisibility} />
-// {ChatComponent}
-// </div>
-// </>
-
-
-
-
-// ----------------- version 1 -----------------
-
-// (<div>
-
-// <Box sx={{ flexGrow: 1 }}>
-//   <Grid container spacing={3}>
-
-//     <Grid item xs>
-//     <div className="threeJS">
-//   <h3>Spending Available</h3>
-//   <div className='canvas-tupperware'>
-//     <Canvas camera={{position: [0, 0.5, 6],far: 500, fov: 60}}>
-//       {/* <OrbitControls/> */}
-//       <pointLight position={[10, 10, 10]} intensity={2} />
-//       <Physics>
-//         {/* <Debug> */}
-//           <Suspense>
-//             <Wall/>
-//             <Plane position={[0, 5, 0]}/>
-//             <Coins numOfCoins={10}/>
-//             <Bucket scale={7} position={[0, -2, 0]} rotation={[0, Math.random() * 5, 0]}/>
-//           </Suspense>
-//         {/* </Debug> */}
-//       </Physics>
-//     </Canvas>
-//   </div>
-// </div>
-
-//       <div>{userInfo}</div>
-//         <div className="right-col-profile">
-//           <div className="goals-bars">{goalProgress}</div>
-//           <div className="buttonComponent">
-//             <span>
-//               <Button variant="contained" size="large">
-//                 Create a New Budget
-//               </Button>
-//             </span>
-//             <span>
-//               <Button variant="contained" size="large">
-//                 Create a New Goal
-//               </Button>
-//             </span>
-//           </div>
-//         </div>
-
-//     </Grid>
-
-//     <Grid item xs={6}>
-//       <div className="center-col-profile">
-
-//         <div className="previous-budget-graph">
-//           <BudgetActualExpected actual={graphActual} expected={graphExpected} names={graphNames}/>
-//         </div>
-
-//         <div className="category-bars" style={{ margin: 1 + "em" }}>
-//           {categoryProgress}
-//         </div>
-
-//       </div>
-//     </Grid>
-//   </Grid>
-// </Box>
-
-// <div>
-// <ChatButton onClick={toggleVisibility} />
-// {ChatComponent}
-// </div>
-// </div>)
