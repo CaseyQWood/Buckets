@@ -10,7 +10,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import BarChart from "../components/BarChart";
 import PieChart from "../components/PieChart";
 import { analyiticsContext } from "../providers/AnalyticsProvider";
-import ProgressBar from "../components/progressBar";
 import NavBar from "../components/NavBar.jsx";
 import useVisiblity from "../hooks/useVisiblity";
 import ChatButton from "../components/ChatButton";
@@ -67,6 +66,7 @@ export default function Analytics() {
 
     return [year, month, day].join("-");
   }
+ 
 
   // set up labels for bar chart based on retrived data from database
   const budgetLabels = (budget) => {
@@ -75,7 +75,7 @@ export default function Analytics() {
     if (budget === undefined) return labels;
     for (let i = 0; i < budget.length; i++) {
       let labelsObj = {};
-      const date = new Date(formatDate(budget[i].start_date));
+      const date = new Date(budget[i].start_date);
       const month = date.toLocaleString("default", { month: "long" });
       labelsObj.month = month;
       labelsObj.cat = budget[i].name;
@@ -170,8 +170,7 @@ export default function Analytics() {
     return addedToGoalData;
   };
 
-  // console.log("addedToGoal", addedToGoalData(goals));
-  // console.log("goalData", goalData(goals));
+
 
   // set up labels for piechat
   const goalLabel = (goals) => {
@@ -190,7 +189,7 @@ export default function Analytics() {
 
     return ((number1 / number2) * 100).toFixed(2);
   };
-
+  
   // use retrived data from database to feed bar chart
   const data = {
     labels: sorttedBudgetLableArr(sorttedBudgetLable),
