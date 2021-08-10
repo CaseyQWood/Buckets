@@ -18,8 +18,8 @@ export default function Login() {
 
   let history = useHistory();
   const positionArray = [
-    [1, 1, 1],
-    [0, 1, 0],
+    [1.4, 1.75, 1],
+    [2, 0.75, 1],
     [-1, 1.5, 1],
     [-2, 2.5, 1],
     [1.9, 2.5, 1],
@@ -59,13 +59,13 @@ export default function Login() {
             <ambientLight />
             <pointLight position={[10, 10, 10]} intensity={2} />
             <Physics gravity={[0, -mass, 0]}>
-              <Debug>
+              {/* <Debug> */}
                 <Suspense>
                   {positionArray.map((pos, index) => (
                     <Coin key={index} position={pos} />
                   ))}
                 </Suspense>
-              </Debug>
+              {/* </Debug> */}
             </Physics>
           </Canvas>
         </div>

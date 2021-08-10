@@ -13,12 +13,12 @@ canvas {
 
 .general {
   overflow: hidden;
-  height: 100vw;
+  height: 100vh;
   width: 100vw;
 }
 
 input.input-field {
-  background-color: gold;
+  background-color: white;
   height: 35px;
   font-size: 1.1rem;
   border:2px solid black !important;
@@ -32,10 +32,10 @@ input.input-field {
   width: 80px;
   font-weight: bold;
   font-size: 15px;
-  background-color: gold;
-  border: 2px solid black;
+  background-color: #00588F;
+  border: 2px solid white;
   border-radius: 5px;
-  color: black;
+  color: white;
   box-shadow: 2px 2px 1px gray;
   cursor: pointer;
 }
@@ -45,10 +45,10 @@ input.input-field {
   width: 80px;
   font-weight: bold;
   font-size: 15px;
-  background-color: black;
-  border: 2px solid gold;
+  background-color: white;
+  border: 2px solid #00588F;
   border-radius: 5px;
-  color: gold;
+  color: #00588F;
   box-shadow: 2px 2px 1px gray;
   cursor: pointer;
 }
@@ -56,10 +56,11 @@ input.input-field {
 .login {
   position: relative;
   display: flex;
+  color: white;
   justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
-  background-color: gold;
+  background-color:#00588F;
   width: 40vh;
   height: 60vh;
   border-radius: 15px;
@@ -84,6 +85,10 @@ input.input-field {
 
 .other-sign-in {
   margin-top: 15px;
+  text-align: center;
+  svg{
+    margin: 10px 5px;
+  }
 }
 
 .other-sign-in-icon:hover {
@@ -103,3 +108,12 @@ input.input-field {
   width: 100vw;
 }
 
+.general {
+  background-image: url('./white-simple-gradient.png');
+  position: absolute;
+  z-index: -1;
+}
+
+.login-emperor {
+  margin-top: -65px;
+}
