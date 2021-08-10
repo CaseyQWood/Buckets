@@ -79,12 +79,13 @@ export default function SplitButton(props) {
             <ArrowDropDownIcon />
           </Button>
         </ButtonGroup>
-        <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+        <Popper open={open} anchorEl={anchorRef.current} role={undefined} style={{zIndex: 1}} transition disablePortal>
           {({ TransitionProps, placement }) => (
             <Grow
               {...TransitionProps}
               style={{
                 transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom',
+                zIndex: 1
               }}
             >
               <Paper>
