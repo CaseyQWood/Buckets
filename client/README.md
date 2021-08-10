@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# BucketUp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+BucketUp is an LHL final project that makes budgeting a breeze. Our objective with this project was to make a budgeting application that makes it fast and intuitive to set up a budget for experienced budgeters, but also easy to get up and running for users who might be newer to the craft. 
 
-## Available Scripts
+   Using the latest front-end frameworks, and a robust express backend we've automated the boring stuff while still leaving room for the user to create a fully customized budget!
 
-In the project directory, you can run:
+**GIF GOES HERE************************
 
-### `npm start`
+## Key Takeaways
+**[React](https://reactjs.org/)** - This project was our first full-stack application built using React and Express. Getting used to managing state, and the built-in prop system React uses was a hurdle at first. A few days in, we started using Material-UI we were blown away by how fast we could proto-type and add new functionality, after that we started flying.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**ThreeJS** - Was a library we were incredibly excited to use, integrating and setting up the various Canvas elements was difficult at the beginning, and managing render times wasn't always easy, but we loved the dimension this library added to our app!
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**IMAGE GOES HERE*********************
 
-### `npm test`
+**Managing Data** - Over the course of the project we spent a lot of time working on ERD's and deciding how we could query and display useful data. It took a few refactors, but we learned an important lesson about trying to do two things at once. By separating concerns, and being cautious with how we mutated data the backend did come together.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
 
-### `npm run build`
+To run the application locally fork, and clone the repository:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone <SSH_Key> bucketUp
+```
+CD into the client folder:
+```bash
+cd bucketUp/client
+```
+Install required packages, from within the client folder run:
+```bash
+npm install
+```
+Repeat this process for the server folder:
+```bash
+cd ../server
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+That's it! Once you've run these commands you can run the application!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
 
-### `npm run eject`
+To start the application run:
+```bash
+npm start
+```
+in the client and server folders respectively, you can then navigate to localhost:3000 to view the app.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Features (images for each)
+**[Chat](https://socket.io/)** - Implemented using socket.io.  
+**[3D Elements](https://threejs.org/)** - Implemented using ThreeJS.  
+**[Analytics](https://www.chartjs.org/)** - Charts are styled with CSS, generated with ChartJS.  
+**[Biometric Login](https://www.tensorflow.org/)** - Implemented using Tensorflow. Although a good first taste of machine learning, the face-scan is currently just for show as we didn't have time to train the model. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contributors
+[Casey Wood](http://github.com/CaseyQWood)   
+[Mingfeng Li](http://github.com/MingfengLi0122)   
+[Brandon Rowlandson](http://github.com/Barndon99)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+[MIT](https://choosealicense.com/licenses/mit/) 

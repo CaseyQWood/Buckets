@@ -10,12 +10,12 @@ export default function BudgetActualExpected(props) {
       {
         label: 'Expected Budget',
         data: props.expected,
-        backgroundColor: 'rgb(255, 99, 132)',
+        backgroundColor: '#F8574F',
       },
       {
         label: 'Actual Budget',
         data: props.actual,
-        backgroundColor: 'rgb(54, 162, 235)',
+        backgroundColor: '#78D1F7',
       },
     ],
   };
