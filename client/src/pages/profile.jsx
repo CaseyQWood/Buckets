@@ -184,7 +184,7 @@ export default function Profile() {
             </div>
 
               <div className="goals-bars">
-                <h1>Goals:</h1>
+                <h1 style={{fontSize: 36+'px'}}>Goals:</h1>
                 <Divider />
                 <br></br>
                 {goalProgress}
@@ -235,7 +235,7 @@ export default function Profile() {
               </div>
 
               <div className="category-bars" style={{ margin: 1 + "em" }}>
-                <h1>Categories:</h1>
+                <h1 style={{fontSize: 36+'px'}}>Categories:</h1>
                 <Divider />
                 <br></br>
                 {categoryProgress}
