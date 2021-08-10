@@ -20,7 +20,7 @@ import CheckMark from "../3dobjects/CheckMark";
 import ListObject from "../3dobjects/ListObject";
 import SmallPile from "../3dobjects/SmallPile";
 
-import { Grid, Box } from "@material-ui/core";
+import { Grid, Box, Divider } from "@material-ui/core";
 import UserInfo from "../components/userInfo";
 
 import useActiveData from "../hooks/useActiveData";
@@ -185,13 +185,17 @@ export default function Profile() {
             </div>
 
               <div className="goals-bars">
-                <h3>Goals:</h3>
+                <h1 style={{fontSize: 36+'px'}}>Goals:</h1>
+                <Divider />
+                <br></br>
                 {goalProgress}
               </div>
 
               <div className="buttonComponent">
                 <span className="new-goal-button">
+
                   <NewGoal onSave={addGoal} budgetId={budgetId} />
+
                 </span>
               </div>
 
@@ -234,7 +238,9 @@ export default function Profile() {
               </div>
 
               <div className="category-bars" style={{ margin: 1 + "em" }}>
-                <h3>Categories</h3>
+                <h1 style={{fontSize: 36+'px'}}>Categories:</h1>
+                <Divider />
+                <br></br>
                 {categoryProgress}
               </div>
 
