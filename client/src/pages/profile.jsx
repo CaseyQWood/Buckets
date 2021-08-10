@@ -19,7 +19,7 @@ import NewGraph from "../3dobjects/NewGraph";
 import CheckMark from "../3dobjects/CheckMark";
 import ListObject from "../3dobjects/ListObject";
 
-import { Grid, Box } from "@material-ui/core";
+import { Grid, Box, Divider } from "@material-ui/core";
 import UserInfo from "../components/userInfo";
 
 import useActiveData from "../hooks/useActiveData";
@@ -184,7 +184,9 @@ export default function Profile() {
             </div>
 
               <div className="goals-bars">
-                <h3>Goals:</h3>
+                <h1>Goals:</h1>
+                <Divider />
+                <br></br>
                 {goalProgress}
               </div>
 
@@ -233,7 +235,9 @@ export default function Profile() {
               </div>
 
               <div className="category-bars" style={{ margin: 1 + "em" }}>
-                <h3>Categories</h3>
+                <h1>Categories:</h1>
+                <Divider />
+                <br></br>
                 {categoryProgress}
               </div>
 
