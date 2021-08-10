@@ -1,9 +1,10 @@
 .infoBar {
+  color: white;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: gold;
+  background: #00588F;
   border-radius: 4px 4px 0 0;
   height: 12%;
   width: 100%;
@@ -14,7 +15,7 @@
   display: flex;
   align-items: center;
   margin-left: 5%;
-  color: black;
+  color: white;
   font-weight: bold;
   font-size: 1.7vh;
 }
