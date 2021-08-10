@@ -10,9 +10,11 @@ export default function ProgressBar(props) {
   let backgroundColor;
   // Set's color for the graph will be changed to final color scheme closer too
   if (currentValue < 75) {
-    backgroundColor = 'rgb(54, 162, 235)'
-  } else { 
-    backgroundColor = 'rgb(255, 99, 132)'
+    backgroundColor = '#A6E1FA'
+  } else if (currentValue < 100) { 
+    backgroundColor = '#FFC857'
+  } else {
+    backgroundColor = 'rgb(249, 112, 104)';
   };
   // Necessary inline styles * DON'T TOUCH *
   const fillerStyles = {

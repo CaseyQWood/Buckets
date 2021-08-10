@@ -1,36 +1,38 @@
 .modal {
   font-size: 12px;
   display: flex;
+  color:white;
   flex-direction: column;
 }
 
 .modalInput {
   border-radius: 2vw;
-  background: gold;
+  background: #00588F;
   height: 2vw;
-  border: 2px solid black;
-  color: black;
+  border: 2px solid white;
+  color: white;
 }
 
 .new-category-form {
   margin: 2vw;
+  color: white;
 }
 .new-category-button {
-	color: black;
+	color: white;
 	text-transform: uppercase;
 	text-decoration: none;
-	background: gold;
-  border: 2px rgba(0, 0, 0, 0.5) solid;
+	background: #00588F;
+  border: 2px white solid;
 	padding: 10px;
 	border-radius: 5px;
 	display: inline-block;
 	transition: all 0.4s ease 0s;
-  box-shadow: 2.5px 5px grey;
+  box-shadow: 2.5px 5px lightgrey;
 }
 
 .new-category-button:hover {
-	background: black;
-  color: gold;
+	background: white;
+  color: #00588F;
 	letter-spacing: 1px;
 	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
 	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
@@ -43,7 +45,7 @@
   justify-content: center;
   flex-direction: column;
   width: 95%;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid white;
   font-size: 18px;
   text-align: center;
   padding: 5px;
@@ -74,7 +76,7 @@
 
 .popup-content {
   margin: auto;
-  background: gold;
+  background: #00588F;
   width: 50%;
   padding: 5px;
   -webkit-animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
