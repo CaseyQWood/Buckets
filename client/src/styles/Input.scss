@@ -4,7 +4,7 @@
 }
 
 .input {
-  border: 1px solid gold;
+  border: 1px solid #00588F;
   border-radius: 0;
   padding: 5%;
   width: 80%;
@@ -17,8 +17,8 @@ input:focus, textarea:focus, select:focus{
 
 .sendButton {
   font-size: 1.7vh;
-  color: black !important;
-  background: gold;
+  color: white!important;
+  background: #00588F;
   padding: 10px;
   display: inline-block;
   border: none;

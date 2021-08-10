@@ -17,12 +17,28 @@
 }
 
 .search-button {
-  color: #9b9898;
-  margin-top: 5vh;
+  border-radius: 5px;
+  background-color: #00588F;
+  color: white;
+  margin-top: 4.3vh;
   font-size: large;
   text-align: center;
-  height: 4vh;
+  height: 4.2vh;
   width: 10vw;
+  box-shadow: 2px 7px 10px rgb(113, 104, 104);
+}
+
+.MuiPickersDay-daySelected {
+  border-radius: 15px;
+  color: #fff;
+  font-weight: 500;
+  background-color: black;
+}
+
+.search-button:hover {
+  background-color: white;
+  color: #00588F;
+  border: 3px solid #00588F;
 }
 
 .piechart-goal {

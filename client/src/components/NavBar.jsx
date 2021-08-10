@@ -17,25 +17,25 @@ import { authContext } from "../providers/AuthProvider";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: "gold",
-    color: "black"
+    backgroundColor: "#00588F",
+    color: "white"
   },
   button: {
-    backgroundColor: "gold",
-    color: "black",
+    backgroundColor: "#00588F",
+    color: "white",
     "&:hover": {
-      backgroundColor: "black",
-      color: "gold"
+      backgroundColor: "white",
+      color: "#00588F"
     }
   },
   menutItem: {
     fontSize: "10px",
     textDecoration: "none",
-    backgroundColor: "black",
-    color: "gold",
+    backgroundColor: "#00588F",
+    color: "white",
     "&:hover": {
-      backgroundColor: "gold",
-      color: "black"
+      backgroundColor: "white",
+      color: "#00588F"
     }
   }
 }));

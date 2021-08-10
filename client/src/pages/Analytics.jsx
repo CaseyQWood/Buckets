@@ -71,15 +71,51 @@ export default function Analytics() {
   // set up labels for bar chart based on retrived data from database
   const budgetLabels = (budget) => {
     let labels = [];
+    let labelsObjArr = [];
     if (budget === undefined) return labels;
     for (let i = 0; i < budget.length; i++) {
+      let labelsObj = {};
       const date = new Date(formatDate(budget[i].start_date));
       const month = date.toLocaleString("default", { month: "long" });
-      labels.push(month + ": " + budget[i].name);
+      labelsObj.month = month;
+      labelsObj.cat = budget[i].name;
+      labelsObjArr.push(labelsObj);
+      labels.push([month + ":" + budget[i].name]);
     }
-    return labels;
+    return labelsObjArr;
   };
 
+  // set up month arr
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
+  // sort data based on month
+  const sorter = (a, b) => {
+    return months.indexOf(a.month) - months.indexOf(b.month);
+  };
+
+  const sorttedBudgetLable = budgetLabels(budget).sort(sorter);
+
+  const sorttedBudgetLableArr = (obj) => {
+    const arr = []
+    for(const ele of obj) {
+      arr.push(ele.month +":"+ ele.cat);
+    }
+    return arr;
+  }
+  
   // set up expense data in specific time range
   const budgetExpense = (budget) => {
     let expenseData = [];
@@ -157,17 +193,17 @@ export default function Analytics() {
 
   // use retrived data from database to feed bar chart
   const data = {
-    labels: budgetLabels(budget),
+    labels: sorttedBudgetLableArr(sorttedBudgetLable),
     datasets: [
       {
         label: "Total_expense",
         data: budgetExpense(budget),
-        backgroundColor: "rgba(75, 192, 192, 0.2)"
+        backgroundColor: "#78D1F7"
       },
       {
         label: "Spending_limit",
         data: budgetSpendingLimit(budget),
-        backgroundColor: "rgba(255, 205, 86, 0.2)"
+        backgroundColor: "#F8574F"
       }
     ]
   };
@@ -202,14 +238,14 @@ export default function Analytics() {
       {
         label: "",
         backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)"
-        ],
-        hoverBackgroundColor: [
           "rgba(255, 99, 132, 1)",
           "rgba(54, 162, 235, 1)",
           "rgba(255, 206, 86, 1)"
+        ],
+        hoverBackgroundColor: [
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(255, 206, 86, 0.2)"
         ],
         data: goalData(goals)
       }
@@ -222,14 +258,14 @@ export default function Analytics() {
       {
         label: "",
         backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)"
-        ],
-        hoverBackgroundColor: [
           "rgba(255, 99, 132, 1)",
           "rgba(54, 162, 235, 1)",
           "rgba(255, 206, 86, 1)"
+        ],
+        hoverBackgroundColor: [
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(255, 206, 86, 0.2)"
         ],
         data: addedToGoalData(goals)
       }
@@ -282,7 +318,7 @@ export default function Analytics() {
                   )
                 }
               >
-                Search
+                SEARCH
               </button>
             </Grid>
           </MuiPickersUtilsProvider>
@@ -304,14 +340,12 @@ export default function Analytics() {
 
                 <PieChart pieData={pieAddedAmountData} />
                 <ChatButton onClick={toggleVisibility} />
-      {ChatComponent}
+                {ChatComponent}
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      
     </>
   );
 }

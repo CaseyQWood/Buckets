@@ -24,7 +24,7 @@ function App() {
     <>
       <Router>
           <AuthProvider>
-          <Route exact={true} path="/" component={Home} /> 
+          <Route exact={true} path="/" component={Profile} /> 
           <Route exact={true} path="/login" component={Login} />  
           <Route exact={true} path="/register" component={Register} />
           <Route exact={true} path="/profile" component={Profile} />
