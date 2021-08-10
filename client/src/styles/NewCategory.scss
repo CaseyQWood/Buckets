@@ -8,9 +8,10 @@
 .modalInput {
   border-radius: 2vw;
   background: #00588F;
-  height: 2vw;
+  height: 3vw;
   border: 2px solid white;
   color: white;
+  font-size: 20px;
 }
 
 .new-category-form {
@@ -28,6 +29,7 @@
 	display: inline-block;
 	transition: all 0.4s ease 0s;
   box-shadow: 2.5px 5px lightgrey;
+  height: 3vw;
 }
 
 .new-category-button:hover {

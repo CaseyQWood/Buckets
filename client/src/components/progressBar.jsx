@@ -11,7 +11,7 @@ export default function ProgressBar(props) {
   // Set's color for the graph will be changed to final color scheme closer too
   if (currentValue < 75) {
     backgroundColor = '#A6E1FA'
-  } else if (currentValue < 100) { 
+  } else if (currentValue < 99) { 
     backgroundColor = '#FFC857'
   } else {
     backgroundColor = 'rgb(249, 112, 104)';
