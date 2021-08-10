@@ -158,16 +158,21 @@ export default function Budget1() {
         </Canvas>
       </div>
       <div className="budget-container">
-        <h3 className='header'>Current Categories: {<ShareBudget budgetId={state.budget_id}/>}</h3>
-        <SplitButton
-            state={state}
-            selectedIndex={selectedIndex}
-            setSelectedIndex={setSelectedIndex}
-            currentBudgetId={state.budget_id}
-            defaultId={defaultIndex}
-            budgetList={budgetListState.budgetListData}
-            updateCurrentBudget={updateCurrentBudget}
-          />
+        <h3 className='header'>Current Categories: </h3>
+        <div className="budget-buttons">
+            <SplitButton
+              state={state}
+              selectedIndex={selectedIndex}
+              setSelectedIndex={setSelectedIndex}
+              currentBudgetId={state.budget_id}
+              defaultId={defaultIndex}
+              budgetList={budgetListState.budgetListData}
+              updateCurrentBudget={updateCurrentBudget}
+            />
+            <div className="share-button">
+              <ShareBudget budgetId={state.budget_id} className="share-budget-button"/>
+            </div>
+          </div>
         <div className='category__container'>
           {newBudget}
         </div>
