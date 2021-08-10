@@ -189,8 +189,8 @@ export default function Profile() {
               </div>
 
               <div className="buttonComponent">
-                <span>
-                  <NewGoal onSave={addGoal} budgetId={budgetId} />
+                <span className="new-goal-button">
+                  <NewGoal onSave={addGoal} budgetId={budgetId}/>
                 </span>
               </div>
 
