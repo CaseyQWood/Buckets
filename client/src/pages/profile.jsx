@@ -175,16 +175,16 @@ export default function Profile() {
             <div className="right-col-profile">
 
             <div className="threeJS">
-              <Canvas shadows>
-                {/* <OrbitControls /> */}
+            <Canvas shadows>
+                  {/* <OrbitControls /> */}
 
-                <pointLight castShadow position={[-5, 10, 10]} intensity={1.5} />
-                <Suspense fallback={null}>
-                  <ShadowPlane position={[0, -3, 0]} />
-                  <CheckMark scale={0.355} position={[-4,-30, 0]} rotation={[0,-0.2,0]} castShadow />
+                  <pointLight castShadow position={[-5, 10, 10]} intensity={1.5} />
+                  <Suspense fallback={null}>
+                    <ShadowPlane position={[0, -1.8, 0]} />
+                    <SmallPile castShadow scale={0.4} rotation={[0,-0.5,0]} position={[0, -1.6, 0]}/>
 
-                </Suspense>
-              </Canvas>
+                  </Suspense>
+                </Canvas>
             </div>
 
               <div className="goals-bars">
@@ -228,7 +228,7 @@ export default function Profile() {
 
               <div className="threeJS">
                 <Canvas shadows>
-                  <OrbitControls />
+                  {/* <OrbitControls /> */}
 
                   <pointLight castShadow position={[-5, 10, 10]} intensity={1.5} />
                   <Suspense fallback={null}>
