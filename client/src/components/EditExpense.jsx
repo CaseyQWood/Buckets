@@ -20,6 +20,7 @@ export default function NewExpense(props) {
   }
 
   const handleSubmit = (ele) => {
+    ele.preventDefault();  
       const expense = {
       name: name.current.value,
       cost: cost.current.value,

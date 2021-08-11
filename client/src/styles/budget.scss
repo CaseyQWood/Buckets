@@ -10,6 +10,21 @@
   flex-direction: row;
 }
 
+.budget-expense {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.budget-icons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.iconsss {
+  margin-right: 10px;
+}
+
 .share-button button {
   margin-left: 20px;
   height: 100%;
