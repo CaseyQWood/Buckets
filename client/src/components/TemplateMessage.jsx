@@ -12,9 +12,11 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import { useHistory } from 'react-router';
 
 export default function SharedTemplate(props) {
   const [show, setShow] = useState(true)
+  const history = useHistory();
 
   const save = (messageData) => {
     const url = 'http://localhost:3002/api/messages/save'
@@ -23,6 +25,8 @@ export default function SharedTemplate(props) {
     // if this is broken try returning the axios request
     axios.put(url, {...messageData, ownerId: userId})
     setShow(false)
+    setTimeout(() => {history.push('/budget') }, 50)
+    
   }
 
   const details = props.message
