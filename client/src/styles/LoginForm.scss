@@ -12,11 +12,11 @@ canvas {
   
 }
 
-.general {
-  overflow: hidden;
-  height: 100vh;
-  width: 100vw;
-}
+// .general {
+//   overflow: hidden;
+//   height: 100vh;
+//   width: 100vw;
+// }
 
 input.input-field {
   background-color: white;
@@ -113,6 +113,8 @@ input.input-field {
 .general {
   background-image: url('./white-simple-gradient.png');
   position: absolute;
+  width: 100%;
+  height: 100%;
   z-index: -1;
 }
 
