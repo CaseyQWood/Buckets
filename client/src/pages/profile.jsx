@@ -134,8 +134,11 @@ export default function Profile() {
 
   const totalRemainingNumber = expectedBudgetNum - actualBudgetNum;
   const totalRemainingFormatted = `$${totalRemainingNumber}.00`
+  
+  const annualIncomeNum = profileState.user.individual_income ? Number(profileState.user.individual_income.replace(/[^0-9.-]+/g, "")) / 12 : 0;
+  const monthlyIncome = annualIncomeNum ? `$ ${annualIncomeNum.toFixed(2)}` : 0;
 
-  const userInfo = <UserInfo income={profileState.user.individual_income} expectedExpenses={expectedBudget} balance={totalRemainingFormatted} />;
+  const userInfo = <UserInfo income={monthlyIncome} expectedExpenses={expectedBudget} balance={totalRemainingFormatted} />;
 
   // currently have OrbitControls and Debug commented out as they are used to TS but not for production
   return (

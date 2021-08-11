@@ -15,14 +15,19 @@ export default function BudgetExpense(props) {
     
     <div className="budget-expense">
 
-      <p>{payee}{name}{amount_paid}</p>
-      {/* <p>Amount paid:{cost}</p> */}
+      <p>{payee}</p>
+      <p>{name}</p>
+      <p>
+      {/*amount_paid*/}
       <div className="budget-icons">
-        <EditExpense onEdit={onEdit} categoryId={categoryId}/>
-        <DeleteIcon onClick={onDelete}/>
-        <Divider/>
+      {amount_paid}
+        <div className="iconsss">
+          <EditExpense onEdit={onEdit} categoryId={categoryId}/>
+          <DeleteIcon onClick={onDelete}/>
+        </div>
       </div>
-   
+      </p>  
+      <Divider/>
     </div>
   )
 }

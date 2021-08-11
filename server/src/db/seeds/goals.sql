@@ -1,6 +1,6 @@
 INSERT INTO goals(name, user_id, budget_id, amount_to_goal, amount_added, start_date, end_date)
 
-VALUES('Downpayment for a Home', 1, 1, 1200000, 50000, '2021-01-15', '2021-07-30'),
+VALUES('Downpayment for a Home', 1, 1, 120000, 50000, '2021-01-15', '2021-07-30'),
 ('Vacation in Bermuda', 1, 1, 25000, 17500, '2021-07-15', '2021-07-30'),
 ('Used car from 2021', 1, 1, 150000, 50000, '2021-07-15', '2021-07-30'),
 ('Another Mansion', 2, 5, 15000000, 200000, '2021-08-01', '2021-08-30'),
