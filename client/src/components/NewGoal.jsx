@@ -21,6 +21,7 @@ export default function NewExpense(props) {
 
 
   const handleSubmit = (ele) => {
+    ele.preventDefault();
     const goal = {
       name: name.current.value,
       user_id: sessionStorage.token,
