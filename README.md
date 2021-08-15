@@ -65,8 +65,7 @@ To start the application run:
 npm start
 ```
 
-You can then navigate to localhost:3000 to view the client side app.
-You can then navigate to localhost:3002 to view the server side api.
+You can then navigate to localhost:3000 to view the client side app and localhost:3002 to view the server side api.
 
 Reset schemas and seeds:
 ```bash
