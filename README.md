@@ -9,27 +9,27 @@ Applied double secured user indentity validation to prevent personal financial i
 ## Key Takeaways
 **[React](https://reactjs.org/)** - This project was a full-stack application built using React and Express. Getting used to managing state, and the built-in prop system React uses was a hurdle at first. A few days in, we started using Material-UI we were blown away by how fast we could proto-type and add new functionality, after that we started flying.
 
-**ThreeJS** - Was a library we were incredibly excited to use, integrating and setting up the various Canvas elements was difficult at the beginning, and managing render times wasn't always easy, but we loved the dimension this library added to our app!
+**[ThreeJS](https://threejs.org/)** - Was a library we were incredibly excited to use, integrating and setting up the various Canvas elements was difficult at the beginning, and managing render times wasn't always easy, but we loved the dimension this library added to our app!
 
 ## Final Product
 
 Face recognition for user indentity verification
-![face_rec](http://url/to/img.png)
+![face_rec](https://github.com/MingfengLi0122/Buckets/blob/master/client/public/image/faceRec.png)
 
 Profile page for budgets and goals
-![profile](http://url/to/img.png)
+![profile](https://github.com/MingfengLi0122/Buckets/blob/master/client/public/image/profile.png)
 
 Budget page allows user to edit, add and delete budgets and expenses 
-![budget](http://url/to/img.png)
+![budget](https://github.com/MingfengLi0122/Buckets/blob/master/client/public/image/budget.png)
 
 Message page allows user to accpet incoming budget template
-![message](http://url/to/img.png)
+![message](https://github.com/MingfengLi0122/Buckets/blob/master/client/public/image/message.png)
 
 Analytics pages allows user to review all past statments
-![analytics](http://url/to/img.png)
+![analytics](https://github.com/MingfengLi0122/Buckets/blob/master/client/public/image/analytics.png)
 
 Chat with customer support
-![onlineChat](http://url/to/img.png)
+![onlineChat](https://github.com/MingfengLi0122/Buckets/blob/master/client/public/image/onlinechat.png)
 
 **Managing Data** - Over the course of the project we spent a lot of time working on ERD's and deciding how we could query and display useful data. It took a few refactors, but we learned an important lesson about trying to do two things at once. By separating concerns, and being cautious with how we mutated data the backend did come together.
 
