@@ -74,7 +74,7 @@ npm run reset
 npm run seed
 ```
 
-## Features (images for each)
+## Features
 **[Chat](https://socket.io/)** - Implemented using socket.io.  
 **[3D Elements](https://threejs.org/)** - Implemented using ThreeJS.  
 **[Analytics](https://www.chartjs.org/)** - Charts are styled with CSS, generated with ChartJS.  
