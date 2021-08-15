@@ -1,17 +1,35 @@
 # BucketUp
 
-BucketUp is an LHL final project that makes budgeting a breeze. Our objective with this project was to make a budgeting application that makes it fast and intuitive to set up a budget for experienced budgeters, but also easy to get up and running for users who might be newer to the craft. 
+BucketUp is an customized budgeting project that makes budgeting a breeze. Our objective with this project was to make a budgeting application that makes it fast and intuitive to set up a budget for experienced budgeters, but also easy to get up and running for users who might be newer to the craft. 
 
-   Using the latest front-end frameworks, and a robust express backend we've automated the boring stuff while still leaving room for the user to create a fully customized budget!
+Using the latest front-end frameworks, and a robust express backend we've automated the boring stuff while still leaving room for the user to create a fully customized budget!
 
-**GIF GOES HERE************************
+Applied double secured user indentity validation to prevent personal financial information leakage. Allowing user to add, edit and share budgets to friends and families. Past statements can also be viewed and analyzed with visual charts.
 
 ## Key Takeaways
-**[React](https://reactjs.org/)** - This project was our first full-stack application built using React and Express. Getting used to managing state, and the built-in prop system React uses was a hurdle at first. A few days in, we started using Material-UI we were blown away by how fast we could proto-type and add new functionality, after that we started flying.
+**[React](https://reactjs.org/)** - This project was a full-stack application built using React and Express. Getting used to managing state, and the built-in prop system React uses was a hurdle at first. A few days in, we started using Material-UI we were blown away by how fast we could proto-type and add new functionality, after that we started flying.
 
 **ThreeJS** - Was a library we were incredibly excited to use, integrating and setting up the various Canvas elements was difficult at the beginning, and managing render times wasn't always easy, but we loved the dimension this library added to our app!
 
-**IMAGE GOES HERE*********************
+## Final Product
+
+Face recognition for user indentity verification
+![face_rec](http://url/to/img.png)
+
+Profile page for budgets and goals
+![profile](http://url/to/img.png)
+
+Budget page allows user to edit, add and delete budgets and expenses 
+![budget](http://url/to/img.png)
+
+Message page allows user to accpet incoming budget template
+![message](http://url/to/img.png)
+
+Analytics pages allows user to review all past statments
+![analytics](http://url/to/img.png)
+
+Chat with customer support
+![onlineChat](http://url/to/img.png)
 
 **Managing Data** - Over the course of the project we spent a lot of time working on ERD's and deciding how we could query and display useful data. It took a few refactors, but we learned an important lesson about trying to do two things at once. By separating concerns, and being cautious with how we mutated data the backend did come together.
 
@@ -38,13 +56,22 @@ npm install
 
 That's it! Once you've run these commands you can run the application!
 
-## Usage
+## Scripts
 
 To start the application run:
 ```bash
 npm start
 ```
-in the client and server folders respectively, you can then navigate to localhost:3000 to view the app.
+
+You can then navigate to localhost:3000 to view the client side app.
+You can then navigate to localhost:3002 to view the server side api.
+
+Reset schemas and seeds:
+```bash
+cd server
+npm run reset
+npm run seed
+```
 
 ## Features (images for each)
 **[Chat](https://socket.io/)** - Implemented using socket.io.  
