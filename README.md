@@ -11,6 +11,8 @@ Applied double secured user indentity validation to prevent personal financial i
 
 **[ThreeJS](https://threejs.org/)** - Was a library we were incredibly excited to use, integrating and setting up the various Canvas elements was difficult at the beginning, and managing render times wasn't always easy, but we loved the dimension this library added to our app!
 
+**[TensorFlow](https://www.tensorflow.org/js/models)** - An open source library for numerical computation and large-scale machine learning. TensorFlow bundles together a slew of machine learning and deep learning (aka neural networking) models and algorithms and makes them useful by way of a common metaphor.
+
 ## Final Product
 
 Face recognition for user indentity verification
