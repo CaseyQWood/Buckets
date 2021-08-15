@@ -15,22 +15,22 @@ Applied double secured user indentity validation to prevent personal financial i
 
 ## Final Product
 
-Face recognition for user indentity verification
+**Face recognition for user indentity verification**
 ![face_rec](https://github.com/MingfengLi0122/Buckets/blob/master/client/public/image/faceRec.png)
 
-Profile page for budgets and goals
+**Profile page for budgets and goals**
 ![profile](https://github.com/MingfengLi0122/Buckets/blob/master/client/public/image/profile.png)
 
-Budget page allows user to edit, add and delete budgets and expenses 
+**Budget page allows user to edit, add and delete budgets and expenses**
 ![budget](https://github.com/MingfengLi0122/Buckets/blob/master/client/public/image/budget.png)
 
-Message page allows user to accpet incoming budget template
+**Message page allows user to accpet incoming budget template**
 ![message](https://github.com/MingfengLi0122/Buckets/blob/master/client/public/image/message.png)
 
-Analytics pages allows user to review all past statments
+**Analytics pages allows user to review all past statments**
 ![analytics](https://github.com/MingfengLi0122/Buckets/blob/master/client/public/image/analytics.png)
 
-Chat with customer support
+**Chat with customer support**
 ![onlineChat](https://github.com/MingfengLi0122/Buckets/blob/master/client/public/image/onlinechat.png)
 
 **Managing Data** - Over the course of the project we spent a lot of time working on ERD's and deciding how we could query and display useful data. It took a few refactors, but we learned an important lesson about trying to do two things at once. By separating concerns, and being cautious with how we mutated data the backend did come together.
