@@ -12,12 +12,9 @@ import Bucket from '../3dobjects/PolyBucket'
 import Coin from '../3dobjects/BucketCoin'
 import Wall from '../3dobjects/PhysicsWalls'
 import NewGoal from '../components/NewGoal'
-import { OrbitControls } from "@react-three/drei";
 import * as THREE from 'three'
 
 import NewGraph from "../3dobjects/NewGraph";
-import CheckMark from "../3dobjects/CheckMark";
-import ListObject from "../3dobjects/ListObject";
 import SmallPile from "../3dobjects/SmallPile";
 
 import { Grid, Box, Divider } from "@material-ui/core";
